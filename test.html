@@ -1,0 +1,2825 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podręcznik Gracza SkyMMO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://jbwm.pl/static/media/bg.4d84d2051ef733c96d5f.jpeg') no-repeat center top;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #ffe6cc;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 50px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .main-header {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .main-header h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .sticky-container {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #1a1a1a;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .sticky-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .chapters-header {
+            padding: 20px 0 10px 0;
+            transition: opacity 0.3s ease;
+            background: #1a1a1a;
+            font-size: 1.8em;
+            color: #66fcf1;
+        }
+
+        .search-container {
+            position: relative;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            background: transparent;
+            padding: 0;
+            z-index: 1002;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 10px auto;
+            padding: 0 20px;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #cc5500 0%, #803300 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-button:hover {
+            background: linear-gradient(135deg, #803300 0%, #ff6600 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .nav-button i {
+            font-size: 1.1em;
+        }
+
+        .nav-button.reset {
+            left: auto;
+            right: 2%;
+        }
+
+        /* Dla małych ekranów */
+        @media (max-width: 600px) {
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            /* Dodatkowe style dla przycisku reset na małych ekranach */
+            .nav-button.reset {
+                top: 2%;
+            }
+        }
+
+        .accordion {
+            background: linear-gradient(to right, #cc5500, #1a1a1a);
+            color: white;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .accordion:hover, .accordion.active {
+            background: linear-gradient(to right, #803300, #333333);
+            transform: translateY(-2px);
+        }
+
+        .accordion i {
+            margin-right: 15px;
+            font-size: 24px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .accordion:hover i {
+            transform: scale(1.1);
+        }
+
+        .panel {
+            background: rgba(43, 24, 16, 0.7);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 15px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .nested-panel {
+            background: rgba(31, 17, 12, 0.7);
+            margin: 10px;
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .panel p, .panel ul, .panel ol {
+            padding: 20px 25px;
+        }
+
+        .panel.active {
+            max-height: none !important;
+        }
+
+        .accordion.active {
+            background-color: #444;
+            border-left: 2px solid #ff8533;
+        }
+
+        .accordion.active + .panel {
+            border-left-color: #ff8533;
+        }
+
+        .search-box {
+            position: relative; /* Dodajemy pozycjonowanie względne */
+            background: rgba(204, 85, 0, 0.5); /* Zwiększamy przezroczystość tła */
+            border-radius: 25px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+
+        .search-box:focus-within {
+            box-shadow: 0 0 0 2px rgba(255, 133, 51, 0.2);
+        }
+
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 18px;
+            transition: transform 0.2s ease;
+        }
+
+        .search-box button:hover {
+            transform: scale(1.1);
+        }
+
+        #searchResults, #mobileSearchResults {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .search-result-item {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .search-result-item:hover {
+            background-color: #3a3a3a;
+        }
+
+        .search-result-title {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .search-result-text {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        .match-percentage {
+            color: #ff8533;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-left: 15px;
+            opacity: 0.8;
+        }
+
+        .category-header {
+            font-size: 2em;
+            color: #ff8533;
+            margin: 40px 0 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ff8533;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        ul, ol {
+            margin-left: 25px;
+        }
+
+        li {
+            margin: 12px 0;
+            position: relative;
+            padding-left: 5px;
+        }
+
+        li::before {
+            content: '•';
+            color: #ff8533;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        .accordion.nested {
+            background: linear-gradient(to right, #1a1a1a, #333333);
+            margin: 8px 15px;
+            padding: 15px 20px;
+        }
+
+        .accordion.nested:hover {
+            background: linear-gradient(to right, #333333, #4d4d4d);
+        }
+
+        @media (max-width: 600px) {
+            .main-header {
+                padding: 20px;
+            }
+
+            .main-header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                margin: 20px auto;
+            }
+
+            .category-header {
+                font-size: 1.5em;
+            }
+
+            .accordion {
+                padding: 15px;
+            }
+
+            .accordion i {
+                font-size: 20px;
+            }
+        }
+
+        /* Style dla menu hamburgerowego */
+        .hamburger-menu {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -85%;
+            width: 85%;
+            height: 100vh;
+            background: #2a2a2a;
+            padding: 60px 15px 20px 15px;
+            transition: 0.3s;
+            z-index: 1999;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-nav li {
+            margin: 20px 0;
+        }
+
+        .mobile-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: #ff8533;  /* Jasny pomarańczowy dla akcentów */
+        }
+
+        /* Style dla animacji przy przewijaniu */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+                z-index: 2001;
+            }
+
+            .top-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .buttons-container {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container {
+                display: none; /* Ukryj oryginalny pasek wyszukiwania */
+            }
+
+            .title-container {
+                width: 100%;
+                order: 1;
+            }
+
+            .search-box {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                padding: 8px 12px;
+            }
+
+            .search-box input {
+                width: 100%;
+                font-size: 16px; /* Zapobiega powiększaniu na iOS */
+                padding: 6px;
+            }
+
+            #searchResults {
+                position: fixed;
+                top: 120px;
+                left: 0;
+                width: 100%;
+                max-height: calc(100vh - 120px);
+                margin: 0;
+                z-index: 2000;
+                background: rgba(51, 51, 51, 0.95);
+            }
+
+            .main-content {
+                margin-top: 80px; /* Zmniejsz margines, bo pasek wyszukiwania jest teraz w menu */
+            }
+
+            .top-container {
+                height: auto;
+                min-height: 60px; /* Zmniejsz wysokość górnego paska */
+            }
+
+            .nav-logo {
+                height: 40px;
+            }
+
+            .title-container h1 {
+                font-size: 1.2em;
+                white-space: normal; /* Pozwala na zawijanie tekstu */
+                padding: 0 5px;
+            }
+        }
+
+        /* Dodatkowe style dla bardzo małych ekranów */
+        @media (max-width: 480px) {
+            .main-content {
+                margin-top: 160px;
+            }
+
+            .search-box input {
+                font-size: 14px;
+            }
+
+            .search-box {
+                padding: 6px 10px;
+            }
+        }
+
+        .top-container {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: auto;
+        }
+
+        .top-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .buttons-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-link.reset {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.reset:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .mobile-nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-nav-link:hover {
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-link.reset {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .mobile-nav-link.reset:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .title-container {
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .title-container h1 {
+            font-size: 2em;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .main-content {
+            max-width: 800px;
+            margin: 120px auto 0;
+            padding: 20px;
+        }
+
+        .nav-logo {
+            height: 70px;
+            width: auto;
+            cursor: pointer;
+            transition: transform .2s ease;
+        }
+
+        .mobile-search-container {
+            display: none;
+            width: 100%;
+            padding: 10px 15px;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            background: rgba(0, 0, 0, 0.9); /* Ciemniejsze tło */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1998;
+            border-bottom: 1px solid rgba(255, 133, 51, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Usuwamy menu hamburgerowe i wyszukiwanie mobilne -->
+    <!-- <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="mobile-search-container">
+        <input type="text" id="mobileSearchInput" placeholder="Wyszukaj...">
+        <div id="mobileSearchResults"></div>
+    </div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-buttons">
+            <a href="https://jbwm.pl" class="mobile-nav-link">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="#" class="mobile-nav-link reset">RESET</a>
+        </div>
+    </nav> -->
+
+    <div class="top-container">
+        <div class="top-wrapper">
+            <div class="buttons-container">
+                <a href="https://jbwm.pl" class="nav-link">
+                    <img src="logo.639430541c9608227897.webp" alt="JBWM Logo" class="nav-logo">
+                </a>
+                <a href="#" class="nav-link reset">RESET</a>
+            </div>
+            <div class="title-container">
+                <h1><i class="fas fa-book"></i> Podręcznik Gracza SkyMMO</h1>
+            </div>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Wyszukaj...">
+                    <div id="searchResults"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <h2 class="category-header">Podstawowe informacje</h2>
+        <button class="accordion"><i class="fas fa-users"></i> System Gildii i Party</button>
+        <div class="panel">
+            <button class="accordion nested"><i class="fas fa-crown"></i> Gildie</button>
+            <div class="panel nested-panel">
+                <h4>Zakładanie gildii</h4>
+                <p>Aby założyć gildię należy pogadać z NPC GuildMaster. Każda gildia posiada swój własny teren gildii - statek na tyłach spawnu. Startowa liczba członków gildii to 5 (max 15). Wymagane jest 10 kamieni gildii w EQ.</p>
+                
+                <h4>Wyposażenie statku gildyjnego</h4>
+                <p>Na statku gildyjnym znajdują się:</p>
+                <ul>
+                    <li>Stół Misji - do wyznaczania i akceptowania misji - dostępne od początku</li>
+                    <li>NPC Magazynier - do oddawania przedmiotów do misji - dostępne od początku</li>
+                    <li>NPC Zarządca - do zarządzania gildią - dostępne od początku</li>
+                    <li>SkillTree - do wydawania punktów za levelowanie - dostępne od początku</li>
+                    <li>Sklep za punkty - do kupowania bonusów - dostępne od 5k punktów gildii</li>
+                    <li>NPC Chenshan - NPC od szarf - dostępne od 100 punktów gildii</li>
+                    <li>NPC Kuzi - NPC od szarf - dostępne od 300 punktów gildii</li>
+                </ul>
+
+                <h4>System SkillTree</h4>
+                <p>W SkillTree znajdują się 3 osobne drzewka gildyjne:</p>
+                <ul>
+                    <li>Serce Mnożników - Bonus drop, Stellium, Bonus exp klasy</li>
+                    <li>Serce Gildii - Poziom trudności Questów, Liczba członków, Bonusowe punkty</li>
+                    <li>Serce Bonusów - Bonusy do DMG'a, HP, DEF'a</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested"><i class="fas fa-users"></i> System Party</button>
+            <div class="panel nested-panel">
+                <h4>Komendy Party</h4>
+                <ul>
+                    <li>/sbparty create</li>
+                    <li>/sbparty delete</li>
+                    <li>/sbparty info</li>
+                    <li>/sbparty invite <nick></li>
+                    <li>/sbparty join</li>
+                    <li>/sbparty kick <nick></li>
+                    <li>/sbparty leave</li>
+                </ul>
+
+                <h4>Party na OpenWorldzie</h4>
+                <p>Powoduje rozdzielenie DMG na WorldBossach na Ow4. Na przykład jeśli są 2 osoby w party, jedna wbije 13%, a druga 27% DMG zostanie dodany i rozdzielony równo na tych dwóch graczy, czyli będą mieli po 20%.</p>
+
+                <h4>Party na Dungeonach</h4>
+                <p>Jest wymagane do rozpoczęcia dunga</p>
+
+                <h4>Buffy/Debuffy</h4>
+                <p>Jeśli w party na dungeonie są:</p>
+                <ul>
+                    <li>3 osoby z tą samą klasą:
+                        <ul>
+                            <li>-25% obrażeń</li>
+                            <li>-10% zdrowia</li>
+                            <li>-10% pancerza</li>
+                        </ul>
+                    </li>
+                    <li>4 osoby z tą samą klasą:
+                        <ul>
+                            <li>-50% obrażeń</li>
+                            <li>-30% zdrowia</li>
+                            <li>-30% pancerza</li>
+                        </ul>
+                    </li>
+                    <li>5 osób z tą samą klasą:
+                        <ul>
+                            <li>-75% obrażeń</li>
+                            <li>-50% zdrowia</li>
+                            <li>-50% pancerza</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Bonus za "idealne party"</h4>
+                <p>Party złożone z 5 osób w którym liczebność różnych klas wynosi 2 2 1:</p>
+                <ul>
+                    <li>+10% otrzymywanego leczenia</li>
+                    <li>+5% szans na unik</li>
+                </ul>
+            </div>
+            </div>
+
+        <button class="accordion"><i class="fas fa-map"></i> System Stellium i Wysp</button>
+        <div class="panel">
+            <button class="accordion nested"><i class="fas fa-bolt"></i> Stellium</button>
+            <div class="panel nested-panel">
+                <h4>Informacje podstawowe</h4>
+                <p>Stellium to energia umożliwiająca szybkie teleportowanie się po ow.</p>
+
+                <h4>Sposoby zwiększenia max stellium</h4>
+                <ul>
+                    <li>Levelowanie - Każdy poziom daje +0,2 max stellium</li>
+                    <li>Kupienie rangi w /itemshop</li>
+                    <li>Wbijanie Punktów map w Bestiary</li>
+                </ul>
+
+                <h4>Sposoby uzupełniania Stellium</h4>
+                <ul>
+                    <li>Czekając (Regen Stellium zwiększa się kupując rangę)</li>
+                    <li>Pijąc Miksture Stellium 50 z /itemshop -> Timeshop (NIE BYPASSUJE LIMITU)</li>
+                </ul>
+
+                <h4>Panel teleportacyjny</h4>
+                <p>Miejsca dostępne bez użycia Stellium:</p>
+                <ul>
+                    <li>Karczma</li>
+                    <li>Gildia</li>
+                    <li>Jama Ekspedycji</li>
+                    <li>Topki</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested"><i class="fas fa-home"></i> System Wysp</button>
+            <div class="panel nested-panel">
+                <h4>Podstawowe komendy</h4>
+                <ul>
+                    <li>/is - Panel Wyspy z większością funkcji</li>
+                    <li>/is create - Założenie Wyspy</li>
+                    <li>/is delete - Usunięcie Wyspy</li>
+                    <li>/is leave - Opuszczenie Wyspy</li>
+                    <li>/is invite [nick] - Zaproszenie do Wyspy</li>
+                    <li>/is home | /is dom - Teleport na Wyspę</li>
+                    <li>/is sethome - Ustawienie Miejsca Spawnu na Wyspie</li>
+                    <li>/is upgrades - Ulepszenia Wyspy</li>
+                    <li>/is value - Panel Punktów Wyspy</li>
+                    <li>/is info [nick] - Informacje o danej Wyspie</li>
+                    <li>/is visit [nick] - Odwiedzenie Wyspy Danego Gracza</li>
+                    <li>/is kickMember [nick] - Wyrzucenie Członka Wyspy</li>
+                    <li>/is kickVisitor [nick] - Wyrzucenie Odwiedzającego z Wyspy</li>
+                    <li>/is public - Zamknięcie/Otwarcie Wyspy dla Odwiedzających</li>
+                    <li>/is pvp - Włączenie/Wyłączenie PvP na Wyspie</li>
+                    <li>/is like [nick] - Polubienie Wyspy Danego Gracza</li>
+                    <li>/is drop - Podgląd/Ustawienia dropu z Generatora</li>
+                    <li>/is transfer [nick] - Przekazanie lidera</li>
+                </ul>
+
+                <h4>System punktów wyspy</h4>
+                <p>Pod komendą /is value znajduje się GUI, do którego po wrzuceniu itemów dostaje się punkty wyspy, które umożliwiają kupienie niektórych upgradeów w /is upgrades oraz dają bonusy takie jak exp do Rolnictwa, Drwalnictwa, Górnictwa oraz Alchemii + speed, który można wyłączyć/włączyć w zależności od preferencji.</p>
+            </div>
+        </div>
+
+        <button class="accordion"><i class="fas fa-users"></i> NPC</button>
+        <div class="panel">
+            <button class="accordion nested" id="biolog"><i class="fas fa-flask"></i> Biolog</button>
+            <div class="panel nested-panel">
+                <p>Biolog to NPC od side Questa, który daje bonusy w zamian za itemki.</p>
+                <h4>Wymagane przedmioty</h4>
+                <ul>
+                    <li>Ząb dzika - wymagany O poziom klasy - Ow1 - 10 sztuk z 0.5h cooldownu</li>
+                    <li>Skorupa Skarabeusza - wymagany 15 poziom klasy - Ow2-15 sztuk z 1h cooldownu</li>
+                    <li>Wilcza Łapa - wymagany 35 poziom klasy - Ow3 - 20 sztuk z 2h cooldownu</li>
+                    <li>Antyczna Cięciwa - wymagany 75 poziom klasy - Ow4_1-25 sztuk z 3h cooldownu</li>
+                    <li>Grzybowy Kapelusz - wymagany 90 poziom klasy - Ow4_2- 30 sztuk z 4h cooldownu</li>
+                    <li>Siarkowe Serce - wymagany 105 poziom klasy - Ow4_3 - 35 sztuk z 5h cooldownu</li>
+                    <li>Zerwane Okowy - wymagany 120 poziom klasy - Ow4_4 - 40 sztuk z óh cooldownu</li>
+                    <li>Piekielny klejnot - wymagany 150 poziom klasy - Ow4_5 - 45 sztuk z 6h cooldownu</li>
+                    <li>Notatka Przywódcy - wymagany x poziom klasy - Koszmarny Dungeon - 45 sztuk z 6h cooldownu</li>
+                    <li>Żądło Ważki - wymagany x poziom klasy - Ow5_1 - 50 sztuk z 8h cooldownu</li>
+                </ul>
+                <p>Z każdym kolejnym unikalnym itemkiem do biologa zwiększa się trudność jego zdobycia, jak i też ilość wymaganych itemków do oddania oraz czas pomiędzy oddaniem przedmiotu - ten można pominąć Eliksirem Poszukiwacza, który można kupić w /itemshop lub pozyskać jako nagroda w evencie.</p>
+            </div>
+
+            <button class="accordion nested" id="kolekcjoner"><i class="fas fa-user-ninja"></i> Kolekcjoner</button>
+            <div class="panel nested-panel">
+                <p>Kolekcjoner daje graczowi Side Questa na zabicie danej ilości mobów na danym OW po osiągnięciu danego poziomu klasy.</p>
+                <h4>Wymagana ilość mobów</h4>
+                <p>Do OW4_3 włącznie wymagana ilość mobów do zabicia wygląda następująco:</p>
+                <ul>
+                    <li>2222 zwykłych mobów</li>
+                    <li>444 minibossów</li>
+                    <li>222 bossów</li>
+                </ul>
+                <p>Od OW4_4 ilość mobów/bossów się zwiększa</p>
+                <p>Kolekcjoner po oddaniu misji daje exp klasy, eksploracji, reputację i ustaloną dodatkową nagrodę.</p>
+            </div>
+
+            <button class="accordion nested" id="stworca"><i class="fas fa-hammer"></i> Stwórca</button>
+            <div class="panel nested-panel">
+                <p>U Stwórcy można wytwarzać wiele różnych przedmiotów, większość z nich oprócz surowców wymaga również czasu.</p>
+                <h4>Dostępne kategorie craftingu</h4>
+                <ul>
+                    <li>Fabryki</li>
+                    <li>Materiały Górnicze/Rolnicze</li>
+                    <li>Akcesoria (coming soon)</li>
+                    <li>Ewolucje Petów</li>
+                    <li>Rzeczy Konsumpcyjne</li>
+                    <li>Specjalne Craftingi (coming soon)</li>
+                    <li>INNE</li>
+                </ul>
+                <p>Czas u Stwórcy można skipnąć za pomocą Skrócenia czasu craftingu, które można kupić w ItemShopie</p>
+            </div>
+
+            <button class="accordion nested" id="dungeon_master"><i class="fas fa-key"></i> Dungeon Master</button>
+            <div class="panel nested-panel">
+                <h4>Możliwości wymiany</h4>
+                <ul>
+                    <li>Cząstek Przepustek na Przepustki</li>
+                    <li>Fragmentów Przepustek na Przepustki</li>
+                    <li>Cząstek Przepustek na Fragmenty Przepustek</li>
+                    <li>Przepustek na Cząstki Przepustek</li>
+                </ul>
+                <p>Dodatkowo można zakupić u niego klucze do Kuferka Dungeon PREMIUM za 100k i Klucz do Kuferka Dungeon I/II/III // Szkat. Podziemnej Eskapady</p>
+                <p>Można u niego również scraftować Sakiewki na Fragmenty Przepustki/Cząstki Przepustek/Delikatne Sukna</p>
+            </div>
+        </div>
+
+        <button class="accordion" id="skille"><i class="fas fa-tools"></i> Skille</button>
+        <div class="panel">
+            <button class="accordion nested" id="profesje"><i class="fas fa-hammer"></i> Profesje</button>
+            <div class="panel nested-panel">
+                <button class="accordion nested" id="walka"><i class="fas fa-sword"></i> Walka</button>
+                <div class="panel nested-panel">
+                    <p>Walkę zdobywa się za zabicie prawie każdego moba. Im lepszy mob, tym więcej expa.</p>
+                    <p>To jakie moby znajdują się na danej mapie, jak i również to co z nich dropi można sprawdzić pod /bestiary.</p>
+                    
+                    <h4>Wyposażenie</h4>
+                    <p>Całe wyposażenie potrzebne do walki kupuje się/ulepsza u Kowali na Ow. Na każdym z OW znajduje się takowy NPC. Do tych przedmiotów potrzeba itemów z danej mapy, jak i czasami inne materiały pozyskiwane przy pomocy innych skilli.</p>
+                    
+                    <h4>Użycie</h4>
+                    <p>Walkę zdobywa się przy okazji zdobywania potrzebnych nam przedmiotów. Niektóre części wyposażenia mają wymagania poziomu Walki na ich scraftowanie.</p>
+                </div>
+
+                <button class="accordion nested" id="lowca"><i class="fas fa-bow-arrow"></i> Łowca</button>
+                <div class="panel nested-panel">
+                    <p>Łowcę zdobywa się zabijając Bossy, Minibossy, WorldBossy oraz Metiny na OpenWorldzie.</p>
+                    <p>1 poziom Łowcy to 1% statystyki Dodatkowy Drop - te procenty mnożą się przez resztę.</p>
+                    <p>Maksymalny poziom łowcy wynosi 100.</p>
+                    
+                    <h4>Moby, z których pozyskuje się Łowcę:</h4>
+                    <ul>
+                        <li>Ow1 - Szaman - Miniboss</li>
+                        <li>Ow1 - Burzyciel - Boss</li>
+                        <li>Ow2 - Starożytny Generał - Miniboss</li>
+                        <li>Ow2 - Ammit - Miniboss</li>
+                        <li>Ow2 - Anubis - Boss</li>
+                        <li>Ow3 - Lodowa Wiedźma - Boss</li>
+                        <li>Ow3 - Król Zimy - Boss</li>
+                        <li>Ow3 - Amiz - Boss</li>
+                        <li>Ow4_1 - Starożytny Kamień - Metin</li>
+                        <li>Ow4_1 - Starożytny Władca - Boss</li>
+                        <li>Ow4_2 - Grzybowy Metin - Metin</li>
+                        <li>Ow4_2 - Grzybowa Księżniczka - Boss</li>
+                        <li>Ow4_3 - Magmowy Golem - Boss</li>
+                        <li>Ow4_4 - Nindal - Boss</li>
+                        <li>Ow4_5 - Piekielna Skała - Metin</li>
+                        <li>Ow4_5 - Piekielny Berserker - Boss</li>
+                        <li>Ow1 - Wpieniony Handlarz - WorldBoss</li>
+                        <li>Ow2 - Mumia - WorldBoss</li>
+                        <li>Ow3 - Lodzio - WorldBoss</li>
+                        <li>Ow4 - Grzybowa Królowa - WorldBoss</li>
+                    </ul>
+
+                    <h4>Użycie</h4>
+                    <p>Bossy i Minibossy pozwalają wydropić wiele przydatnych i wymaganych itemów w gierce, informacje o tym co dropi dany boss można znaleść pod /bestiary.</p>
+                </div>
+
+                <button class="accordion nested" id="gornictwo"><i class="fas fa-gem"></i> Górnictwo</button>
+                <div class="panel nested-panel">
+                    <h4>Pozyskiwanie surowców i expa</h4>
+                    <p>Surowce można zdobyć na wiele sposobów:</p>
+                    <ul>
+                        <li>wykopać na wyspie</li>
+                        <li>wykopać w kopalni</li>
+                        <li>wydropić z niektórych szkatułek eventowych</li>
+                        <li>niektóre surowce są do pozyskania z dungeonów - głównie węgiel</li>
+                        <li>pozyskać z fabryk</li>
+                    </ul>
+
+                    <h4>Generator cobbla</h4>
+                    <p>Surowce zdobywa się na wyspie stawiając zwykłą minecraftową cobblarkę zwaną generatorem, którą można podejrzeć na /warp tutorial. W celu ulepszenia generatora należy udać się do /is upgrades. W celu sprawdzenia szansy na to, że zamiast cobbla pojawi się coś innego należy użyć komendy /is drop.</p>
+                    <p>Maksymalny poziom - 28</p>
+
+                    <h4>Generator basaltu</h4>
+                    <p>Istnieje drugi rodzaj generatora, czyli generator basaltu. W celu jego zbudowania potrzebny jest nam soul soil, blue ice oraz lava. Ułożenie bloków można podejrzeć na /warp tutorial. Ten generator podobnie jak zwykły można ulepszać pod /is upgrades, a drop sprawdzić pod /is drop basalt.</p>
+                    <p>Maksymalny poziom - 15</p>
+
+                    <h4>Kopalnia</h4>
+                    <p>Kopalnie można odblokować po osiągnięciu 10 poziomu profesji Górnictwo i pójściu się do NPC Grubiorz dzięki, któremu udajemy się do kopalni. W kopalni można kopać wszystkie surowce, które są w zwykłym generatorze na wyspie oraz topaz, który jest potrzebny w późniejszym etapie gry.</p>
+                    <p>W celu kopania poszczególnych rud wymagany jest coraz to lepszy kilof oraz wyższy poziom Górnictwa. Kilof ulepsza się u Grubiorza na /spawn. Netherytowy kilof +5 można ulepszyć do Wiertła.</p>
+                    <p>Aktualny Wzór na Szybkość Kopania to:</p>
+                    <p>( 100 + bonusowa szybkość kopania z wiertła + szybkość kopania [bransoleta] ) * (1 + szybkość kopania z seta[%] )</p>
+
+                    <h4>Czasy respawnów rud w kopalni</h4>
+                    <ul>
+                        <li>węgiel lv 1/2 - 15s</li>
+                        <li>miedź lv 1/2 - 20s</li>
+                        <li>lapis lv 1/2 - 25s</li>
+                        <li>żelazo lv 1/2 - 30s</li>
+                        <li>złoto lv 1/2 - 35s</li>
+                        <li>diament lv 1/2 - 40s</li>
+                        <li>emerald lv 1/2 - 45s</li>
+                        <li>topaz lv 1 - 60s</li>
+                        <li>topaz lv 2 - 90s</li>
+                        <li>topaz lv 3 - 120s</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="accordion nested" id="profesje_zbierackie"><i class="fas fa-leaf"></i> Profesje zbierackie</button>
+            <div class="panel nested-panel">
+                <button class="accordion nested" id="zielarstwo"><i class="fas fa-leaf"></i> Zielarstwo</button>
+                <div class="panel nested-panel">
+                    <h4>Pozyskiwanie surowców i expa</h4>
+                    <p>Zielarstwo zdobywa się zbierając rośliny na wyspie oraz na OpenWorldzie. Rośliny na wyspie rosną co 5 minut, a na OpenWorldzie co 15 minut.</p>
+                    
+                    <h4>Wyposażenie</h4>
+                    <p>Do zbierania roślin potrzebna jest motyka, którą można ulepszyć u NPC Ogrodnik na /spawn. Netherytową motykę +5 można ulepszyć do Sierpa.</p>
+                    
+                    <h4>Użycie</h4>
+                    <p>Rośliny są potrzebne do:</p>
+                    <ul>
+                        <li>craftowania potów</li>
+                        <li>craftowania jedzenia</li>
+                        <li>craftowania niektórych przedmiotów</li>
+                        <li>questów</li>
+                    </ul>
+                    
+                    <h4>Wzór na szansę na podwójny drop</h4>
+                    <p>( 5 + bonusowa szansa na podwójny drop z sierpa + szansa na podwójny drop [bransoleta] ) * (1 + szansa na podwójny drop z seta[%] )</p>
+                </div>
+
+                <button class="accordion nested" id="rolnictwo"><i class="fas fa-seedling"></i> Rolnictwo</button>
+                <div class="panel nested-panel">
+                    <h4>Pozyskiwanie surowców i expa</h4>
+                    <p>Rolnictwo zdobywa się poprzez zbieranie roślin na farmie. Rośliny rosną co 15 minut.</p>
+                    
+                    <h4>Wyposażenie</h4>
+                    <p>Do zbierania roślin potrzebna jest motyka, którą można ulepszyć u NPC Ogrodnik na /spawn. Netherytową motykę +5 można ulepszyć do Sierpa.</p>
+                    
+                    <h4>Użycie</h4>
+                    <p>Rośliny są potrzebne do:</p>
+                    <ul>
+                        <li>craftowania potów</li>
+                        <li>craftowania jedzenia</li>
+                        <li>craftowania niektórych przedmiotów</li>
+                        <li>questów</li>
+                    </ul>
+                    
+                    <h4>Wzór na szansę na podwójny drop</h4>
+                    <p>( 5 + bonusowa szansa na podwójny drop z sierpa + szansa na podwójny drop [bransoleta] ) * (1 + szansa na podwójny drop z seta[%] )</p>
+                </div>
+            </div>
+
+            <button class="accordion nested" id="alchemia"><i class="fas fa-flask"></i> Alchemia</button>
+            <div class="panel nested-panel">
+                <h4>Przebieg Gotowania</h4>
+                <ol>
+                    <li>Przygotowanie odpowiedniego Bloku Cieplnego pod Kotłem (Aby odpalić świeczki oraz ognisko należy najpierw użyć na te bloki podpałki, którą można zrobić u NPC Stwórca)</li>
+                    <li>Wlanie odpowiedniej ilości wody do kotła</li>
+                    <li>Wrzucenie składników potrzebnych do ugotowania danej mikstury/itemu</li>
+                    <li>Zamknięcie klapy (trapdoora znajdującego się nad kotłem)</li>
+                    <li>Kliknięcie łyżką na kocioł, którą można zrobić u NPC Stwórca</li>
+                    <li>Odebranie mikstury/przedmiotu po upływie czasu podanego w recepturze poprzez kliknięcie na kocioł (jak mikstura/przedmiot jest gotowy klapa nad kotłem sama się otworzy)</li>
+                </ol>
+
+                <h4>Użycie</h4>
+                <p>Potki dające różne bonusy w przeróżnych dziedzinach SkyMMO</p>
+
+                <h4>Dodatkowe informacje</h4>
+                <ul>
+                    <li>Mikstura/Przedmiot gotuje się w kotle nawet gdy jest się Offline</li>
+                    <li>Jeśli miksturę/przedmiot odbierze gracz, który nie ma odblokowanej receptury u NPC Młody Alchemik całość przepada</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested" id="wedkarstwo"><i class="fas fa-fish"></i> Wędkarstwo</button>
+            <div class="panel nested-panel">
+                <h4>Podstawowe informacje</h4>
+                <p>Pierwszą wędkę odbiera się u NPC Waldek na /spawn</p>
+
+                <h4>Dostępne łowiska</h4>
+                <ul>
+                    <li>Łowisko na Ow1, które znajduje się za Boską Ręką</li>
+                    <li>Początek Ow2</li>
+                    <li>Łowisko na Ow3, które znajduje się w Lodowej Grocie</li>
+                    <li>Łowisko na Ow4_2, które znajduje się na drugiej części Grzybowej Krainy</li>
+                    <li>Łowisko na Ow4_5</li>
+                </ul>
+
+                <h4>Mechanika łowienia</h4>
+                <p>W celu łowienia należy zarzucić wędkę do wody posiadając jednocześnie odpowiednią na miejsce, w którym się łowi przynętę. Po tym jak ryba złapie za spławik należy nacisnąć literkę, która wyskoczyła na ekranie.</p>
+                <p>Wędka MUSI być na pierwszym slocie</p>
+
+                <h4>System żyłki</h4>
+                <p>Podczas wyławiania ryby lub jeśli minie czas na jej wyłowienie żyłka może pęknąć lub zostać naderwana - w tym drugim przypadku wystarczy zarzucić ponownie wędkę, a w pierwszym trzeba nałożyć nową żyłkę klikając żyłką na wędkę w ekwipunku. Żyłkę można kupić u NPC Handlarz Drobiazgami na ow1 lub u NPC na łowisku Ow3.</p>
+
+                <h4>Przynęty i zanęty</h4>
+                <p>Każda przynęta posiada swoją pulę dropów. Są do kupienia u Rybaków na łowiskach.</p>
+                <p>Zanęta po rzuceniu do wody tworzy w danym obrębie bąbelki, podczas łowienia w nich zwiększa się szybkość łowienia.</p>
+
+                <h4>Koszt wejścia na łowisko</h4>
+                <ul>
+                    <li>Ow1 - 10k/6h - Ochroniarz</li>
+                    <li>Ow3 - 40k/6h - Mors</li>
+                    <li>Ow4_2 - 150k/6h - Grzybowy Strażnik</li>
+                    <li>Ow4_5 - 500k/6h - Strażnik Łowiska</li>
+                </ul>
+                <p>Kupując Kartę Vip 3d/1d w /itemshop dostaje się przepustkę na wszystkie łowiska na czas trwania Karty Vip</p>
+                <p>Kupując Kartę rybacką 7d dostaje się przepustkę na wszystkie łowiska na czas trwania Karty Rybackiej oraz 60% szans na to, że ryba nie zje przynęty</p>
+
+                <h4>Gorzyce - łowisko eventowe</h4>
+                <p>Gorzyce to łowisko eventowe, które otwiera się tylko podczas eventu na drop szkatułek rybackich. Na łowisko można się dostać przez NPC'ta Rybaka na /spawn. Można tam wyłowić Kamień Wędkarski przydany np:</p>
+                <ul>
+                    <li>Podczas Sklepu Eventowego, gdzie za przedmioty z łowienia można kupić inne przedmioty</li>
+                    <li>Do scraftowania artefaktu siły (na Gorzycach)</li>
+                </ul>
+
+                <h4>Potwory morskie</h4>
+                <p>Potwory morskie mogą zostać wyłowione, po zabiciu dropią różne przedmioty w zależności od potwora. Możliwe do wyłowienia od Ow3.</p>
+            </div>
+        </div>
+
+        <button class="accordion"><i class="fas fa-dragon"></i> Zwierzaki (Pety)</button>
+        <div class="panel">
+            <h4>Podstawowe informacje</h4>
+            <p>Zwierzak bez ewolucji może maxymalnie osiągnąć 20 level, po pierwszej ewolucji 50, a po drugiej - 100.</p>
+
+            <h4>Sposoby levelowania peta</h4>
+            <ul>
+                <li>Zielarstwo - zbieranie kwiatków</li>
+                <li>Zabijanie mobów</li>
+                <li>Łowienie (tylko w przypadku Rozdymki)</li>
+                <li>Kopanie rud w kopalni</li>
+                <li>Karma dla peta 10/25/50/100/400/1000</li>
+            </ul>
+
+            <h4>System ewolucji</h4>
+            <p>Zwierzaki można ewoluować u NPC Stwórca na /spawn za różne itemki oraz kamień ewolucji:</p>
+            <ul>
+                <li>Kamień Ewolucjii I do Minotaura - Dungeon Pustynny - Szkatułka Pustynna</li>
+                <li>Kamień Ewolucjii II do Minotaura - Elit. Dungeon Labirynt - drop z Bossa</li>
+                <li>Kamień Ewolucjii I do Rozdymki - Event Rybacki - Szkatułka Rybacka</li>
+                <li>Kamień Ewolucjii II do Rozdymki - Sezonowy Sklep Rybacki</li>
+                <li>Kamień Ewolucjii I do Samuraja - Elit. Dungeon Lodowy - drop z Bossa</li>
+                <li>Demoniczna Pieczęć do Reapera - Dungeon DT - Szkatułka Niebieskiej Śmierci</li>
+                <li>Kamień Ewolucjii I do Gorala - Dungeon Eskapada - Piekielna Szkatułka</li>
+                <li>Fragment Zwierzaka I do Burela - Koszmarny Dungeon Labirynt - Koszmarna Szkatułka I</li>
+                <li>Fragment Zwierzaka II do Smykogryfa - Koszmarny Dungeon Pustynny - Koszmarna Szkatułka II</li>
+            </ul>
+
+            <h4>Dodatkowe informacje</h4>
+            <p>Żeby nie musieć przywoływać swojego peta przy każdej zmianie podservera należy mieć rangę MVIP+ lub TYTAN+. Aby odwołać peta należy kliknąć na niego w GUI pod komendą /pet</p>
+        </div>
+
+        <button class="accordion"><i class="fas fa-scroll"></i> System Klas</button>
+        <div class="panel">
+            <button class="accordion nested" id="wojownik"><i class="fas fa-sword"></i> Wojownik</button>
+            <div class="panel nested-panel">
+                <h4>Statystyki bazowe</h4>
+                <ul>
+                    <li>Obrażenia - 1 + 0,5 per level</li>
+                    <li>Zdrowie - 20 + 2,5 per level</li>
+                    <li>Pancerz - 0 + 8 per level</li>
+                    <li>Szybkość ataku - 1,6</li>
+                    <li>Prędkość ruchu - 0,1</li>
+                    <li>Regeneracja zdrowia - 0,1 + 0,05 per level</li>
+                    <li>Maksymalna furia - 20 + 2 per level</li>
+                    <li>Spadek furii - 4% maksymalnej furii/s poza walką</li>
+                    <li>Odporność na odrzut - 25% + 0,05% per lvl MAX 50%</li>
+                    <li>Odporność na spowolnienia - 20% + 0,05% per lvl MAX 50%</li>
+                    <li>Odporność na upadek - 0% + 0,05% per lvl MAX 50%</li>
+                    <li>Obrażenia fizyczne - 0 + 0,2% per level</li>
+                    <li>Siła - 0 + 0,5 per level</li>
+                    <li>Wytrzymałość - 0 + 1,5 per level</li>
+                    <li>Witalność - 0 + 1 per level</li>
+                    <li>Stamina - 1 + 0,01 per level</li>
+                    <li>Regeneracja staminy - 0,01 + 0,0001 per level</li>
+                </ul>
+
+                <h4>Unikalna umiejętność bierna</h4>
+                <p>Regeneracja zdrowia 1% + 0,008% brakującego hp/s per level MAX 5%</p>
+            </div>
+
+            <button class="accordion nested" id="ninja"><i class="fas fa-user-ninja"></i> Ninja</button>
+            <div class="panel nested-panel">
+                <h4>Statystyki bazowe</h4>
+                <ul>
+                    <li>Obrażenia - 1 + 0,75 per level</li>
+                    <li>Zdrowie - 20 + 1,25 per level</li>
+                    <li>Pancerz - 0 + 4 per level</li>
+                    <li>Szybkość ataku - 1,8</li>
+                    <li>Prędkość ruchu - 0,11</li>
+                    <li>Regeneracja zdrowia - 0,1 + 0,03 per level</li>
+                    <li>Maksymalna mana - 20 + 2 per level</li>
+                    <li>Regeneracja many - 0,06 + 0,06 per level</li>
+                    <li>Odporność na odrzut - 0% + 0,05% per lvl MAX 25%</li>
+                    <li>Odporność na spowolnienia - 0%</li>
+                    <li>Odporność na upadek - 0% + 0,05% per lvl MAX 50%</li>
+                    <li>Obrażenia fizyczne - 0 + 0,1% per level</li>
+                    <li>Siła - 0 + 1 per level</li>
+                    <li>Wytrzymałość - 0 + 1 per level</li>
+                    <li>Witalność - 0 + 1 per level</li>
+                    <li>Stamina - 1 + 0,02 per level</li>
+                    <li>Regeneracja staminy - 0,01 + 0,0001 per level</li>
+                </ul>
+
+                <h4>Unikalna umiejętność bierna</h4>
+                <ul>
+                    <li>Regeneracja zdrowia 0% max hp/s + 0,002% per level MAX 1%</li>
+                    <li>Regeneracja staminy - 1% max staminy /s</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested" id="mag"><i class="fas fa-hat-wizard"></i> Mag</button>
+            <div class="panel nested-panel">
+                <h4>Statystyki bazowe</h4>
+                <ul>
+                    <li>Obrażenia - 1 + 1 per level</li>
+                    <li>Zdrowie - 20 + 1 per level</li>
+                    <li>Pancerz - 0 + 2 per level</li>
+                    <li>Szybkość ataku - 1,2</li>
+                    <li>Prędkość ruchu - 0,105</li>
+                    <li>Regeneracja zdrowia - 0,1 + 0,02 per level</li>
+                    <li>Maksymalna mana - 20 + 4 per level</li>
+                    <li>Regeneracja many - 0,1 + 0,1 per level</li>
+                    <li>Odporność na odrzut - 0% + 0,05% per lvl MAX 25%</li>
+                    <li>Odporność na spowolnienia - 0%</li>
+                    <li>Odporność na upadek - 0% + 0,05% per lvl MAX 50%</li>
+                    <li>Obrażenia magiczne - 0 + 0,2% per level</li>
+                    <li>Obrażenia umiejętności - 10% + 0,25% per level</li>
+                    <li>Siła - 0 + 1,5 per level</li>
+                    <li>Wytrzymałość - 0 + 0,5 per level</li>
+                    <li>Witalność - 0 + 1 per level</li>
+                    <li>Stamina - 1</li>
+                    <li>Regeneracja staminy - 0,01 + 0,0001 per level</li>
+                </ul>
+
+                <h4>Unikalna umiejętność bierna</h4>
+                <ul>
+                    <li>Regeneracja many 0,005% max many/s + 0,005% per level MAX 2%</li>
+                    <li>Regeneracja zdrowia 0,25% max hp/s + 0,0005% per level MAX 0,5%</li>
+                </ul>
+            </div>
+
+            <h4>System obrażeń</h4>
+            <button class="accordion nested" id="wzory_obrazenia"><i class="fas fa-calculator"></i> Wzory na obrażenia</button>
+            <div class="panel nested-panel">
+                <h4>Wojownik</h4>
+                <p>Miecz AA:</p>
+                <p>obrażenia * ( 1 + pve + fizyczne + broni + mapa/dung)</p>
+                <p>Skill:</p>
+                <p>obrażenia * ( 1 + pve + fizyczne + mapa/dung) * ( 1 + fizyczne + broni) * ( 1 + umiejętności) * ( 1 + furia ) * multiplikatywność</p>
+
+                <h4>Ninja</h4>
+                <p>Sztylet AA:</p>
+                <p>obrażenia * ( 1 + pve + fizyczne + broni + mapa/dung)</p>
+                <p>Skill:</p>
+                <p>obrażenia * ( 1 + pve + fizyczne + mapa/dung) * ( 1 + broni + fizyczne ) * ( 1 + umiejętności ) * multiplikatywność</p>
+                <p>Łuk AA:</p>
+                <p>obrażenia * ( 1 + pve + dystansowe + mapa/dung ) * ( 1 + broni ) * ( 1 + dystansowe )</p>
+                <p>Skill:</p>
+                <p>obrażenia * ( 1 + pve + dystansowe + mapa/dung ) * ( 1 + broni ) * ( 1 + dystansowe ) * ( 1 + umiejętności ) * multiplikatywność</p>
+
+                <h4>Mag</h4>
+                <p>Kostur AA:</p>
+                <p>obrażenia * ( 1 + pve + magiczne + broni + dystansowe + mapa/dung)</p>
+                <p>Skill:</p>
+                <p>obrażenia * ( 1 + pve + magiczne + mapa/dung) * ( 1 + broni + magiczne ) * ( 1 + umiejętności ) * multiplikatywność</p>
+            </div>
+        </div>
+
+        <button class="accordion"><i class="fas fa-chart-line"></i> System Bonusów i Statystyk</button>
+        <div class="panel">
+            <button class="accordion nested" id="fortuna"><i class="fas fa-percentage"></i> Fortuna</button>
+            <div class="panel nested-panel">
+                <h4>Górnictwo</h4>
+                <ul>
+                    <li>Set górnika</li>
+                    <li>Pet - Góral</li>
+                    <li>Set bonus (niektóre sety)</li>
+                </ul>
+
+                <h4>Drwalnictwo</h4>
+                <ul>
+                    <li>Set drwala</li>
+                    <li>Pet - Grzib</li>
+                    <li>Set bonus (niektóre sety)</li>
+                </ul>
+
+                <h4>Rolnictwo</h4>
+                <ul>
+                    <li>Set Rolnika</li>
+                    <li>Motyka farmerska</li>
+                    <li>Siekiera farmerska</li>
+                </ul>
+
+                <h4>Zielarstwo</h4>
+                <ul>
+                    <li>Sierp</li>
+                    <li>Set zielarza</li>
+                    <li>Bransoleta Zielarza</li>
+                    <li>Naszyjnik Zielarza</li>
+                    <li>Set bonus (niektóre sety)</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested" id="bonusy_szybkosc"><i class="fas fa-tachometer-alt"></i> Bonusy do szybkości</button>
+            <div class="panel nested-panel">
+                <h4>Szybsze łowienie</h4>
+                <ul>
+                    <li>Pet - Rozdymka</li>
+                    <li>Zanęta</li>
+                    <li>Set bonus z seta</li>
+                    <li>Bransoleta wędkarska</li>
+                </ul>
+
+                <h4>Zwiększona szansa na zebranie rośliny</h4>
+                <ul>
+                    <li>Sierp</li>
+                    <li>Set bonus (niektóre sety)</li>
+                    <li>Bransoleta Zielarza</li>
+                    <li>Naszyjnik Zielarza</li>
+                </ul>
+
+                <h4>Bonusowa szybkość kopania</h4>
+                <ul>
+                    <li>Bransoleta górnicza</li>
+                    <li>Set bonus (niektóre sety)</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested" id="bonusy_drop_exp"><i class="fas fa-arrow-up"></i> Zwiększony drop i exp</button>
+            <div class="panel nested-panel">
+                <h4>Zwiększony drop</h4>
+                <ul>
+                    <li>Pet - Samuraj</li>
+                    <li>Karta vip 3d/1d</li>
+                    <li>Karta minivip 3d</li>
+                    <li>Bonus doświadczenia i dropu 1h</li>
+                    <li>Rękawiczki 25% na 1h/12h</li>
+                    <li>Rękawiczki 10% na 1h/12h</li>
+                </ul>
+
+                <h4>Uniwersalne źródła expa</h4>
+                <ul>
+                    <li>Rybki 15% na godzinę</li>
+                    <li>Rybki 10% na 10 minut</li>
+                    <li>Karta vip 3d/1d</li>
+                    <li>Karta minivip 3d</li>
+                    <li>Bonus doświadczenia i dropu 1h</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested" id="bonusy_profesje"><i class="fas fa-medal"></i> Bonusy do profesji</button>
+            <div class="panel nested-panel">
+                <h4>Amulet danej profesji</h4>
+                <p>Zwiększa ilość pozyskiwanego expa danej profesji o + x%</p>
+                <ul>
+                    <li>Pierwszy - drop z Szamana na Ow1 - Zwykły Amulet</li>
+                    <li>Drugi - do kupienia u Kowala na Ow3 - Lodowy Amulet</li>
+                    <li>Trzeci - drop z Grzybowego Metina na Ow4_2 - Grzybowy Amulet</li>
+                    <li>Czwarty - z Szkatułki Podziemnej Eskapady - Piekielny Amulet</li>
+                </ul>
+
+                <h4>Amulet klasy</h4>
+                <p>Zwiększa ilość pozyskiwanego expa klasy o + x%</p>
+                <ul>
+                    <li>Pierwszy - drop z Anubisa na Ow2 - Słoneczny Amulet</li>
+                    <li>Drugi - drop z Starożytnego Władcy na Ow4_1 - Antyczny Amulet</li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="accordion"><i class="fas fa-gem"></i> System Artefaktów</button>
+        <div class="panel">
+            <h4>Rodzaje Artefaktów</h4>
+            <ul>
+                <li>Artefakt Siły</li>
+                <li>Artefakt Defensywny</li>
+                <li>Artefakt Żywiołów</li>
+            </ul>
+
+            <button class="accordion nested" id="artefakt_sily"><i class="fas fa-fist-raised"></i> Artefakt Siły</button>
+            <div class="panel nested-panel">
+                <p>Do kupienia na Eventowym łowisku "Gorzyce", daje takie statystyki jak:</p>
+                <ul>
+                    <li>Zwiększone obrażenia przeciwko morskim stworzeniom</li>
+                    <li>Obrażenia</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested" id="artefakt_defensywny"><i class="fas fa-shield-alt"></i> Artefakt Defensywny</button>
+            <div class="panel nested-panel">
+                <p>Pierwszy zdobywa się jak drop z Wpienionego Handlarza, są 2 warianty:</p>
+                <ul>
+                    <li>PvE - jedną z statystyk jest odporność na potwory</li>
+                    <li>PvP - jedną z statystyk jest odporność na graczy</li>
+                </ul>
+                <p>Daje on takie statystyki jak:</p>
+                <ul>
+                    <li>Zdrowie +x</li>
+                    <li>Odporność na graczy/potwory</li>
+                    <li>Zdrowie %x</li>
+                </ul>
+                <p>Artefakty te ulepsza się u NPC Maciek w Karczmie.</p>
+            </div>
+
+            <button class="accordion nested" id="artefakty_zywiolow"><i class="fas fa-fire"></i> Artefakty Żywiołów</button>
+            <div class="panel nested-panel">
+                <h4>Artefakt Ognia</h4>
+                <p>Pierwszy Artefakt Żywiołu kupuje się u NPC Żywiołak Ognia za różne itemy z Ow4_3 oraz Kryształ Podziemii - Legendarny drop WorldBossów na Ow4.</p>
+
+                <h4>Artefakt Jadu</h4>
+                <p>Ten Artefakt Żywiołu kupuje się u NPC Żywiołak Jadu za różne itemy z Ow4_3 oraz Kryształ Podziemii - Legendarny drop WorldBossów na Ow4.</p>
+            </div>
+        </div>
+
+        <button class="accordion"><i class="fas fa-dungeon"></i> System Dungeonów</button>
+        <div class="panel">
+            <button class="accordion nested" id="kraina_rozkoszy"><i class="fas fa-heart"></i> Kraina Rozkoszy</button>
+            <div class="panel nested-panel">
+                <h4>Podstawowe informacje</h4>
+                <p>Dungeon znajduje się na Lobby DT, aby tam się dostać należy udać się do NPC Rakshasi w Karczmie.</p>
+                
+                <h4>Wykwintna Truskawka</h4>
+                <p>Wykwintna Truskawka służy do włączenia respienia się mobów na dungeonie. Można ją kupić u NPC Odrzutufka w Karczmie poprzez wybieranie odpowiednich opcji dialogowych.</p>
+                <p>Koszt Wykwintnej Truskawki to Poziom Gracza * 100$</p>
+
+                <h4>Przebieg</h4>
+                <ul>
+                    <li>NA DUNGEON MOŻNA WEJŚĆ TYLKO 1 RAZ DZIENNIE</li>
+                    <li>MOBY NIE ZADAJĄ DMG GRACZOWI</li>
+                    <li>Aby moby zaczęły się respić należy użyć wcześniej kupionej Wykwintnej Truskawki</li>
+                    <li>Wszystkie moby dają reputację</li>
+                    <li>Pierwszym mobem są Króliki, po zabiciu kilku pojawi się kamień Metin</li>
+                    <li>Po kliknięciu w Metin zostaniemy przeniesieni na drugą część dungeona</li>
+                    <li>Na drugiej części zabija się Rozkosznych Obywateli i Owce</li>
+                    <li>Po zabiciu odpowiedniej liczby mobów pojawia się Rozkoszna Zebra (Boss)</li>
+                    <li>Dungeon Trwa 5 minut</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested" id="system_trofeow"><i class="fas fa-trophy"></i> System Trofeów</button>
+            <div class="panel nested-panel">
+                <h4>Informacje o trofeach</h4>
+                <p>Trofea to rzadkie przedmioty z dungeonów, które pozyskuje się z bossa. Po wydropieniu na czacie pojawia się komunikat z informacją kto i co dropnął.</p>
+                <p>Im większa trudność dunga tym większa szansa na drop (Zwykły -> Elitarny -> Koszmarny).</p>
+
+                <h4>Lista Trofeów i ich źródła</h4>
+                <ul>
+                    <li>Róg Minotaura - Minotaur</li>
+                    <li>Wyrwane Ślepie Pradawnego - Pradawny</li>
+                    <li>Berło Króla Północy - Król Północy</li>
+                    <li>Klepsydra z Piaskiem Życia - Umarły Rozpruwacz</li>
+                    <li>Niebieska Kosa 3000 - Niebieska Śmierć</li>
+                    <li>Fałszywy Flogiston - Piekielny Książe/Piekielny Lord</li>
+                </ul>
+
+                <h4>Użycie</h4>
+                <p>U NPC Janek można oddać przedmiot, aby pozyskać permanentny bonus.</p>
+            </div>
+        </div>
+
+        <button class="accordion"><i class="fas fa-magic"></i> Zaczarowany Stół</button>
+        <div class="panel">
+            <h4>Sposób działania</h4>
+            <p>Zaczarowany stół służy do rollowania różnych statystyk na przedmiotach (jeśli przy craftingu danego itemu podana jest wartość od-do jakiejś statystyki oznacza to, że można ją rollować).</p>
+
+            <h4>Instrukcja użycia</h4>
+            <ul>
+                <li>W Slot po lewo należy włożyć przedmiot z statystykami do rollowania</li>
+                <li>W slot po prawo należy włożyć Zaczarowanie Przedmiotu ("Zmianki")</li>
+                <li>Aby zrollować statystyki należy kliknąć przycisk na środku</li>
+                <li>Pojedynczy roll statystyk zużywa 1 zmiankę</li>
+                <li>Jeśli do stołu włożymy przedmiot bez statystyk do rollowania i spróbujemy go zrollować zabierze nam Zaczarowanie Przedmiotu</li>
+            </ul>
+
+            <h4>Crafting Zaczarowanego Stołu</h4>
+            <p>Zaczarowany Stół craftuje się u NPC Stwórca w Karczmie na /spawn w kategorii "Różne"</p>
+            <ul>
+                <li>x64 Skóra Dzika</li>
+                <li>x2 Diament st.2</li>
+                <li>x64 Trzcina st.2</li>
+                <li>x4 Utwardzony Obsydian</li>
+            </ul>
+
+            <h4>Stackowanie Zmianek</h4>
+            <p>Klikając jednym Zaczarowaniem Przedmiotu na drugie stackują się one. Ilość pozostałych Zmianek wyświetlana jest w opisie przedmiotu.</p>
+        </div>
+
+        <button class="accordion"><i class="fas fa-box"></i> System Sakiewek i Plecaka</button>
+        <div class="panel">
+            <button class="accordion nested" id="sakiewki"><i class="fas fa-shopping-bag"></i> Sakiewki</button>
+            <div class="panel nested-panel">
+                <h4>Lokalizacje NPC od sakiewek</h4>
+                <ul>
+                    <li>Sakiewki na drewno - NPC Handlarz Woodie - Ow1</li>
+                    <li>Sakiewki na itemki Ow1 - NPC Kryształowy mag - Ow1</li>
+                    <li>Sakiewki na plony - NPC Królewski Rolnik - Ow2</li>
+                    <li>Sakiewki na itemki Ow2 - NPC Barman - Ow2</li>
+                    <li>Sakiewki na surowce - NPC Mistrz Rabusiów - Ow3</li>
+                    <li>Sakiewki na itemki Ow3 - NPC Napaartoq - Ow3</li>
+                    <li>Sakiewki na itemki Ow4 - NPC Proszigo - Ow4</li>
+                    <li>Sakiewki na Potki HP - NPC Lekarz - Spawn</li>
+                    <li>Sakiewki na cząstki przepustek - NPC Dungeon Master - Spawn</li>
+                </ul>
+
+                <h4>System craftingu sakiewek</h4>
+                <p>Sakiewki na itemki z Ow:</p>
+                <ul>
+                    <li>Crafting: Dusza danego Ow (do kupienia u NPC Bibliotekarz) + Item, na który później będzie sakiewka</li>
+                    <li>Ulepszanie: Item, na który później będzie sakiewka</li>
+                </ul>
+
+                <p>Pozostałe sakiewki:</p>
+                <ul>
+                    <li>Crafting: 1 Wytrzymały Materiał + Item, na który później będzie sakiewka</li>
+                    <li>Ulepszanie: 1 Elastyczny Materiał + Item, na który później będzie sakiewka</li>
+                </ul>
+
+                <h4>System sortowania</h4>
+                <p>Panel Sortowania sakiewek znajduje się na dole GUI sakiewek. Aby powrócić do domyślnego wyglądu GUI należy kliknąć strzałkę w lewym dolnym rogu.</p>
+
+                <h4>Powiększanie miejsca</h4>
+                <ul>
+                    <li>Słabe ulepszacze rozmiaru sakiewki można użyć max 10 razy</li>
+                    <li>2 słabe ulepszacze -> 1 Ulepszacz na 1 stronę</li>
+                    <li>2 ulepszacze na 1 stronę -> 1 ulepszacz na 2 stronę</li>
+                    <li>Ulepszacze można zakupić u NPC Embry na /spawn</li>
+                </ul>
+            </div>
+
+            <button class="accordion nested" id="system_plecaka"><i class="fas fa-backpack"></i> System Plecaka</button>
+            <div class="panel nested-panel">
+                <h4>Podstawowe informacje</h4>
+                <p>Plecak to jedna z czterech zakładek w EQ. Podstawowo odblokowanych jest 9 slotów, resztę trzeba odblokować żeby być w stanie ich używać.</p>
+
+                <h4>Źródła slotów do plecaka</h4>
+                <ul>
+                    <li>Itemshop</li>
+                    <li>Niektóre kity (/kit)</li>
+                    <li>Szkatułka dungeona Pustynnego</li>
+                    <li>Szkatułka Rybacka</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const mainHeader = document.querySelector('.main-header');
+        const chaptersHeader = document.querySelector('.chapters-header');
+        
+        window.addEventListener('scroll', () => {
+            const headerBottom = mainHeader.getBoundingClientRect().bottom;
+            
+            if (headerBottom < 0) {
+                chaptersHeader.classList.add('visible');
+            } else {
+                chaptersHeader.classList.remove('visible');
+            }
+        });
+
+        window.allContent = [
+            {
+                id: 'npc',
+                title: 'NPC',
+                content: 'Biolog Kolekcjoner Stwórca Dungeon Master',
+                tags: ['npc', 'biolog', 'kolekcjoner', 'stworca', 'dungeon_master']
+            },
+            {
+                id: 'biolog',
+                title: 'Biolog',
+                content: 'Side Quest bonusy itemki Ząb dzika Skorupa Skarabeusza Wilcza Łapa Antyczna Cięciwa',
+                tags: ['biolog', 'quest', 'bonusy', 'itemki']
+            },
+            {
+                id: 'kolekcjoner',
+                title: 'Kolekcjoner',
+                content: 'Side Quest moby minibossy bossy nagrody exp reputacja',
+                tags: ['kolekcjoner', 'quest', 'moby', 'exp']
+            },
+            {
+                id: 'stworca',
+                title: 'Stwórca',
+                content: 'Crafting fabryki materiały akcesoria ewolucje petów konsumpcyjne',
+                tags: ['stworca', 'crafting', 'fabryki', 'materialy']
+            },
+            {
+                id: 'dungeon_master',
+                title: 'Dungeon Master',
+                content: 'Przepustki fragmenty cząstki wymiana klucze kuferki sakiewki',
+                tags: ['dungeon_master', 'przepustki', 'klucze', 'wymiana']
+            },
+            {
+                id: 'gildii',
+                title: 'Gildie i Party',
+                content: 'Gildie party zakładanie wyposażenie statku skilltree punkty',
+                tags: ['gildie', 'party', 'statek', 'skilltree']
+            },
+            {
+                id: 'gildie',
+                title: 'Gildie',
+                content: 'Zakładanie gildii statek gildyjny wyposażenie skilltree punkty',
+                tags: ['gildie', 'statek', 'wyposazenie', 'skilltree']
+            },
+            {
+                id: 'system_party',
+                title: 'System Party',
+                content: 'Komendy party OpenWorld Dungeony buffy debuffy idealne party',
+                tags: ['party', 'komendy', 'buffy', 'dungeony']
+            },
+            {
+                id: 'stellium',
+                title: 'Stellium',
+                content: 'Energia teleportacja max stellium regeneracja panel',
+                tags: ['stellium', 'teleportacja', 'energia', 'regeneracja']
+            },
+            {
+                id: 'system_wysp',
+                title: 'System Wysp',
+                content: 'Komendy punkty wyspy ulepszenia zarządzanie',
+                tags: ['wyspy', 'komendy', 'punkty', 'ulepszenia']
+            },
+            {
+                id: 'skille',
+                title: 'Skille',
+                content: 'System Profesji Profesje zbierackie System Alchemii System Wędkarstwa walka łowca górnictwo zielarstwo rolnictwo alchemia wędkarstwo',
+                tags: ['skille', 'profesje', 'alchemia', 'wedkarstwo']
+            },
+            {
+                id: 'system_profesji',
+                title: 'System Profesji',
+                content: 'Walka Łowca Górnictwo exp moby bossy kopalnie surowce',
+                tags: ['profesje', 'walka', 'lowca', 'gornictwo']
+            },
+            {
+                id: 'walka',
+                title: 'Walka',
+                content: 'Moby exp wyposażenie kowale przedmioty',
+                tags: ['walka', 'moby', 'exp', 'wyposazenie']
+            },
+            {
+                id: 'lowca',
+                title: 'Łowca',
+                content: 'Bossy minibossy worldbossy metiny drop exp',
+                tags: ['lowca', 'bossy', 'drop', 'exp']
+            },
+            {
+                id: 'gornictwo',
+                title: 'Górnictwo',
+                content: 'Surowce kopalnia generator cobbla basalt exp',
+                tags: ['gornictwo', 'surowce', 'kopalnia', 'generator']
+            },
+            {
+                id: 'profesje_zbierackie',
+                title: 'Profesje zbierackie',
+                content: 'Zielarstwo Rolnictwo rośliny surowce exp wyposażenie',
+                tags: ['zielarstwo', 'rolnictwo', 'rosliny', 'surowce']
+            },
+            {
+                id: 'zielarstwo',
+                title: 'Zielarstwo',
+                content: 'Rośliny motyka sierp exp surowce wzór na podwójny drop',
+                tags: ['zielarstwo', 'rosliny', 'exp', 'surowce']
+            },
+            {
+                id: 'rolnictwo',
+                title: 'Rolnictwo',
+                content: 'Rośliny motyka sierp exp surowce wzór na podwójny drop',
+                tags: ['rolnictwo', 'rosliny', 'exp', 'surowce']
+            },
+            {
+                id: 'system_alchemii',
+                title: 'System Alchemii',
+                content: 'Gotowanie mikstury przedmioty receptury',
+                tags: ['alchemia', 'gotowanie', 'mikstury', 'receptury']
+            },
+            {
+                id: 'system_wedkarstwa',
+                title: 'System Wędkarstwa',
+                content: 'Łowiska przynęty żyłki zanęty Gorzyce potwory morskie łowienie ryb',
+                tags: ['wedkarstwo', 'lowienie', 'ryby', 'przynety']
+            },
+            {
+                id: 'system_zwierzakow',
+                title: 'System Zwierzaków (Petów)',
+                content: 'Levelowanie ewolucja Minotaur Rozdymka Samuraj Reaper Goral Burel Smykogryf',
+                tags: ['pety', 'zwierzaki', 'ewolucja', 'levelowanie']
+            },
+            {
+                id: 'system_klas',
+                title: 'System Klas',
+                content: 'Wojownik Ninja Mag statystyki umiejętności wzory na obrażenia',
+                tags: ['klasy', 'wojownik', 'ninja', 'mag', 'statystyki']
+            },
+            {
+                id: 'wojownik',
+                title: 'Wojownik',
+                content: 'Statystyki bazowe furia pancerz zdrowie obrażenia regeneracja stamina',
+                tags: ['wojownik', 'statystyki', 'furia', 'walka']
+            },
+            {
+                id: 'ninja',
+                title: 'Ninja',
+                content: 'Statystyki bazowe mana pancerz zdrowie obrażenia regeneracja stamina',
+                tags: ['ninja', 'statystyki', 'mana', 'walka']
+            },
+            {
+                id: 'mag',
+                title: 'Mag',
+                content: 'Statystyki bazowe mana pancerz zdrowie obrażenia magiczne regeneracja',
+                tags: ['mag', 'statystyki', 'mana', 'magia']
+            },
+            {
+                id: 'wzory_obrazenia',
+                title: 'Wzory na obrażenia',
+                content: 'Wojownik Ninja Mag miecz łuk sztylet kostur umiejętności',
+                tags: ['obrazenia', 'wzory', 'umiejetnosci', 'walka']
+            },
+            {
+                id: 'system_bonusow',
+                title: 'System Bonusów i Statystyk',
+                content: 'Fortuna szybkość drop exp profesje amulet artefakty',
+                tags: ['bonusy', 'statystyki', 'fortuna', 'drop']
+            },
+            {
+                id: 'fortuna',
+                title: 'Fortuna',
+                content: 'Górnictwo drwalnictwo rolnictwo zielarstwo sety bonusy',
+                tags: ['fortuna', 'profesje', 'bonusy', 'sety']
+            },
+            {
+                id: 'bonusy_szybkosc',
+                title: 'Bonusy do szybkości',
+                content: 'Łowienie zbieranie kopanie bransolety sety',
+                tags: ['szybkosc', 'bonusy', 'profesje', 'sety']
+            },
+            {
+                id: 'bonusy_drop_exp',
+                title: 'Zwiększony drop i exp',
+                content: 'Drop exp vip minivip rękawiczki rybki bonusy',
+                tags: ['drop', 'exp', 'bonusy', 'vip']
+            },
+            {
+                id: 'bonusy_profesje',
+                title: 'Bonusy do profesji',
+                content: 'Amulety profesji klasy exp bonusy',
+                tags: ['profesje', 'amulety', 'bonusy', 'exp']
+            },
+            {
+                id: 'system_artefaktow',
+                title: 'System Artefaktów',
+                content: 'Artefakt Siły Artefakt Defensywny Artefakty Żywiołów',
+                tags: ['artefakty', 'sila', 'defensywa', 'zywioly']
+            },
+            {
+                id: 'artefakt_sily',
+                title: 'Artefakt Siły',
+                content: 'Gorzyce morskie stworzenia obrażenia',
+                tags: ['artefakt', 'sila', 'obrazenia', 'gorzyce']
+            },
+            {
+                id: 'artefakt_defensywny',
+                title: 'Artefakt Defensywny',
+                content: 'PvE PvP odporność zdrowie pancerz',
+                tags: ['artefakt', 'defensywa', 'odpornosc', 'zdrowie']
+            },
+            {
+                id: 'artefakty_zywiolow',
+                title: 'Artefakty Żywiołów',
+                content: 'Ogień Jad Kryształ Podziemii WorldBossy',
+                tags: ['artefakty', 'zywioly', 'ogien', 'jad']
+            },
+            {
+                id: 'system_dungeonow',
+                title: 'System Dungeonów',
+                content: 'Kraina Rozkoszy trofea boss nagrody Wykwintna Truskawka',
+                tags: ['dungeony', 'boss', 'trofea', 'nagrody']
+            },
+            {
+                id: 'kraina_rozkoszy',
+                title: 'Kraina Rozkoszy',
+                content: 'Dungeon Wykwintna Truskawka moby boss reputacja',
+                tags: ['dungeon', 'kraina_rozkoszy', 'boss', 'reputacja']
+            },
+            {
+                id: 'system_trofeow',
+                title: 'System Trofeów',
+                content: 'Trofea dungeony bossy nagrody bonusy',
+                tags: ['trofea', 'dungeony', 'bossy', 'bonusy']
+            },
+            {
+                id: 'system_zaczarowanego_stolu',
+                title: 'System Zaczarowanego Stołu',
+                content: 'Rollowanie statystyk zmianki crafting stołu',
+                tags: ['zaczarowany_stol', 'rollowanie', 'statystyki', 'crafting']
+            },
+            {
+                id: 'system_sakiewek',
+                title: 'System Sakiewek i Plecaka',
+                content: 'Sakiewki plecak sortowanie ulepszanie miejsca crafting',
+                tags: ['sakiewki', 'plecak', 'sortowanie', 'ulepszanie']
+            },
+            {
+                id: 'sakiewki',
+                title: 'Sakiewki',
+                content: 'NPC lokalizacje crafting sortowanie ulepszanie miejsca',
+                tags: ['sakiewki', 'crafting', 'sortowanie', 'ulepszanie']
+            },
+            {
+                id: 'system_plecaka',
+                title: 'System Plecaka',
+                content: 'Sloty itemshop kity szkatułki ulepszanie',
+                tags: ['plecak', 'sloty', 'itemshop', 'ulepszanie']
+            }
+        ];
+
+        function calculateMatch(query, text) {
+            const queryWords = query.toLowerCase().trim().split(/\s+/);
+            const textWords = text.toLowerCase().trim().split(/\s+/);
+            
+            let matches = 0;
+            let totalWeight = 0;
+            
+            queryWords.forEach(word => {
+                if (word.length < 2) return; // Pomijamy krótkie słowa
+                
+                // Zwiększamy wagę dla dokładnych dopasowań w tagach
+                if (text.toLowerCase().includes(word)) {
+                    matches += 1;
+                    totalWeight += 1;
+                    
+                    // Dodatkowe punkty za dokładne dopasowanie w tagach
+                    if (text.toLowerCase().includes(`tags: [`) && 
+                        text.toLowerCase().includes(word)) {
+                        matches += 0.5;
+                        totalWeight += 0.5;
+                    }
+                }
+            });
+            
+            return totalWeight > 0 ? (matches / totalWeight) * 100 : 0;
+        }
+
+        function showResults(query) {
+            const container = document.getElementById('searchResults');
+            const mobileContainer = document.getElementById('mobileSearchResults');
+            
+            if (!container || !mobileContainer) {
+                console.error("Nie znaleziono kontenerów wyników wyszukiwania!");
+                return;
+            }
+
+            // Wyczyść poprzednie wyniki
+            container.innerHTML = '';
+            mobileContainer.innerHTML = '';
+            
+            if (!query.trim()) {
+                container.style.display = 'none';
+                mobileContainer.style.display = 'none';
+                return;
+            }
+
+            if (!window.allContent || !Array.isArray(window.allContent)) {
+                console.error("Brak tablicy allContent!");
+                return;
+            }
+
+            const results = window.allContent.filter(item => {
+                const titleMatch = item.title && item.title.toLowerCase().includes(query.toLowerCase());
+                const textMatch = item.text && item.text.toLowerCase().includes(query.toLowerCase());
+                const tagsMatch = item.tags && (
+                    (Array.isArray(item.tags) && item.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))) ||
+                    (typeof item.tags === 'string' && item.tags.toLowerCase().includes(query.toLowerCase()))
+                );
+                return titleMatch || textMatch || tagsMatch;
+            });
+
+            if (results.length > 0) {
+                results.forEach(result => {
+                    const resultElement = document.createElement('div');
+                    resultElement.className = 'search-result-item';
+                    resultElement.innerHTML = `
+                        <div class="search-result-title">${result.title}</div>
+                        <div class="search-result-text">${result.text.substring(0, 100)}...</div>
+                    `;
+                    
+                    resultElement.addEventListener('click', () => {
+                        const element = document.getElementById(result.id);
+                        if (element) {
+                            openAccordionsToElement(element);
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+
+                    container.appendChild(resultElement);
+                    mobileContainer.appendChild(resultElement.cloneNode(true));
+                });
+
+                container.style.display = 'block';
+                mobileContainer.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+                mobileContainer.style.display = 'none';
+            }
+        }
+
+        function openAccordionsToElement(element) {
+            console.log("Otwieranie akordeonów do elementu:", element);
+
+            // Znajdź wszystkie akordeony nadrzędne
+            let accordionsToOpen = [];
+            let currentElement = element;
+
+            // Jeśli element jest akordeonem, dodaj go do listy
+            if (currentElement.classList.contains('accordion')) {
+                accordionsToOpen.unshift(currentElement);
+            }
+
+            // Znajdź wszystkie nadrzędne akordeony
+            while (currentElement) {
+                let parent = currentElement.parentElement;
+                if (parent) {
+                    if (parent.classList.contains('panel')) {
+                        let parentAccordion = parent.previousElementSibling;
+                        if (parentAccordion && parentAccordion.classList.contains('accordion')) {
+                            accordionsToOpen.unshift(parentAccordion);
+                        }
+                    }
+                }
+                currentElement = parent;
+            }
+
+            console.log("Znalezione akordeony do otwarcia:", accordionsToOpen);
+
+            // Najpierw zamknij wszystkie panele
+            document.querySelectorAll('.accordion').forEach(acc => {
+                acc.classList.remove('active');
+            });
+            document.querySelectorAll('.panel').forEach(panel => {
+                panel.style.maxHeight = null;
+            });
+
+            // Otwórz akordeony od góry do dołu
+            accordionsToOpen.forEach((accordion, index) => {
+                console.log("Otwieranie akordeonu:", accordion);
+                
+                // Aktywuj akordeon
+                accordion.classList.add('active');
+                
+                // Znajdź i otwórz panel
+                const panel = accordion.nextElementSibling;
+                if (panel && panel.classList.contains('panel')) {
+                    // Oblicz podstawową wysokość panelu
+                    let baseHeight = 0;
+                    
+                    // Dodaj wysokość wszystkich elementów, które nie są panelami
+                    Array.from(panel.children).forEach(child => {
+                        if (!child.classList.contains('panel')) {
+                            baseHeight += child.offsetHeight;
+                        }
+                    });
+                    
+                    // Dodaj padding
+                    const styles = window.getComputedStyle(panel);
+                    baseHeight += parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+                    
+                    // Zwiększony margines bezpieczeństwa
+                    baseHeight += 80;
+                    
+                    // Ustaw początkową wysokość
+                    panel.style.maxHeight = baseHeight + "px";
+                    
+                    // Jeśli to nie jest ostatni akordeon, poczekaj na animację
+                    if (index < accordionsToOpen.length - 1) {
+                        setTimeout(() => {
+                            // Zaktualizuj wysokość po otwarciu
+                            let totalHeight = baseHeight;
+                            
+                            // Dodaj wysokość otwartych paneli zagnieżdżonych
+                            const openPanels = panel.querySelectorAll('.accordion.active + .panel');
+                            openPanels.forEach(openPanel => {
+                                if (openPanel.style.maxHeight) {
+                                    totalHeight += parseFloat(openPanel.style.maxHeight);
+                                }
+                            });
+                            
+                            // Dodaj wysokość wszystkich zagnieżdżonych elementów
+                            const nestedElements = panel.querySelectorAll(':scope > *:not(.panel):not(.accordion)');
+                            nestedElements.forEach(nested => {
+                                totalHeight += nested.offsetHeight;
+                            });
+                            
+                            panel.style.maxHeight = totalHeight + "px";
+                        }, 150);
+                    }
+                }
+            });
+
+            // Przewiń do elementu z opóźnieniem
+            setTimeout(() => {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, accordionsToOpen.length * 200);
+        }
+
+        // Obsługa kliknięć w linki wewnętrzne
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    openAccordionsToElement(targetElement);
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        });
+
+        // Najpierw usuńmy wszystkie stare listenery
+        function usunStareListenery() {
+            const searchInput = document.getElementById('searchInput');
+            const mobileSearchInput = document.getElementById('mobileSearchInput');
+            
+            if (searchInput) {
+                const newSearchInput = searchInput.cloneNode(true);
+                searchInput.parentNode.replaceChild(newSearchInput, searchInput);
+            }
+            
+            if (mobileSearchInput) {
+                const newMobileSearchInput = mobileSearchInput.cloneNode(true);
+                mobileSearchInput.parentNode.replaceChild(newMobileSearchInput, mobileSearchInput);
+            }
+        }
+
+        // Nowa funkcja wyszukiwania
+        function noweWyszukiwanie(query) {
+            const container = document.getElementById('searchResults');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (!query || query.trim().length < 2) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            query = query.toLowerCase().trim();
+            console.log("Szukam:", query);
+            
+            if (!window.allContent || !Array.isArray(window.allContent)) {
+                console.error("Brak tablicy allContent!");
+                return;
+            }
+            
+            const znalezione = window.allContent.filter(item => {
+                if (!item || !item.id) return false;
+                
+                const title = (item.title || "").toString().toLowerCase();
+                const content = (item.content || "").toString().toLowerCase();
+                
+                // Sprawdzamy tagi
+                let tagMatch = false;
+                if (item.tags) {
+                    if (typeof item.tags === 'string') {
+                        tagMatch = item.tags.toLowerCase().includes(query);
+                    } else if (Array.isArray(item.tags)) {
+                        tagMatch = item.tags.some(tag => 
+                            typeof tag === 'string' && tag.toLowerCase().includes(query)
+                        );
+                    }
+                }
+                
+                return title.includes(query) || content.includes(query) || tagMatch;
+            });
+            
+            console.log("Znaleziono dopasowań:", znalezione.length);
+            
+            if (znalezione.length > 0) {
+                znalezione.slice(0, 10).forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'search-result-item';
+                    div.textContent = item.title;
+                    
+                    div.addEventListener('click', () => {
+                        const element = document.getElementById(item.id);
+                        if (element && typeof openAccordionsToElement === 'function') {
+                            openAccordionsToElement(element);
+                            setTimeout(() => {
+                                element.scrollIntoView({behavior: 'smooth', block: 'center'});
+                                container.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                    
+                    container.appendChild(div);
+                });
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
+        // Inicjalizacja wyszukiwania
+        usunStareListenery();
+
+        let searchInput = document.getElementById('searchInput');
+        let mobileSearchInput = document.getElementById('mobileSearchInput');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                noweWyszukiwanie(this.value);
+            });
+        }
+
+        if (mobileSearchInput) {
+            mobileSearchInput.addEventListener('input', function() {
+                noweWyszukiwanie(this.value);
+            });
+        }
+
+        function setupAccordion(buttons) {
+            // Funkcja do obliczania pełnej wysokości elementu z marginesami
+            function getFullHeight(element) {
+                const styles = window.getComputedStyle(element);
+                const marginTop = parseFloat(styles.marginTop);
+                const marginBottom = parseFloat(styles.marginBottom);
+                const paddingTop = parseFloat(styles.paddingTop);
+                const paddingBottom = parseFloat(styles.paddingBottom);
+                return element.offsetHeight + marginTop + marginBottom + paddingTop + paddingBottom;
+            }
+
+            // Funkcja rekurencyjna do obliczania całkowitej wysokości panelu
+            function calculatePanelHeight(panel) {
+                if (!panel || !panel.style.maxHeight) return 0;
+                
+                let totalHeight = 0;
+                const styles = window.getComputedStyle(panel);
+                const padding = parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+                
+                // Dodaj wysokość każdego dziecka, które nie jest panelem
+                Array.from(panel.children).forEach(child => {
+                    if (!child.classList.contains('panel')) {
+                        totalHeight += getFullHeight(child);
+                    }
+                });
+                
+                // Dodaj wysokość otwartych paneli zagnieżdżonych
+                const openNestedPanels = panel.querySelectorAll(':scope > .accordion.active + .panel');
+                openNestedPanels.forEach(nestedPanel => {
+                    if (nestedPanel.style.maxHeight) {
+                        // Zagnieżdżone panele mogą mieć swoje własne zagnieżdżone panele
+                        let nestedHeight = 0;
+                        Array.from(nestedPanel.children).forEach(child => {
+                            if (!child.classList.contains('panel')) {
+                                nestedHeight += getFullHeight(child);
+                            }
+                        });
+                        
+                        // Dodaj wysokości zagnieżdżonych paneli
+                        const deepNestedPanels = nestedPanel.querySelectorAll(':scope > .accordion.active + .panel');
+                        deepNestedPanels.forEach(deepPanel => {
+                            if (deepPanel.style.maxHeight) {
+                                nestedHeight += parseFloat(deepPanel.style.maxHeight);
+                            }
+                        });
+                        
+                        totalHeight += nestedHeight + padding;
+                    }
+                });
+                
+                return totalHeight + padding;
+            }
+            
+            // Funkcja do aktualizacji wysokości panelu i wszystkich nadrzędnych paneli
+            function updatePanelHeights(panel) {
+                // Ustaw wysokość panelu
+                const panelHeight = calculatePanelHeight(panel);
+                panel.style.maxHeight = (panelHeight + 20) + "px"; // Dodajemy dodatkowy margines
+                
+                // Rekurencyjnie aktualizuj wysokości paneli nadrzędnych
+                let parent = panel.parentElement;
+                while (parent) {
+                    if (parent.classList.contains('panel') && parent.style.maxHeight) {
+                        const parentHeight = calculatePanelHeight(parent);
+                        parent.style.maxHeight = (parentHeight + 20) + "px"; // Dodajemy dodatkowy margines
+                    }
+                    parent = parent.parentElement;
+                }
+            }
+
+            buttons.forEach(button => {
+                button.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    
+                    this.classList.toggle("active");
+                    const panel = this.nextElementSibling;
+                    
+                    if (panel.style.maxHeight) {
+                        // Zamykanie panelu
+                        panel.style.maxHeight = null;
+                        
+                        // Zamknij wszystkie zagnieżdżone panele
+                        const nestedPanels = panel.querySelectorAll('.panel');
+                        const nestedButtons = panel.querySelectorAll('.accordion');
+                        nestedPanels.forEach(nestedPanel => {
+                            nestedPanel.style.maxHeight = null;
+                        });
+                        nestedButtons.forEach(nestedButton => {
+                            nestedButton.classList.remove('active');
+                        });
+                        
+                        // Aktualizuj wysokości paneli nadrzędnych
+                        let parent = panel.parentElement;
+                        while (parent) {
+                            if (parent.classList.contains('panel') && parent.style.maxHeight) {
+                                updatePanelHeights(parent);
+                            }
+                            parent = parent.parentElement;
+                        }
+                    } else {
+                        // Otwieranie panelu - ustaw początkową wysokość
+                        let contentHeight = Array.from(panel.children)
+                            .filter(child => !child.classList.contains('panel') && !child.classList.contains('accordion'))
+                            .reduce((height, child) => height + getFullHeight(child), 0);
+                        
+                        // Uwzględnij wysokość przycisków akordeonu
+                        const accordionButtons = Array.from(panel.querySelectorAll(':scope > .accordion'));
+                        contentHeight += accordionButtons.reduce((height, button) => height + getFullHeight(button), 0);
+                        
+                        const styles = window.getComputedStyle(panel);
+                        const padding = parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+                        
+                        panel.style.maxHeight = (contentHeight + padding + 20) + "px"; // Dodajemy dodatkowy margines
+                        
+                        // Aktualizuj wysokości wszystkich paneli nadrzędnych
+                        let parent = panel.parentElement;
+                        while (parent) {
+                            if (parent.classList.contains('panel') && parent.style.maxHeight) {
+                                updatePanelHeights(parent);
+                            }
+                            parent = parent.parentElement;
+                        }
+                    }
+                });
+            });
+        }
+
+        setupAccordion(document.querySelectorAll('.accordion'));
+
+        document.addEventListener('click', function(e) {
+            const searchContainer = document.querySelector('.search-container');
+            const searchResults = document.getElementById('searchResults');
+            if (!searchContainer.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Dodanie animacji przy przewijaniu
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Dodanie klasy fade-in do wszystkich sekcji
+        const sections = document.querySelectorAll('.fade-in');
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Dodanie obsługi przycisków reset
+        document.querySelectorAll('.nav-link.reset, .mobile-nav-link.reset').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Zamknij wszystkie panele
+                const allPanels = document.querySelectorAll('.panel');
+                allPanels.forEach(panel => {
+                    panel.style.maxHeight = null;
+                });
+                // Usuń klasę active ze wszystkich akordeonów
+                const allAccordions = document.querySelectorAll('.accordion');
+                allAccordions.forEach(acc => {
+                    acc.classList.remove('active');
+                });
+                // Jeśli menu mobilne jest otwarte, zamknij je
+                const mobileNav = document.querySelector('.mobile-nav');
+                const hamburger = document.querySelector('.hamburger-menu');
+                if (mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    const spans = hamburger.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+                // Przewiń na górę strony
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Wyczyść zapisane sekcje
+                localStorage.removeItem('openSections');
+            });
+        });
+
+        // System zapisywania otwartych sekcji
+        function saveOpenSections() {
+            const openSections = [];
+            document.querySelectorAll('.accordion.active').forEach(accordion => {
+                openSections.push(accordion.id);
+            });
+            localStorage.setItem('openSections', JSON.stringify(openSections));
+        }
+
+        // Przywróć sekcje przy ładowaniu strony
+        document.addEventListener('DOMContentLoaded', restoreOpenSections);
+
+        // Dodaj obsługę mobilnego wyszukiwania
+        document.getElementById('mobileSearchInput').addEventListener('input', function(e) {
+            const query = e.target.value.trim();
+            const searchResults = document.getElementById('searchResults');
+            
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const results = window.allContent
+                .map(item => ({
+                    ...item,
+                    score: calculateMatch(query, `${item.title} ${item.content} ${item.tags.join(' ')}`)
+                }))
+                .filter(item => item.score > 10) // Zmniejszamy próg dopasowania
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 10);
+
+            showResults(results);
+        });
+
+        // Obsługa menu hamburgerowego i wyszukiwania mobilnego
+        const hamburger = document.querySelector('.hamburger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileSearchContainer = document.querySelector('.mobile-search-container');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileSearchContainer.classList.toggle('active');
+            
+            // Animacja hamburger menu
+            const spans = hamburger.querySelectorAll('span');
+            if (hamburger.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                mobileSearchContainer.style.display = 'block';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+                mobileSearchContainer.style.display = 'none';
+                document.getElementById('searchResults').style.display = 'none';
+            }
+        });
+
+        function testSearch(query) {
+          console.log("Test wyszukiwania dla: " + query);
+          console.log("Zawartość allContent:", window.allContent);
+          
+          if (!window.allContent || !Array.isArray(window.allContent)) {
+            console.error("allContent nie istnieje lub nie jest tablicą!");
+            return;
+          }
+          
+          let wyniki = window.allContent.filter(item => 
+            item.title && item.title.toLowerCase().includes(query.toLowerCase()) ||
+            item.text && item.text.toLowerCase().includes(query.toLowerCase())
+          );
+          
+          console.log("Znaleziono wyników: " + wyniki.length);
+          console.log(wyniki);
+          
+          // Spróbuj utworzyć element testowy na stronie
+          const testDiv = document.createElement('div');
+          testDiv.style.position = 'fixed';
+          testDiv.style.top = '100px';
+          testDiv.style.left = '50%';
+          testDiv.style.transform = 'translateX(-50%)';
+          testDiv.style.background = 'red';
+          testDiv.style.color = 'white';
+          testDiv.style.padding = '20px';
+          testDiv.style.zIndex = '10000';
+          testDiv.textContent = `Znaleziono ${wyniki.length} wyników dla "${query}"`;
+          document.body.appendChild(testDiv);
+        }
+
+        // Sprawdź, czy nie jesteśmy na urządzeniu mobilnym
+        if (window.innerWidth > 768) {
+            // Pobierz pole wyszukiwania na PC
+            const pcSearchInput = document.getElementById('searchInput');
+            
+            if (pcSearchInput) {
+                // Dodaj słuchacza zdarzeń bezpośrednio do pola wyszukiwania PC
+                pcSearchInput.addEventListener('input', function() {
+                    const query = this.value.trim();
+                    
+                    // Pobierz kontener wyników
+                    const resultsContainer = document.getElementById('searchResults');
+                    
+                    // Wyczyść poprzednie wyniki
+                    if (resultsContainer) {
+                        resultsContainer.innerHTML = '';
+                        
+                        // Jeśli zapytanie jest za krótkie, ukryj wyniki
+                        if (query.length < 2) {
+                            resultsContainer.style.display = 'none';
+                            return;
+                        }
+                        
+                        // Znajdź pasujące wyniki
+                        const matches = window.allContent
+                            .filter(item => {
+                                if (!item.title || !item.text) return false;
+                                const title = item.title.toLowerCase();
+                                const text = item.text.toLowerCase();
+                                const q = query.toLowerCase();
+                                return title.includes(q) || text.includes(q);
+                            })
+                            .slice(0, 10);
+                        
+                        // Jeśli są wyniki, pokaż je
+                        if (matches.length > 0) {
+                            matches.forEach(match => {
+                                const div = document.createElement('div');
+                                div.className = 'search-result-item';
+                                div.textContent = match.title;
+                                div.onclick = function() {
+                                    const element = document.getElementById(match.id);
+                                    if (element) {
+                                        openAccordionsToElement(element);
+                                        setTimeout(() => {
+                                            element.scrollIntoView({behavior: 'smooth'});
+                                        }, 300);
+                                        resultsContainer.style.display = 'none';
+                                    }
+                                };
+                                resultsContainer.appendChild(div);
+                            });
+                            
+                            // Upewnij się, że kontener wyników jest widoczny i ma odpowiednie style
+                            resultsContainer.style.display = 'block';
+                            resultsContainer.style.position = 'absolute';
+                            resultsContainer.style.top = '100%';
+                            resultsContainer.style.left = '0';
+                            resultsContainer.style.width = '100%';
+                            resultsContainer.style.zIndex = '9999';
+                            resultsContainer.style.background = '#222';
+                            resultsContainer.style.color = '#fff';
+                            resultsContainer.style.border = '1px solid #ff8533';
+                        } else {
+                            // Jeśli nie ma wyników, ukryj kontener
+                            resultsContainer.style.display = 'none';
+                        }
+                    }
+                });
+                
+                // Dodaj też obsługę zdarzenia focus
+                pcSearchInput.addEventListener('focus', function() {
+                    if (this.value.trim().length >= 2) {
+                        const resultsContainer = document.getElementById('searchResults');
+                        if (resultsContainer) {
+                            resultsContainer.style.display = 'block';
+                        }
+                    }
+                });
+            }
+        }
+
+        // Zastępujemy problematyczną funkcję debugAllContent, która powoduje błąd
+        window.debugAllContent = function() {
+            console.log("Bezpieczna wersja debugAllContent");
+            return; // Nie wykonujemy problematycznego kodu
+        };
+
+        // Naprawiamy funkcję showResults
+        window.showResults = function(query) {
+            const container = document.getElementById('searchResults');
+            
+            // Wyczyszczenie kontenera
+            if (container) {
+                container.innerHTML = '';
+            } else {
+                console.error("Nie znaleziono kontenera #searchResults");
+                return;
+            }
+            
+            // Jeśli zapytanie jest puste, ukrywamy wyniki
+            if (!query || query.trim().length < 2) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            // Normalizacja zapytania
+            query = query.toLowerCase().trim();
+            console.log("Szukam: " + query);
+            
+            // Znajdujemy dopasowania (bezpieczne przeszukiwanie)
+            let matches = [];
+            
+            if (!window.allContent || !Array.isArray(window.allContent)) {
+                console.error("Brak tablicy allContent!");
+                return;
+            }
+
+            console.log("Przeszukuję allContent, liczba elementów:", window.allContent.length);
+            
+            for (let i = 0; i < window.allContent.length; i++) {
+                const item = window.allContent[i];
+                if (!item || !item.id) {
+                    console.warn("Pominięto element bez ID:", item);
+                    continue;
+                }
+                
+                console.log("Sprawdzam element:", item.id, item.title);
+                
+                // Sprawdzamy tytuł i treść
+                const title = String(item.title || "").toLowerCase();
+                const text = String(item.text || "").toLowerCase();
+                
+                // Bezpieczne sprawdzanie tagów
+                let tagsMatch = false;
+                if (item.tags) {
+                    try {
+                        if (typeof item.tags === 'string') {
+                            tagsMatch = item.tags.toLowerCase().includes(query);
+                            console.log("Sprawdzam tagi (string):", item.tags);
+                        } else if (Array.isArray(item.tags)) {
+                            tagsMatch = item.tags.some(tag => 
+                                String(tag).toLowerCase().includes(query)
+                            );
+                            console.log("Sprawdzam tagi (array):", item.tags);
+                        }
+                    } catch (e) {
+                        console.warn("Błąd przy przetwarzaniu tagów:", e);
+                    }
+                }
+                
+                // Jeśli znaleziono dopasowanie, dodajemy do wyników
+                if (title.includes(query) || text.includes(query) || tagsMatch) {
+                    console.log("Znaleziono dopasowanie:", item.id, item.title);
+                    matches.push({
+                        id: item.id,
+                        title: item.title || item.id,
+                        text: item.text || "",
+                        score: (title.includes(query) ? 100 : 0) + 
+                               (text.includes(query) ? 50 : 0) + 
+                               (tagsMatch ? 75 : 0)
+                    });
+                }
+            }
+            
+            // Sortujemy i ograniczamy wyniki
+            matches = matches.sort((a, b) => b.score - a.score).slice(0, 10);
+            console.log("Znalezione dopasowania:", matches);
+            
+            // Jeśli nie ma dopasowań, ukrywamy kontener
+            if (matches.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            // Wyświetlamy wyniki
+            matches.forEach(match => {
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.style.padding = '10px 15px';
+                div.style.borderBottom = '1px solid #444';
+                div.style.cursor = 'pointer';
+                div.style.color = '#fff';
+                
+                div.innerHTML = `
+                    <div class="search-result-title">${match.title}</div>
+                    <div class="search-result-preview">${match.text.substring(0, 100)}...</div>
+                `;
+                
+                div.addEventListener('click', function() {
+                    console.log("Kliknięto wynik wyszukiwania");
+                    
+                    // Wyczyść pola wyszukiwania
+                    const searchInputs = ['searchInput', 'mobileSearchInput'];
+                    searchInputs.forEach(inputId => {
+                        const input = document.getElementById(inputId);
+                        if (input) {
+                            console.log(`Czyszczę pole ${inputId}`);
+                            input.value = '';
+                            // Wywołaj zdarzenie input, aby wywołać nasłuchiwacze
+                            input.dispatchEvent(new Event('input'));
+                        } else {
+                            console.warn(`Nie znaleziono pola ${inputId}`);
+                        }
+                    });
+
+                    // Ukryj kontener wyników
+                    container.style.display = 'none';
+                    container.innerHTML = '';
+
+                    const element = document.getElementById(match.id);
+                    if (element) {
+                        console.log("Znaleziono element:", element);
+                        try {
+                            // Znajdź najbliższy akordeon
+                            let accordion = null;
+                            
+                            // Najpierw sprawdź, czy element sam jest akordeonem
+                            if (element.classList.contains('accordion')) {
+                                accordion = element;
+                            } else {
+                                // Sprawdź poprzednie elementy rodzeństwa
+                                let sibling = element.previousElementSibling;
+                                while (sibling) {
+                                    if (sibling.classList.contains('accordion')) {
+                                        accordion = sibling;
+                                        break;
+                                    }
+                                    sibling = sibling.previousElementSibling;
+                                }
+                                
+                                // Jeśli nie znaleziono, sprawdź rodziców
+                                if (!accordion) {
+                                    let parent = element.parentElement;
+                                    while (parent) {
+                                        if (parent.previousElementSibling && parent.previousElementSibling.classList.contains('accordion')) {
+                                            accordion = parent.previousElementSibling;
+                                            break;
+                                        }
+                                        parent = parent.parentElement;
+                                    }
+                                }
+                            }
+                            
+                            if (accordion) {
+                                console.log("Znaleziono akordeon:", accordion);
+                                openAccordionsToElement(accordion);
+                                
+                                setTimeout(() => {
+                                    element.scrollIntoView({behavior: 'smooth', block: 'center'});
+                                }, 300);
+                            } else {
+                                console.warn("Nie znaleziono akordeonu dla elementu:", match.id);
+                            }
+                        } catch (e) {
+                            console.error("Błąd przy otwieraniu akordeonu:", e);
+                        }
+                    } else {
+                        console.error("Nie znaleziono elementu o ID:", match.id);
+                    }
+                });
+                
+                container.appendChild(div);
+            });
+            
+            // Pokazujemy kontener z wynikami
+            container.style.display = 'block';
+        };
+
+        // Bezpośrednio dołączamy nowe nasłuchiwacze do pól wyszukiwania
+        let searchInput2 = document.getElementById('searchInput');
+        let mobileSearchInput2 = document.getElementById('mobileSearchInput');
+
+        if (searchInput2) {
+            searchInput2.addEventListener('input', function() {
+                window.showResults(this.value);
+            });
+        }
+
+        if (mobileSearchInput2) {
+            mobileSearchInput2.addEventListener('input', function() {
+                window.showResults(this.value);
+            });
+        }
+
+        console.log("Funkcje wyszukiwania zostały zastąpione");
+        
+        function searchText() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const bodyText = document.body.innerHTML;
+
+            // Usuń poprzednie podświetlenia
+            document.body.innerHTML = bodyText.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
+
+            if (input) {
+                const regex = new RegExp(input, 'gi');
+                document.body.innerHTML = bodyText.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+            }
+        }
+  
+        // Usuwamy stare implementacje wyszukiwania i zmienne
+        (function() {
+            // Funkcja do wyszukiwania
+            function wyszukaj(query) {
+                const container = document.getElementById('searchResults');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                if (!query || query.trim().length < 2) {
+                    container.style.display = 'none';
+                    return;
+                }
+                
+                query = query.toLowerCase().trim();
+                console.log("Szukam:", query);
+                
+                if (!window.allContent || !Array.isArray(window.allContent)) {
+                    console.error("Brak tablicy allContent!");
+                    return;
+                }
+                
+                const znalezione = [];
+                
+                for (const item of window.allContent) {
+                    if (!item || !item.id) continue;
+                    
+                    const title = (item.title || "").toString().toLowerCase();
+                    const content = (item.content || "").toString().toLowerCase();
+                    let tagMatch = false;
+                    
+                    if (item.tags) {
+                        if (typeof item.tags === 'string') {
+                            tagMatch = item.tags.toLowerCase().includes(query);
+                        } else if (Array.isArray(item.tags)) {
+                            tagMatch = item.tags.some(tag => 
+                                typeof tag === 'string' && tag.toLowerCase().includes(query)
+                            );
+                        }
+                    }
+                    
+                    if (title.includes(query) || content.includes(query) || tagMatch) {
+                        znalezione.push({
+                            id: item.id,
+                            title: item.title || item.id,
+                            score: (title.includes(query) ? 2 : 0) + 
+                                   (content.includes(query) ? 1 : 0) + 
+                                   (tagMatch ? 3 : 0)
+                        });
+                    }
+                }
+                
+                znalezione.sort((a, b) => b.score - a.score);
+                console.log("Znaleziono dopasowań:", znalezione.length);
+                
+                if (znalezione.length > 0) {
+                    znalezione.slice(0, 10).forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.textContent = item.title;
+                        
+                        div.addEventListener('click', () => {
+                            const element = document.getElementById(item.id);
+                            if (element && typeof openAccordionsToElement === 'function') {
+                                openAccordionsToElement(element);
+                                setTimeout(() => {
+                                    element.scrollIntoView({behavior: 'smooth', block: 'center'});
+                                    container.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                        
+                        container.appendChild(div);
+                    });
+                    container.style.display = 'block';
+                } else {
+                    container.style.display = 'none';
+                }
+            }
+            
+            // Inicjalizacja wyszukiwania
+            function initWyszukiwanie() {
+                ['searchInput', 'mobileSearchInput'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const newEl = el.cloneNode(true);
+                        el.parentNode.replaceChild(newEl, el);
+                        newEl.addEventListener('input', function() {
+                            wyszukaj(this.value);
+                        });
+                    }
+                });
+            }
+            
+            // Inicjalizujemy wyszukiwanie
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initWyszukiwanie);
+            } else {
+                initWyszukiwanie();
+            }
+            
+            window.wyszukaj = wyszukaj;
+        })();
+
+        // Dodaj nową funkcję do obsługi kliknięć w główne akordeony
+        function setupMainAccordions() {
+            const mainAccordions = document.querySelectorAll('.accordion:not(.nested)');
+            
+            mainAccordions.forEach(accordion => {
+                // Usuń stare nasłuchiwacze
+                const newAccordion = accordion.cloneNode(true);
+                accordion.parentNode.replaceChild(newAccordion, accordion);
+                
+                newAccordion.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    this.classList.toggle('active');
+                    const accordionPanel = this.nextElementSibling;
+                    
+                    if (accordionPanel.style.maxHeight) {
+                        accordionPanel.style.maxHeight = null;
+                    } else {
+                        // Najpierw ustawiamy auto, aby panel mógł się rozszerzyć
+                        accordionPanel.style.maxHeight = 'none';
+                        
+                        // Pobieramy rzeczywistą wysokość zawartości
+                        const contentHeight = accordionPanel.scrollHeight;
+                        
+                        // Dodajemy margines bezpieczeństwa
+                        const finalHeight = contentHeight + 120;
+                        
+                        // Resetujemy wysokość i ustawiamy nową z animacją
+                        accordionPanel.style.maxHeight = '0px';
+                        
+                        // Dajemy czas na reset
+                        setTimeout(() => {
+                            accordionPanel.style.maxHeight = finalHeight + 'px';
+                        }, 10);
+                    }
+                });
+            });
+        }
+
+        // Wywołaj funkcję setupMainAccordions po załadowaniu strony i po każdej zmianie w DOM
+        document.addEventListener('DOMContentLoaded', setupMainAccordions);
+
+        // Dodaj obserwator zmian w DOM
+        const domObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length) {
+                    setupMainAccordions();
+                }
+            });
+        });
+
+        domObserver.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    </script>
+</body>
+</html>
