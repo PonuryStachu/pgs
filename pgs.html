@@ -671,11 +671,16 @@
     </div>
 
     <main class="main-content">
-        <h2 class="category-header">Podstawowe informacje</h2>
-        <button class="accordion"><i class="fas fa-users"></i> System Gildii i Party</button>
-        <div class="panel">
-            <button class="accordion nested"><i class="fas fa-crown"></i> Gildie</button>
-            <div class="panel nested-panel">
+        <h2 class="category-header">Spawn</h2>
+        <h4>Rodzaje spawnów</h4>
+        <ul>
+            <li><h4>Zwykły spawn</h4><p> - gracz jest teleportowany od samego początku rozgrywki</p></li>
+            <li><h4>Spawn OW5</h4><p> - gracz jest teleportowany od momentu odblokowania OW5, może wrócić na zwykłego spawna poprzez specjalny teleport</p></li>
+        </ul>
+        <p>Ważne NPC z zwykłego spawna są na spawnie OW5, ale dodatkowo np. jest tam NPC ??? od sakiewek oraz NPC ??? od wymiany szarf na pył szarf 1/2</p>
+        <!--1gildie-->
+        <button class="accordion"><i class=""></i>Gildie</button>
+            <div class="panel">
                 <h4>Zakładanie gildii</h4>
                 <p>Aby założyć gildię należy pogadać z NPC GuildMaster. Każda gildia posiada swój własny teren gildii - statek na tyłach spawnu. Startowa liczba członków gildii to 5 (max 15). Wymagane jest 10 kamieni gildii w EQ.</p>
                 
@@ -698,816 +703,696 @@
                     <li>Serce Gildii - Poziom trudności Questów, Liczba członków, Bonusowe punkty</li>
                     <li>Serce Bonusów - Bonusy do DMG'a, HP, DEF'a</li>
                 </ul>
-            </div>
-
-            <button class="accordion nested"><i class="fas fa-users"></i> System Party</button>
-            <div class="panel nested-panel">
-                <h4>Komendy Party</h4>
-                <ul>
-                    <li>/sbparty create</li>
-                    <li>/sbparty delete</li>
-                    <li>/sbparty info</li>
-                    <li>/sbparty invite <nick></li>
-                    <li>/sbparty join</li>
-                    <li>/sbparty kick <nick></li>
-                    <li>/sbparty leave</li>
-                </ul>
-
-                <h4>Party na OpenWorldzie</h4>
-                <p>Powoduje rozdzielenie DMG na WorldBossach na Ow4. Na przykład jeśli są 2 osoby w party, jedna wbije 13%, a druga 27% DMG zostanie dodany i rozdzielony równo na tych dwóch graczy, czyli będą mieli po 20%.</p>
-
-                <h4>Party na Dungeonach</h4>
-                <p>Jest wymagane do rozpoczęcia dunga</p>
-
-                <h4>Buffy/Debuffy</h4>
-                <p>Jeśli w party na dungeonie są:</p>
-                <ul>
-                    <li>3 osoby z tą samą klasą:
+                <!--1szarfy-->
+                <button class="accordion nested"><i class=""></i>Szarfy</button>
+                    <div class="panel nested-panel">
+                        <h4>Pozyskiwanie i sposób działania</h4>
                         <ul>
-                            <li>-25% obrażeń</li>
-                            <li>-10% zdrowia</li>
-                            <li>-10% pancerza</li>
+                            <li>Szarfy posiadają % Wartości.</li>
+                            <li>Szarfy można wytworzyć u NPC Stwórca za Delikatne Sukna, które pozyskuje się z dowolnego dungeona. Im większa trudność dungeona (zwykły -> elitarny -> koszmarny) tym większy drop Sukien.</li>
+                            <li>Szarfy można łączyć u NPC Chenshan (znajduje się on na Statku Gildyjnym na spawnie i wymaga 100 punktów misji gildii do odblokowania), aby uzyskać większy % wartości. Łączy się górną szarfę z dolną. Szarfa ma % szans na ulepszenie swojej % wartości o 1%, szansę na ulepszenie % wartości o 2% oraz szansę na spadnięcie % wartości o 1%, która wynosi 10%, jeśli nic z tego się nie wydarzy wtedy górna szarfa zostaje taka jaka była, a dolna przepada.</li>
+                            <li>Maksymalny poziom % wartości na szarfie wynosi 20%.</li>
+                            <li>Żółty i Niebieski slot są przeznaczone dla Kamieni Ochrony i Wzmocnienia, które są do kupienia pod komendą /itemshop -> itemshop.</li>
+                            <li>Kamień Wzmocnienia zwiększa szansę na powodzenie przy łączeniu, a Kamien Ochrony chroni przed spadnięciem szarfy o 1% wartości w dół przy nieudanym połączeniu.</li>
+                        </ul>
+                        <h4>Kamienie Mocy</h4>
+                        <ul>
+                            <li>Kamienie mocy można scraftować u NPC Jubiler na Mapie Górniczej za Dusze Map, które są do scraftowania u NPC Bibliotekarz w Karczmie na /spawn.</li>
+                            <li>Możliwy/e atrybut/y można zobaczyć klikając prawym przyciskiem w GUI Jubilera na dany Kamień Mocy. Aby uzyskać atrybuty na Kamieniu należy użyć na nim Zaczarowania Przedmiotu w Stole Zaklęć.</li>
+                            <li>Kamień Mocy łączy się z szarfą u NPC Kuzi (znajduje się on na Statku Gildyjnym na spawnie i wymaga 300 punktów misji gildii do odblokowania). Atrybut na kamieniu jest mnożony przez % wartości i taki bonus daje po założeniu w specjalnym slotu znajdującym się w plecaku (/plecak 1). Dla przykładu jeśli posiada się na Kamieniu Mocy obrażenia +80, a na szarfie % wartości wynosi 10% końcowo szarfa będzie dawała obrażenia +8.</li>
+                        </ul>
+                        <h4>Skiny Szarf</h4>
+                        <ul>
+                            <li>Skiny szarf są do kupienia pod komendą /itemshop -> Itemshop.</li>
+                            <li>Posiadając skina w łapce należy kliknąć a wówczas doda się on do GUI pod komendą /skinyszarf, gdzie można wybrać skina spośród tych, które już się odblokowało.</li>
+                            <li>Szarfę można ukryć pod komendą /ukryjszarfe.</li>
+                            <li>U NPC ??? na spawnie OW5 można wymienić skina do szarfy na pył szarfy, które później można spowrotem wymienić na szkatułkę z szafarmi.</li>
+                        </ul>
+                    </div>
+            </div>
+        <!--1tablica zadan-->
+        <button class="accordion"><i class=""></i>Tablica Zadań</button>
+            <div class="panel">
+                <h4>Lokalizacja</h4>
+                <p>Znajduję się ona zarówno na Spawnie, jak i na początku Ow1.</p>
+                <h4>Kategorie Questów</h4>
+                <ul>
+                    <li>Misje Dzienne - resetują się codziennie o 00:00.</li>
+                    <li>Misje Tygodniowe - resetują się o 00:00 z niedzieli na poniedziałek</li>
+                    <li>Misje Miesięczne - resetują się pierwszego dnia każdego miesiąca o 02:00</li>
+                </ul>
+                <h4>Działanie tablicy zadań</h4>
+                <p>W tablicy można wyróżnić 2 zmienne:</p>
+                <ul>
+                    <li>Ilość wykonanych misji - Pozwala odblokować dodatkowe misje, ilość wymaganych wykonanych misji na odblokowanie kolejnego slota na Questa można znaleźć po najechaniu na butelkę z expem w GUI Misji Dziennych, Tygodniowych lub Miesięcznych.</li>
+                    <li>Poziom trudności - Określa to jak trudne są misje na podstawie poziomu klasy, progi do kolejnego poziomu trudności można zobaczyć po najechaniu na butelkę expa od razu po otworzeniu Gui Tablicy Zadań.</li>
+                </ul>
+                <ul>
+                    <li>Misja Dzienna liczy się jak 1 wykonana misja.</li>
+                    <li>Misja Tygodniowa liczy się jako 2 wykonane misje.</li>
+                    <li>Misja Miesięczna liczy się jako 5 wykonanych misjii.</li>
+                </ul>
+                <p>Jeśli pisze np. aby wykonać 5 dungenów lodowych po zadaniu 1% ostatniemu bossowi zaliczają się wszystkie poziomy trudności (zwykły, elitarny, koszmarny) natomiast jeśli pisze np. aby wykonać 5 dungeonów koszmarnych lodowych należy ZADAĆ 5% ostatniemu bossowi x razy</p>
+            </div>
+        <!--1pety-->
+        <button class="accordion"><i class=""></i>Pety</button>
+            <div class="panel">
+                <h4>Level Peta</h4>
+                <p>Zwierzak bez ewolucji może maxymalnie osiągnąć 20 level, po pierwszej ewolucji 50, a po drugiej - 100.</p>
+                <h4>Sposoby levelowania peta</h4>
+                <ul>
+                    <li>Zielarstwo - zbieranie kwiatków</li>
+                    <li>Zabijanie mobów</li>
+                    <li>Łowienie - tylko w przypadku Rozdymki</li>
+                    <li>Kopanie rud w kopalni</li>
+                    <li>Karma dla peta 10/25/50/100/400/1000</li>
+                </ul>
+                <h4>Zostawianie peta podczas zmiany podservera</h4>
+                <p>Żeby nie musieć przywoływać swojego peta przy każdej zmianie podservera należy mieć rangę MVIP+ lub TYTAN+. Aby odwołać peta należy kliknąć na niego w GUI pod komendą /pet</p>
+                <h4>Spis zwierzaków</h4>
+                <ul>
+                    <li>Burzyciel
+                        <ul>
+                            <li>Do zdobycia z Burzyciela - Bossa na OW1</li>
+                            <li>+% Zdrowie</li>
+                            <li>+% Obrona</li>
                         </ul>
                     </li>
-                    <li>4 osoby z tą samą klasą:
+                    <li>BMinotaur
                         <ul>
-                            <li>-50% obrażeń</li>
-                            <li>-30% zdrowia</li>
-                            <li>-30% pancerza</li>
+                            <li>Do zdobycia z szkatułki Labiryntu na dungeonie OW1</li>
+                            <li>+% Obrażenia</li>
+                            <li>Posiada 2 ewolucje</li>
                         </ul>
                     </li>
-                    <li>5 osób z tą samą klasą:
+                    <li>Rozdymka
                         <ul>
-                            <li>-75% obrażeń</li>
-                            <li>-50% zdrowia</li>
-                            <li>-50% pancerza</li>
+                            <li>Do zdobycia z Skrzyni Eventowej Rybackiej</li>
+                            <li>+% Bonus EXP do wędkarstwa</li>
+                            <li>+ Szybkość łowienia</li>
+                            <li>Posiada 2 ewolucje</li>
+                        </ul>
+                    </li>
+                    <li>Samuraj
+                        <ul>
+                            <li>Do zdobycia z szkatułki Lodowej na dungeonie</li>
+                            <li>+% Bonus EXP do walki</li>
+                            <li>+% Bonus drop</li>
+                            <li>Posiada 2 ewolucje</li>
+                        </ul>
+                    </li>
+                    <li>Grzib
+                        <ul>
+                            <li>Do zdobycia z Grzybowej Księżniczki - Bossa na OW4_2</li>
+                            <li>+% Bonus EXP do drwalnictwa</li>
+                            <li>+ Fortuna drwala</li>
+                            <li>Posiada 1 ewolucje</li>
+                        </ul>
+                    </li>
+                    <li>Reaper
+                        <ul>
+                            <li>Do zdobycia z szkatułki Umarłego Rozpruwacza na dungeonie DT</li>
+                            <li>+ Obrażenia</li>
+                            <li>+% Szansa na obrażenia krytyczne</li>
+                            <li>Posiada 2 ewolucje</li>
+                        </ul>
+                    </li>
+                    <li>Góral
+                        <ul>
+                            <li>Do zdobycia z szkatułki Podziemnej Eskapady na dungeonie Eskapada</li>
+                            <li>+% Bonus EXP do górnictwa</li>
+                            <li>+ Fortuna górnika</li>
+                            <li>Posiada 1 ewolucje</li>
+                        </ul>
+                    </li>
+                    <li>Smykogryf
+                        <ul>
+                            <li>Do zdobyciau NPC Zoolog w jego sezonowym sklepie</li>
+                            <li>+ Obrażenia</li>
+                            <li>+% Szansa na obrażenia krytyczne umiejętności</li>
+                            <li>Posiada 1 ewolucje</li>
+                        </ul>
+                    </li>
+                    <li>Benek
+                        <ul>
+                            <li>Do zdobyciau NPC Zoolog w jego sezonowym sklepie</li>
+                            <li>+% Szansa za zebranie kwiata</li>
+                            <li>+ Fortuna Zielaka</li>
+                        </ul>
+                    </li>
+                    <li>Fred
+                        <ul>
+                            <li>Do zdobyciau NPC Zoolog w jego sezonowym sklepie</li>
+                            <li>+% Bonus EXP do rolnictwa</li>
+                            <li>+ Fortuna rolnika</li>
                         </ul>
                     </li>
                 </ul>
-
-                <h4>Bonus za "idealne party"</h4>
-                <p>Party złożone z 5 osób w którym liczebność różnych klas wynosi 2 2 1:</p>
-                <ul>
-                    <li>+10% otrzymywanego leczenia</li>
-                    <li>+5% szans na unik</li>
+                <h4>Skąd zdobyć kamienie ewolucji</h4>
+                <ul>Zwierzaki można ewoluować u NPC Stwórca na /spawn za różne itemki oraz kamień ewolucji:
+                    <li>Kamień Ewolucjii I do Minotaura - Dungeon Pustynny - Szkatułka Pustynna</li>
+                    <li>Kamień Ewolucjii II do Minotaura - Elit. Dungeon Labirynt - drop z Bossa</li>
+                    <li>Kamień Ewolucjii I do Rozdymki - Event Rybacki - Szkatułka Rybacka</li>
+                    <li>Kamień Ewolucjii II do Rozdymki - Sezonowy Sklep Rybacki</li>
+                    <li>Kamień Ewolucjii I do Samuraja - Elit. Dungeon Lodowy - drop z Bossa</li>
+                    <li>Demoniczna Pieczęć do Reapera - Dungeon DT - Szkatułka Niebieskiej Śmierci</li>
+                    <li>Kamień Ewolucjii I do Gorala - Dungeon Eskapada - Piekielna Szkatułka</li>
+                    <li>Fragment Zwierzaka I do Burela - Koszmarny Dungeon Labirynt - Koszmarna Szkatułka I</li>
+                    <li>Fragment Zwierzaka II do Smykogryfa - Koszmarny Dungeon Pustynny - Koszmarna Szkatułka II</li>
                 </ul>
             </div>
-            </div>
-
-        <button class="accordion"><i class="fas fa-map"></i> System Stellium i Wysp</button>
-        <div class="panel">
-            <button class="accordion nested"><i class="fas fa-bolt"></i> Stellium</button>
-            <div class="panel nested-panel">
-                <h4>Informacje podstawowe</h4>
-                <p>Stellium to energia umożliwiająca szybkie teleportowanie się po ow.</p>
-
-                <h4>Sposoby zwiększenia max stellium</h4>
-                <ul>
-                    <li>Levelowanie - Każdy poziom daje +0,2 max stellium</li>
-                    <li>Kupienie rangi w /itemshop</li>
-                    <li>Wbijanie Punktów map w Bestiary</li>
-                </ul>
-
-                <h4>Sposoby uzupełniania Stellium</h4>
-                <ul>
-                    <li>Czekając (Regen Stellium zwiększa się kupując rangę)</li>
-                    <li>Pijąc Miksture Stellium 50 z /itemshop -> Timeshop (NIE BYPASSUJE LIMITU)</li>
-                </ul>
-
-                <h4>Panel teleportacyjny</h4>
-                <p>Miejsca dostępne bez użycia Stellium:</p>
-                <ul>
-                    <li>Karczma</li>
-                    <li>Gildia</li>
-                    <li>Jama Ekspedycji</li>
-                    <li>Topki</li>
-                </ul>
-            </div>
-
-            <button class="accordion nested"><i class="fas fa-home"></i> System Wysp</button>
-            <div class="panel nested-panel">
-                <h4>Podstawowe komendy</h4>
-                <ul>
-                    <li>/is - Panel Wyspy z większością funkcji</li>
-                    <li>/is create - Założenie Wyspy</li>
-                    <li>/is delete - Usunięcie Wyspy</li>
-                    <li>/is leave - Opuszczenie Wyspy</li>
-                    <li>/is invite [nick] - Zaproszenie do Wyspy</li>
-                    <li>/is home | /is dom - Teleport na Wyspę</li>
-                    <li>/is sethome - Ustawienie Miejsca Spawnu na Wyspie</li>
-                    <li>/is upgrades - Ulepszenia Wyspy</li>
-                    <li>/is value - Panel Punktów Wyspy</li>
-                    <li>/is info [nick] - Informacje o danej Wyspie</li>
-                    <li>/is visit [nick] - Odwiedzenie Wyspy Danego Gracza</li>
-                    <li>/is kickMember [nick] - Wyrzucenie Członka Wyspy</li>
-                    <li>/is kickVisitor [nick] - Wyrzucenie Odwiedzającego z Wyspy</li>
-                    <li>/is public - Zamknięcie/Otwarcie Wyspy dla Odwiedzających</li>
-                    <li>/is pvp - Włączenie/Wyłączenie PvP na Wyspie</li>
-                    <li>/is like [nick] - Polubienie Wyspy Danego Gracza</li>
-                    <li>/is drop - Podgląd/Ustawienia dropu z Generatora</li>
-                    <li>/is transfer [nick] - Przekazanie lidera</li>
-                </ul>
-
-                <h4>System punktów wyspy</h4>
-                <p>Pod komendą /is value znajduje się GUI, do którego po wrzuceniu itemów dostaje się punkty wyspy, które umożliwiają kupienie niektórych upgradeów w /is upgrades oraz dają bonusy takie jak exp do Rolnictwa, Drwalnictwa, Górnictwa oraz Alchemii + speed, który można wyłączyć/włączyć w zależności od preferencji.</p>
-            </div>
-        </div>
-
-        <button class="accordion"><i class="fas fa-users"></i> NPC</button>
-        <div class="panel">
-            <button class="accordion nested" id="biolog"><i class="fas fa-flask"></i> Biolog</button>
-            <div class="panel nested-panel">
-                <p>Biolog to NPC od side Questa, który daje bonusy w zamian za itemki.</p>
-                <h4>Wymagane przedmioty</h4>
-                <ul>
-                    <li>Ząb dzika - wymagany O poziom klasy - Ow1 - 10 sztuk z 0.5h cooldownu</li>
-                    <li>Skorupa Skarabeusza - wymagany 15 poziom klasy - Ow2-15 sztuk z 1h cooldownu</li>
-                    <li>Wilcza Łapa - wymagany 35 poziom klasy - Ow3 - 20 sztuk z 2h cooldownu</li>
-                    <li>Antyczna Cięciwa - wymagany 75 poziom klasy - Ow4_1-25 sztuk z 3h cooldownu</li>
-                    <li>Grzybowy Kapelusz - wymagany 90 poziom klasy - Ow4_2- 30 sztuk z 4h cooldownu</li>
-                    <li>Siarkowe Serce - wymagany 105 poziom klasy - Ow4_3 - 35 sztuk z 5h cooldownu</li>
-                    <li>Zerwane Okowy - wymagany 120 poziom klasy - Ow4_4 - 40 sztuk z óh cooldownu</li>
-                    <li>Piekielny klejnot - wymagany 150 poziom klasy - Ow4_5 - 45 sztuk z 6h cooldownu</li>
-                    <li>Notatka Przywódcy - wymagany x poziom klasy - Koszmarny Dungeon - 45 sztuk z 6h cooldownu</li>
-                    <li>Żądło Ważki - wymagany x poziom klasy - Ow5_1 - 50 sztuk z 8h cooldownu</li>
-                </ul>
-                <p>Z każdym kolejnym unikalnym itemkiem do biologa zwiększa się trudność jego zdobycia, jak i też ilość wymaganych itemków do oddania oraz czas pomiędzy oddaniem przedmiotu - ten można pominąć Eliksirem Poszukiwacza, który można kupić w /itemshop lub pozyskać jako nagroda w evencie.</p>
-            </div>
-
-            <button class="accordion nested" id="kolekcjoner"><i class="fas fa-user-ninja"></i> Kolekcjoner</button>
-            <div class="panel nested-panel">
-                <p>Kolekcjoner daje graczowi Side Questa na zabicie danej ilości mobów na danym OW po osiągnięciu danego poziomu klasy.</p>
-                <h4>Wymagana ilość mobów</h4>
-                <p>Do OW4_3 włącznie wymagana ilość mobów do zabicia wygląda następująco:</p>
-                <ul>
-                    <li>2222 zwykłych mobów</li>
-                    <li>444 minibossów</li>
-                    <li>222 bossów</li>
-                </ul>
-                <p>Od OW4_4 ilość mobów/bossów się zwiększa</p>
-                <p>Kolekcjoner po oddaniu misji daje exp klasy, eksploracji, reputację i ustaloną dodatkową nagrodę.</p>
-            </div>
-
-            <button class="accordion nested" id="stworca"><i class="fas fa-hammer"></i> Stwórca</button>
-            <div class="panel nested-panel">
-                <p>U Stwórcy można wytwarzać wiele różnych przedmiotów, większość z nich oprócz surowców wymaga również czasu.</p>
-                <h4>Dostępne kategorie craftingu</h4>
+        <!--1stworca-->
+        <button class="accordion"><i class=""></i>Stwórca</button>
+            <div class="panel">
+                <h4>Stwórca daje możliwość scraftowania wielu przedmiotów takich jak:</h4>
                 <ul>
                     <li>Fabryki</li>
-                    <li>Materiały Górnicze/Rolnicze</li>
-                    <li>Akcesoria (coming soon)</li>
+                    <li>Przedmioty rolnicze, górnicze i do alchemii</li>
+                    <li>Szarfy</li>
+                    <li>Książki Farmerskie</li>
                     <li>Ewolucje Petów</li>
-                    <li>Rzeczy Konsumpcyjne</li>
-                    <li>Specjalne Craftingi (coming soon)</li>
-                    <li>INNE</li>
+                    <li>Zaczarowany stół</li>
                 </ul>
-                <p>Czas u Stwórcy można skipnąć za pomocą Skrócenia czasu craftingu, które można kupić w ItemShopie</p>
+                <h4>Skrócenia czasu oczekiwania</h4>
+                <p>W Itemshopie można kupić Skrócenie czasu craftingu, które po użyciu zmniejsza nam czas czekania na dany item robiony i Stwórcy.</p>
+                <h4>Sloty</h4>
+                <p>W celu odblokowania większej ilości slotów na itemki u Stwórcy należy kupić rangę.</p>
             </div>
-
-            <button class="accordion nested" id="dungeon_master"><i class="fas fa-key"></i> Dungeon Master</button>
-            <div class="panel nested-panel">
-                <h4>Możliwości wymiany</h4>
+        <!--1kule czasu-->
+        <button class="accordion"><i class=""></i>Kula Czasu</button>
+            <div class="panel">
+                <h4>Przykładowe Źródła:</h4>
                 <ul>
-                    <li>Cząstek Przepustek na Przepustki</li>
-                    <li>Fragmentów Przepustek na Przepustki</li>
-                    <li>Cząstek Przepustek na Fragmenty Przepustek</li>
-                    <li>Przepustek na Cząstki Przepustek</li>
+                    <li>Dzienna nagroda u NPC Barman na /spawn</li>
+                    <li>Side Quest u NPC Szpieg Cor-Win</li>
+                    <li>Strefa AFK</li>
                 </ul>
-                <p>Dodatkowo można zakupić u niego klucze do Kuferka Dungeon PREMIUM za 100k i Klucz do Kuferka Dungeon I/II/III // Szkat. Podziemnej Eskapady</p>
-                <p>Można u niego również scraftować Sakiewki na Fragmenty Przepustki/Cząstki Przepustek/Delikatne Sukna</p>
-            </div>
-        </div>
-
-        <button class="accordion" id="skille"><i class="fas fa-tools"></i> Skille</button>
-        <div class="panel">
-            <button class="accordion nested" id="profesje"><i class="fas fa-hammer"></i> Profesje</button>
-            <div class="panel nested-panel">
-                <button class="accordion nested" id="walka"><i class="fas fa-sword"></i> Walka</button>
-                <div class="panel nested-panel">
-                    <p>Walkę zdobywa się za zabicie prawie każdego moba. Im lepszy mob, tym więcej expa.</p>
-                    <p>To jakie moby znajdują się na danej mapie, jak i również to co z nich dropi można sprawdzić pod /bestiary.</p>
-                    
-                    <h4>Wyposażenie</h4>
-                    <p>Całe wyposażenie potrzebne do walki kupuje się/ulepsza u Kowali na Ow. Na każdym z OW znajduje się takowy NPC. Do tych przedmiotów potrzeba itemów z danej mapy, jak i czasami inne materiały pozyskiwane przy pomocy innych skilli.</p>
-                    
-                    <h4>Użycie</h4>
-                    <p>Walkę zdobywa się przy okazji zdobywania potrzebnych nam przedmiotów. Niektóre części wyposażenia mają wymagania poziomu Walki na ich scraftowanie.</p>
-                </div>
-
-                <button class="accordion nested" id="lowca"><i class="fas fa-bow-arrow"></i> Łowca</button>
-                <div class="panel nested-panel">
-                    <p>Łowcę zdobywa się zabijając Bossy, Minibossy, WorldBossy oraz Metiny na OpenWorldzie.</p>
-                    <p>1 poziom Łowcy to 1% statystyki Dodatkowy Drop - te procenty mnożą się przez resztę.</p>
-                    <p>Maksymalny poziom łowcy wynosi 100.</p>
-                    
-                    <h4>Moby, z których pozyskuje się Łowcę:</h4>
-                    <ul>
-                        <li>Ow1 - Szaman - Miniboss</li>
-                        <li>Ow1 - Burzyciel - Boss</li>
-                        <li>Ow2 - Starożytny Generał - Miniboss</li>
-                        <li>Ow2 - Ammit - Miniboss</li>
-                        <li>Ow2 - Anubis - Boss</li>
-                        <li>Ow3 - Lodowa Wiedźma - Boss</li>
-                        <li>Ow3 - Król Zimy - Boss</li>
-                        <li>Ow3 - Amiz - Boss</li>
-                        <li>Ow4_1 - Starożytny Kamień - Metin</li>
-                        <li>Ow4_1 - Starożytny Władca - Boss</li>
-                        <li>Ow4_2 - Grzybowy Metin - Metin</li>
-                        <li>Ow4_2 - Grzybowa Księżniczka - Boss</li>
-                        <li>Ow4_3 - Magmowy Golem - Boss</li>
-                        <li>Ow4_4 - Nindal - Boss</li>
-                        <li>Ow4_5 - Piekielna Skała - Metin</li>
-                        <li>Ow4_5 - Piekielny Berserker - Boss</li>
-                        <li>Ow1 - Wpieniony Handlarz - WorldBoss</li>
-                        <li>Ow2 - Mumia - WorldBoss</li>
-                        <li>Ow3 - Lodzio - WorldBoss</li>
-                        <li>Ow4 - Grzybowa Królowa - WorldBoss</li>
-                    </ul>
-
-                    <h4>Użycie</h4>
-                    <p>Bossy i Minibossy pozwalają wydropić wiele przydatnych i wymaganych itemów w gierce, informacje o tym co dropi dany boss można znaleść pod /bestiary.</p>
-                </div>
-
-                <button class="accordion nested" id="gornictwo"><i class="fas fa-gem"></i> Górnictwo</button>
-                <div class="panel nested-panel">
-                    <h4>Pozyskiwanie surowców i expa</h4>
-                    <p>Surowce można zdobyć na wiele sposobów:</p>
-                    <ul>
-                        <li>wykopać na wyspie</li>
-                        <li>wykopać w kopalni</li>
-                        <li>wydropić z niektórych szkatułek eventowych</li>
-                        <li>niektóre surowce są do pozyskania z dungeonów - głównie węgiel</li>
-                        <li>pozyskać z fabryk</li>
-                    </ul>
-
-                    <h4>Generator cobbla</h4>
-                    <p>Surowce zdobywa się na wyspie stawiając zwykłą minecraftową cobblarkę zwaną generatorem, którą można podejrzeć na /warp tutorial. W celu ulepszenia generatora należy udać się do /is upgrades. W celu sprawdzenia szansy na to, że zamiast cobbla pojawi się coś innego należy użyć komendy /is drop.</p>
-                    <p>Maksymalny poziom - 28</p>
-
-                    <h4>Generator basaltu</h4>
-                    <p>Istnieje drugi rodzaj generatora, czyli generator basaltu. W celu jego zbudowania potrzebny jest nam soul soil, blue ice oraz lava. Ułożenie bloków można podejrzeć na /warp tutorial. Ten generator podobnie jak zwykły można ulepszać pod /is upgrades, a drop sprawdzić pod /is drop basalt.</p>
-                    <p>Maksymalny poziom - 15</p>
-
-                    <h4>Kopalnia</h4>
-                    <p>Kopalnie można odblokować po osiągnięciu 10 poziomu profesji Górnictwo i pójściu się do NPC Grubiorz dzięki, któremu udajemy się do kopalni. W kopalni można kopać wszystkie surowce, które są w zwykłym generatorze na wyspie oraz topaz, który jest potrzebny w późniejszym etapie gry.</p>
-                    <p>W celu kopania poszczególnych rud wymagany jest coraz to lepszy kilof oraz wyższy poziom Górnictwa. Kilof ulepsza się u Grubiorza na /spawn. Netherytowy kilof +5 można ulepszyć do Wiertła.</p>
-                    <p>Aktualny Wzór na Szybkość Kopania to:</p>
-                    <p>( 100 + bonusowa szybkość kopania z wiertła + szybkość kopania [bransoleta] ) * (1 + szybkość kopania z seta[%] )</p>
-
-                    <h4>Czasy respawnów rud w kopalni</h4>
-                    <ul>
-                        <li>węgiel lv 1/2 - 15s</li>
-                        <li>miedź lv 1/2 - 20s</li>
-                        <li>lapis lv 1/2 - 25s</li>
-                        <li>żelazo lv 1/2 - 30s</li>
-                        <li>złoto lv 1/2 - 35s</li>
-                        <li>diament lv 1/2 - 40s</li>
-                        <li>emerald lv 1/2 - 45s</li>
-                        <li>topaz lv 1 - 60s</li>
-                        <li>topaz lv 2 - 90s</li>
-                        <li>topaz lv 3 - 120s</li>
-                    </ul>
-                </div>
-            </div>
-
-            <button class="accordion nested" id="profesje_zbierackie"><i class="fas fa-leaf"></i> Profesje zbierackie</button>
-            <div class="panel nested-panel">
-                <button class="accordion nested" id="zielarstwo"><i class="fas fa-leaf"></i> Zielarstwo</button>
-                <div class="panel nested-panel">
-                    <h4>Pozyskiwanie surowców i expa</h4>
-                    <p>Zielarstwo zdobywa się zbierając rośliny na wyspie oraz na OpenWorldzie. Rośliny na wyspie rosną co 5 minut, a na OpenWorldzie co 15 minut.</p>
-                    
-                    <h4>Wyposażenie</h4>
-                    <p>Do zbierania roślin potrzebna jest motyka, którą można ulepszyć u NPC Ogrodnik na /spawn. Netherytową motykę +5 można ulepszyć do Sierpa.</p>
-                    
-                    <h4>Użycie</h4>
-                    <p>Rośliny są potrzebne do:</p>
-                    <ul>
-                        <li>craftowania potów</li>
-                        <li>craftowania jedzenia</li>
-                        <li>craftowania niektórych przedmiotów</li>
-                        <li>questów</li>
-                    </ul>
-                    
-                    <h4>Wzór na szansę na podwójny drop</h4>
-                    <p>( 5 + bonusowa szansa na podwójny drop z sierpa + szansa na podwójny drop [bransoleta] ) * (1 + szansa na podwójny drop z seta[%] )</p>
-                </div>
-
-                <button class="accordion nested" id="rolnictwo"><i class="fas fa-seedling"></i> Rolnictwo</button>
-                <div class="panel nested-panel">
-                    <h4>Pozyskiwanie surowców i expa</h4>
-                    <p>Rolnictwo zdobywa się poprzez zbieranie roślin na farmie. Rośliny rosną co 15 minut.</p>
-                    
-                    <h4>Wyposażenie</h4>
-                    <p>Do zbierania roślin potrzebna jest motyka, którą można ulepszyć u NPC Ogrodnik na /spawn. Netherytową motykę +5 można ulepszyć do Sierpa.</p>
-                    
-                    <h4>Użycie</h4>
-                    <p>Rośliny są potrzebne do:</p>
-                    <ul>
-                        <li>craftowania potów</li>
-                        <li>craftowania jedzenia</li>
-                        <li>craftowania niektórych przedmiotów</li>
-                        <li>questów</li>
-                    </ul>
-                    
-                    <h4>Wzór na szansę na podwójny drop</h4>
-                    <p>( 5 + bonusowa szansa na podwójny drop z sierpa + szansa na podwójny drop [bransoleta] ) * (1 + szansa na podwójny drop z seta[%] )</p>
-                </div>
-            </div>
-
-            <button class="accordion nested" id="alchemia"><i class="fas fa-flask"></i> Alchemia</button>
-            <div class="panel nested-panel">
-                <h4>Przebieg Gotowania</h4>
-                <ol>
-                    <li>Przygotowanie odpowiedniego Bloku Cieplnego pod Kotłem (Aby odpalić świeczki oraz ognisko należy najpierw użyć na te bloki podpałki, którą można zrobić u NPC Stwórca)</li>
-                    <li>Wlanie odpowiedniej ilości wody do kotła</li>
-                    <li>Wrzucenie składników potrzebnych do ugotowania danej mikstury/itemu</li>
-                    <li>Zamknięcie klapy (trapdoora znajdującego się nad kotłem)</li>
-                    <li>Kliknięcie łyżką na kocioł, którą można zrobić u NPC Stwórca</li>
-                    <li>Odebranie mikstury/przedmiotu po upływie czasu podanego w recepturze poprzez kliknięcie na kocioł (jak mikstura/przedmiot jest gotowy klapa nad kotłem sama się otworzy)</li>
-                </ol>
-
-                <h4>Użycie</h4>
-                <p>Potki dające różne bonusy w przeróżnych dziedzinach SkyMMO</p>
-
-                <h4>Dodatkowe informacje</h4>
+                <h4>Przykłady użycia:</h4>
                 <ul>
-                    <li>Mikstura/Przedmiot gotuje się w kotle nawet gdy jest się Offline</li>
-                    <li>Jeśli miksturę/przedmiot odbierze gracz, który nie ma odblokowanej receptury u NPC Młody Alchemik całość przepada</li>
+                    <li>Różne Itemy u NPC Embry</li>
                 </ul>
             </div>
-
-            <button class="accordion nested" id="wedkarstwo"><i class="fas fa-fish"></i> Wędkarstwo</button>
-            <div class="panel nested-panel">
-                <h4>Podstawowe informacje</h4>
-                <p>Pierwszą wędkę odbiera się u NPC Waldek na /spawn</p>
-
-                <h4>Dostępne łowiska</h4>
-                <ul>
-                    <li>Łowisko na Ow1, które znajduje się za Boską Ręką</li>
-                    <li>Początek Ow2</li>
-                    <li>Łowisko na Ow3, które znajduje się w Lodowej Grocie</li>
-                    <li>Łowisko na Ow4_2, które znajduje się na drugiej części Grzybowej Krainy</li>
-                    <li>Łowisko na Ow4_5</li>
-                </ul>
-
-                <h4>Mechanika łowienia</h4>
-                <p>W celu łowienia należy zarzucić wędkę do wody posiadając jednocześnie odpowiednią na miejsce, w którym się łowi przynętę. Po tym jak ryba złapie za spławik należy nacisnąć literkę, która wyskoczyła na ekranie.</p>
-                <p>Wędka MUSI być na pierwszym slocie</p>
-
-                <h4>System żyłki</h4>
-                <p>Podczas wyławiania ryby lub jeśli minie czas na jej wyłowienie żyłka może pęknąć lub zostać naderwana - w tym drugim przypadku wystarczy zarzucić ponownie wędkę, a w pierwszym trzeba nałożyć nową żyłkę klikając żyłką na wędkę w ekwipunku. Żyłkę można kupić u NPC Handlarz Drobiazgami na ow1 lub u NPC na łowisku Ow3.</p>
-
-                <h4>Przynęty i zanęty</h4>
-                <p>Każda przynęta posiada swoją pulę dropów. Są do kupienia u Rybaków na łowiskach.</p>
-                <p>Zanęta po rzuceniu do wody tworzy w danym obrębie bąbelki, podczas łowienia w nich zwiększa się szybkość łowienia.</p>
-
-                <h4>Koszt wejścia na łowisko</h4>
-                <ul>
-                    <li>Ow1 - 10k/6h - Ochroniarz</li>
-                    <li>Ow3 - 40k/6h - Mors</li>
-                    <li>Ow4_2 - 150k/6h - Grzybowy Strażnik</li>
-                    <li>Ow4_5 - 500k/6h - Strażnik Łowiska</li>
-                </ul>
-                <p>Kupując Kartę Vip 3d/1d w /itemshop dostaje się przepustkę na wszystkie łowiska na czas trwania Karty Vip</p>
-                <p>Kupując Kartę rybacką 7d dostaje się przepustkę na wszystkie łowiska na czas trwania Karty Rybackiej oraz 60% szans na to, że ryba nie zje przynęty</p>
-
-                <h4>Gorzyce - łowisko eventowe</h4>
-                <p>Gorzyce to łowisko eventowe, które otwiera się tylko podczas eventu na drop szkatułek rybackich. Na łowisko można się dostać przez NPC'ta Rybaka na /spawn. Można tam wyłowić Kamień Wędkarski przydany np:</p>
-                <ul>
-                    <li>Podczas Sklepu Eventowego, gdzie za przedmioty z łowienia można kupić inne przedmioty</li>
-                    <li>Do scraftowania artefaktu siły (na Gorzycach)</li>
-                </ul>
-
-                <h4>Potwory morskie</h4>
-                <p>Potwory morskie mogą zostać wyłowione, po zabiciu dropią różne przedmioty w zależności od potwora. Możliwe do wyłowienia od Ow3.</p>
-            </div>
-        </div>
-
-        <button class="accordion"><i class="fas fa-dragon"></i> Zwierzaki (Pety)</button>
-        <div class="panel">
-            <h4>Podstawowe informacje</h4>
-            <p>Zwierzak bez ewolucji może maxymalnie osiągnąć 20 level, po pierwszej ewolucji 50, a po drugiej - 100.</p>
-
-            <h4>Sposoby levelowania peta</h4>
-            <ul>
-                <li>Zielarstwo - zbieranie kwiatków</li>
-                <li>Zabijanie mobów</li>
-                <li>Łowienie (tylko w przypadku Rozdymki)</li>
-                <li>Kopanie rud w kopalni</li>
-                <li>Karma dla peta 10/25/50/100/400/1000</li>
-            </ul>
-
-            <h4>System ewolucji</h4>
-            <p>Zwierzaki można ewoluować u NPC Stwórca na /spawn za różne itemki oraz kamień ewolucji:</p>
-            <ul>
-                <li>Kamień Ewolucjii I do Minotaura - Dungeon Pustynny - Szkatułka Pustynna</li>
-                <li>Kamień Ewolucjii II do Minotaura - Elit. Dungeon Labirynt - drop z Bossa</li>
-                <li>Kamień Ewolucjii I do Rozdymki - Event Rybacki - Szkatułka Rybacka</li>
-                <li>Kamień Ewolucjii II do Rozdymki - Sezonowy Sklep Rybacki</li>
-                <li>Kamień Ewolucjii I do Samuraja - Elit. Dungeon Lodowy - drop z Bossa</li>
-                <li>Demoniczna Pieczęć do Reapera - Dungeon DT - Szkatułka Niebieskiej Śmierci</li>
-                <li>Kamień Ewolucjii I do Gorala - Dungeon Eskapada - Piekielna Szkatułka</li>
-                <li>Fragment Zwierzaka I do Burela - Koszmarny Dungeon Labirynt - Koszmarna Szkatułka I</li>
-                <li>Fragment Zwierzaka II do Smykogryfa - Koszmarny Dungeon Pustynny - Koszmarna Szkatułka II</li>
-            </ul>
-
-            <h4>Dodatkowe informacje</h4>
-            <p>Żeby nie musieć przywoływać swojego peta przy każdej zmianie podservera należy mieć rangę MVIP+ lub TYTAN+. Aby odwołać peta należy kliknąć na niego w GUI pod komendą /pet</p>
-        </div>
-
-        <button class="accordion"><i class="fas fa-scroll"></i> System Klas</button>
-        <div class="panel">
-            <button class="accordion nested" id="wojownik"><i class="fas fa-sword"></i> Wojownik</button>
-            <div class="panel nested-panel">
-                <h4>Statystyki bazowe</h4>
-                <ul>
-                    <li>Obrażenia - 1 + 0,5 per level</li>
-                    <li>Zdrowie - 20 + 2,5 per level</li>
-                    <li>Pancerz - 0 + 8 per level</li>
-                    <li>Szybkość ataku - 1,6</li>
-                    <li>Prędkość ruchu - 0,1</li>
-                    <li>Regeneracja zdrowia - 0,1 + 0,05 per level</li>
-                    <li>Maksymalna furia - 20 + 2 per level</li>
-                    <li>Spadek furii - 4% maksymalnej furii/s poza walką</li>
-                    <li>Odporność na odrzut - 25% + 0,05% per lvl MAX 50%</li>
-                    <li>Odporność na spowolnienia - 20% + 0,05% per lvl MAX 50%</li>
-                    <li>Odporność na upadek - 0% + 0,05% per lvl MAX 50%</li>
-                    <li>Obrażenia fizyczne - 0 + 0,2% per level</li>
-                    <li>Siła - 0 + 0,5 per level</li>
-                    <li>Wytrzymałość - 0 + 1,5 per level</li>
-                    <li>Witalność - 0 + 1 per level</li>
-                    <li>Stamina - 1 + 0,01 per level</li>
-                    <li>Regeneracja staminy - 0,01 + 0,0001 per level</li>
-                </ul>
-
-                <h4>Unikalna umiejętność bierna</h4>
-                <p>Regeneracja zdrowia 1% + 0,008% brakującego hp/s per level MAX 5%</p>
-            </div>
-
-            <button class="accordion nested" id="ninja"><i class="fas fa-user-ninja"></i> Ninja</button>
-            <div class="panel nested-panel">
-                <h4>Statystyki bazowe</h4>
-                <ul>
-                    <li>Obrażenia - 1 + 0,75 per level</li>
-                    <li>Zdrowie - 20 + 1,25 per level</li>
-                    <li>Pancerz - 0 + 4 per level</li>
-                    <li>Szybkość ataku - 1,8</li>
-                    <li>Prędkość ruchu - 0,11</li>
-                    <li>Regeneracja zdrowia - 0,1 + 0,03 per level</li>
-                    <li>Maksymalna mana - 20 + 2 per level</li>
-                    <li>Regeneracja many - 0,06 + 0,06 per level</li>
-                    <li>Odporność na odrzut - 0% + 0,05% per lvl MAX 25%</li>
-                    <li>Odporność na spowolnienia - 0%</li>
-                    <li>Odporność na upadek - 0% + 0,05% per lvl MAX 50%</li>
-                    <li>Obrażenia fizyczne - 0 + 0,1% per level</li>
-                    <li>Siła - 0 + 1 per level</li>
-                    <li>Wytrzymałość - 0 + 1 per level</li>
-                    <li>Witalność - 0 + 1 per level</li>
-                    <li>Stamina - 1 + 0,02 per level</li>
-                    <li>Regeneracja staminy - 0,01 + 0,0001 per level</li>
-                </ul>
-
-                <h4>Unikalna umiejętność bierna</h4>
-                <ul>
-                    <li>Regeneracja zdrowia 0% max hp/s + 0,002% per level MAX 1%</li>
-                    <li>Regeneracja staminy - 1% max staminy /s</li>
-                </ul>
-            </div>
-
-            <button class="accordion nested" id="mag"><i class="fas fa-hat-wizard"></i> Mag</button>
-            <div class="panel nested-panel">
-                <h4>Statystyki bazowe</h4>
-                <ul>
-                    <li>Obrażenia - 1 + 1 per level</li>
-                    <li>Zdrowie - 20 + 1 per level</li>
-                    <li>Pancerz - 0 + 2 per level</li>
-                    <li>Szybkość ataku - 1,2</li>
-                    <li>Prędkość ruchu - 0,105</li>
-                    <li>Regeneracja zdrowia - 0,1 + 0,02 per level</li>
-                    <li>Maksymalna mana - 20 + 4 per level</li>
-                    <li>Regeneracja many - 0,1 + 0,1 per level</li>
-                    <li>Odporność na odrzut - 0% + 0,05% per lvl MAX 25%</li>
-                    <li>Odporność na spowolnienia - 0%</li>
-                    <li>Odporność na upadek - 0% + 0,05% per lvl MAX 50%</li>
-                    <li>Obrażenia magiczne - 0 + 0,2% per level</li>
-                    <li>Obrażenia umiejętności - 10% + 0,25% per level</li>
-                    <li>Siła - 0 + 1,5 per level</li>
-                    <li>Wytrzymałość - 0 + 0,5 per level</li>
-                    <li>Witalność - 0 + 1 per level</li>
-                    <li>Stamina - 1</li>
-                    <li>Regeneracja staminy - 0,01 + 0,0001 per level</li>
-                </ul>
-
-                <h4>Unikalna umiejętność bierna</h4>
-                <ul>
-                    <li>Regeneracja many 0,005% max many/s + 0,005% per level MAX 2%</li>
-                    <li>Regeneracja zdrowia 0,25% max hp/s + 0,0005% per level MAX 0,5%</li>
-                </ul>
-            </div>
-
-            <h4>System obrażeń</h4>
-            <button class="accordion nested" id="wzory_obrazenia"><i class="fas fa-calculator"></i> Wzory na obrażenia</button>
-            <div class="panel nested-panel">
-                <h4>Wojownik</h4>
-                <p>Miecz AA:</p>
-                <p>obrażenia * ( 1 + pve + fizyczne + broni + mapa/dung)</p>
-                <p>Skill:</p>
-                <p>obrażenia * ( 1 + pve + fizyczne + mapa/dung) * ( 1 + fizyczne + broni) * ( 1 + umiejętności) * ( 1 + furia ) * multiplikatywność</p>
-
-                <h4>Ninja</h4>
-                <p>Sztylet AA:</p>
-                <p>obrażenia * ( 1 + pve + fizyczne + broni + mapa/dung)</p>
-                <p>Skill:</p>
-                <p>obrażenia * ( 1 + pve + fizyczne + mapa/dung) * ( 1 + broni + fizyczne ) * ( 1 + umiejętności ) * multiplikatywność</p>
-                <p>Łuk AA:</p>
-                <p>obrażenia * ( 1 + pve + dystansowe + mapa/dung ) * ( 1 + broni ) * ( 1 + dystansowe )</p>
-                <p>Skill:</p>
-                <p>obrażenia * ( 1 + pve + dystansowe + mapa/dung ) * ( 1 + broni ) * ( 1 + dystansowe ) * ( 1 + umiejętności ) * multiplikatywność</p>
-
-                <h4>Mag</h4>
-                <p>Kostur AA:</p>
-                <p>obrażenia * ( 1 + pve + magiczne + broni + dystansowe + mapa/dung)</p>
-                <p>Skill:</p>
-                <p>obrażenia * ( 1 + pve + magiczne + mapa/dung) * ( 1 + broni + magiczne ) * ( 1 + umiejętności ) * multiplikatywność</p>
-            </div>
-        </div>
-
-        <button class="accordion"><i class="fas fa-chart-line"></i> System Bonusów i Statystyk</button>
-        <div class="panel">
-            <button class="accordion nested" id="fortuna"><i class="fas fa-percentage"></i> Fortuna</button>
-            <div class="panel nested-panel">
-                <h4>Górnictwo</h4>
-                <ul>
-                    <li>Set górnika</li>
-                    <li>Pet - Góral</li>
-                    <li>Set bonus (niektóre sety)</li>
-                </ul>
-
-                <h4>Drwalnictwo</h4>
-                <ul>
-                    <li>Set drwala</li>
-                    <li>Pet - Grzib</li>
-                    <li>Set bonus (niektóre sety)</li>
-                </ul>
-
-                <h4>Rolnictwo</h4>
-                <ul>
-                    <li>Set Rolnika</li>
-                    <li>Motyka farmerska</li>
-                    <li>Siekiera farmerska</li>
-                </ul>
-
-                <h4>Zielarstwo</h4>
-                <ul>
-                    <li>Sierp</li>
-                    <li>Set zielarza</li>
-                    <li>Bransoleta Zielarza</li>
-                    <li>Naszyjnik Zielarza</li>
-                    <li>Set bonus (niektóre sety)</li>
-                </ul>
-            </div>
-
-            <button class="accordion nested" id="bonusy_szybkosc"><i class="fas fa-tachometer-alt"></i> Bonusy do szybkości</button>
-            <div class="panel nested-panel">
-                <h4>Szybsze łowienie</h4>
-                <ul>
-                    <li>Pet - Rozdymka</li>
-                    <li>Zanęta</li>
-                    <li>Set bonus z seta</li>
-                    <li>Bransoleta wędkarska</li>
-                </ul>
-
-                <h4>Zwiększona szansa na zebranie rośliny</h4>
-                <ul>
-                    <li>Sierp</li>
-                    <li>Set bonus (niektóre sety)</li>
-                    <li>Bransoleta Zielarza</li>
-                    <li>Naszyjnik Zielarza</li>
-                </ul>
-
-                <h4>Bonusowa szybkość kopania</h4>
-                <ul>
-                    <li>Bransoleta górnicza</li>
-                    <li>Set bonus (niektóre sety)</li>
-                </ul>
-            </div>
-
-            <button class="accordion nested" id="bonusy_drop_exp"><i class="fas fa-arrow-up"></i> Zwiększony drop i exp</button>
-            <div class="panel nested-panel">
-                <h4>Zwiększony drop</h4>
-                <ul>
-                    <li>Pet - Samuraj</li>
-                    <li>Karta vip 3d/1d</li>
-                    <li>Karta minivip 3d</li>
-                    <li>Bonus doświadczenia i dropu 1h</li>
-                    <li>Rękawiczki 25% na 1h/12h</li>
-                    <li>Rękawiczki 10% na 1h/12h</li>
-                </ul>
-
-                <h4>Uniwersalne źródła expa</h4>
-                <ul>
-                    <li>Rybki 15% na godzinę</li>
-                    <li>Rybki 10% na 10 minut</li>
-                    <li>Karta vip 3d/1d</li>
-                    <li>Karta minivip 3d</li>
-                    <li>Bonus doświadczenia i dropu 1h</li>
-                </ul>
-            </div>
-
-            <button class="accordion nested" id="bonusy_profesje"><i class="fas fa-medal"></i> Bonusy do profesji</button>
-            <div class="panel nested-panel">
-                <h4>Amulet danej profesji</h4>
-                <p>Zwiększa ilość pozyskiwanego expa danej profesji o + x%</p>
-                <ul>
-                    <li>Pierwszy - drop z Szamana na Ow1 - Zwykły Amulet</li>
-                    <li>Drugi - do kupienia u Kowala na Ow3 - Lodowy Amulet</li>
-                    <li>Trzeci - drop z Grzybowego Metina na Ow4_2 - Grzybowy Amulet</li>
-                    <li>Czwarty - z Szkatułki Podziemnej Eskapady - Piekielny Amulet</li>
-                </ul>
-
-                <h4>Amulet klasy</h4>
-                <p>Zwiększa ilość pozyskiwanego expa klasy o + x%</p>
-                <ul>
-                    <li>Pierwszy - drop z Anubisa na Ow2 - Słoneczny Amulet</li>
-                    <li>Drugi - drop z Starożytnego Władcy na Ow4_1 - Antyczny Amulet</li>
-                </ul>
-            </div>
-        </div>
-
-        <button class="accordion"><i class="fas fa-gem"></i> System Artefaktów</button>
-        <div class="panel">
-            <h4>Rodzaje Artefaktów</h4>
-            <ul>
-                <li>Artefakt Siły</li>
-                <li>Artefakt Defensywny</li>
-                <li>Artefakt Żywiołów</li>
-            </ul>
-
-            <button class="accordion nested" id="artefakt_sily"><i class="fas fa-fist-raised"></i> Artefakt Siły</button>
-            <div class="panel nested-panel">
-                <p>Do kupienia na Eventowym łowisku "Gorzyce", daje takie statystyki jak:</p>
-                <ul>
-                    <li>Zwiększone obrażenia przeciwko morskim stworzeniom</li>
-                    <li>Obrażenia</li>
-                </ul>
-            </div>
-
-            <button class="accordion nested" id="artefakt_defensywny"><i class="fas fa-shield-alt"></i> Artefakt Defensywny</button>
-            <div class="panel nested-panel">
-                <p>Pierwszy zdobywa się jak drop z Wpienionego Handlarza, są 2 warianty:</p>
-                <ul>
-                    <li>PvE - jedną z statystyk jest odporność na potwory</li>
-                    <li>PvP - jedną z statystyk jest odporność na graczy</li>
-                </ul>
-                <p>Daje on takie statystyki jak:</p>
-                <ul>
-                    <li>Zdrowie +x</li>
-                    <li>Odporność na graczy/potwory</li>
-                    <li>Zdrowie %x</li>
-                </ul>
-                <p>Artefakty te ulepsza się u NPC Maciek w Karczmie.</p>
-            </div>
-
-            <button class="accordion nested" id="artefakty_zywiolow"><i class="fas fa-fire"></i> Artefakty Żywiołów</button>
-            <div class="panel nested-panel">
-                <h4>Artefakt Ognia</h4>
-                <p>Pierwszy Artefakt Żywiołu kupuje się u NPC Żywiołak Ognia za różne itemy z Ow4_3 oraz Kryształ Podziemii - Legendarny drop WorldBossów na Ow4.</p>
-
-                <h4>Artefakt Jadu</h4>
-                <p>Ten Artefakt Żywiołu kupuje się u NPC Żywiołak Jadu za różne itemy z Ow4_3 oraz Kryształ Podziemii - Legendarny drop WorldBossów na Ow4.</p>
-            </div>
-        </div>
-
-        <button class="accordion"><i class="fas fa-dungeon"></i> System Dungeonów</button>
-        <div class="panel">
-            <button class="accordion nested" id="kraina_rozkoszy"><i class="fas fa-heart"></i> Kraina Rozkoszy</button>
-            <div class="panel nested-panel">
-                <h4>Podstawowe informacje</h4>
-                <p>Dungeon znajduje się na Lobby DT, aby tam się dostać należy udać się do NPC Rakshasi w Karczmie.</p>
+        <!--1ow/dung-->
+        <h2 class="category-header">OpenWorld i Dungeony</h2>
+            <p>???</p>
+            <!--1dung-->
+            <button class="accordion"><i class=""></i>Dungeony</button>
+                <div class="panel">
+                    <p>???</p>
                 
-                <h4>Wykwintna Truskawka</h4>
-                <p>Wykwintna Truskawka służy do włączenia respienia się mobów na dungeonie. Można ją kupić u NPC Odrzutufka w Karczmie poprzez wybieranie odpowiednich opcji dialogowych.</p>
-                <p>Koszt Wykwintnej Truskawki to Poziom Gracza * 100$</p>
-
-                <h4>Przebieg</h4>
-                <ul>
-                    <li>NA DUNGEON MOŻNA WEJŚĆ TYLKO 1 RAZ DZIENNIE</li>
-                    <li>MOBY NIE ZADAJĄ DMG GRACZOWI</li>
-                    <li>Aby moby zaczęły się respić należy użyć wcześniej kupionej Wykwintnej Truskawki</li>
-                    <li>Wszystkie moby dają reputację</li>
-                    <li>Pierwszym mobem są Króliki, po zabiciu kilku pojawi się kamień Metin</li>
-                    <li>Po kliknięciu w Metin zostaniemy przeniesieni na drugą część dungeona</li>
-                    <li>Na drugiej części zabija się Rozkosznych Obywateli i Owce</li>
-                    <li>Po zabiciu odpowiedniej liczby mobów pojawia się Rozkoszna Zebra (Boss)</li>
-                    <li>Dungeon Trwa 5 minut</li>
-                </ul>
+                <!--1dungeon master-->
+                <button class="accordion nested"><i class=""></i>NPC Dungeon Master</button>
+                    <div class="panel nested-panel">
+                        <h4>Pozwala na wymianę</h4>
+                        <ul>
+                            <li>Cząstek Przepustek na Przepustki</li>
+                            <li>Fragmentów Przepustek na Przepustki</li>
+                            <li>Cząstek Przepustek na Fragmenty Przepustek</li>
+                            <li>Przepustek na Cząstki Przepustek</li>
+                        </ul>
+                        <p>Dodatkowo można u niego zakupić klucze do Kuferka Dungeon PREMIUM za 100k $ i Klucz do kuferka Dungeon I/II/III // Klucz do Szkat. Pozdziemnej Eskapady</p>
+                        <p>Można u niego scraftować Sakiewki na cząstki przepustek/delikatne sukna</p>
+                        <h4>Cząstki i przepustki można zdobyć</h4>
+                        <ul>
+                            <li>z niektórych bossów, minibossów oraz metinów (drop można zobaczyć pod komendą /bestiary)</li>
+                            <li>z niektórych znajdziek na dungeonach</li>
+                            <li>z bossów końcowych na dungeonach</li>
+                            <li>z worldbossów</li>
+                        </ul>
+                    </div>
+                <!--1trofea-->
+                <button class="accordion nested"><i class=""></i>Trofea</button>
+                    <div class="panel nested-panel">
+                        <h4>Pozyskiwanie</h4>
+                        <p>Trofea to rzadkie przedmioty z dungeonów, które pozyskuje się z bossa, po wydropieniu na czacie pojawia się komunikat z informacją kto i co dropnął.</p>
+                        <p>Im większa trudność dunga tym większa szansa na drop (Zwykły -> Elitarny -> Koszmarny).</p>
+                        <h4>Bonusy z trofeów</h4>
+                        <p>U NPC Janek można oddać trofeum, aby pozyskać permanentny bonus.</p>
+                        <h4>Lista Trofeów</h4>
+                        <ul>
+                            <li>Róg Minotaura - Minotaur</li>
+                            <li>Wyrwane Ślepie Pradawnego - Pradawny</li>
+                            <li>Berło Króla Północy - Król Północy</li>
+                            <li>Klepsydra z Piaskiem Życia - Umarły Rozpruwacz</li>
+                            <li>Niebieska Kosa 3000 - Niebieska Śmierć</li>
+                            <li>Fałszywy Flogiston - Piekielny Książe/Piekielny Lord</li>
+                        </ul>
+                    </div>
+                <!--1rodzaje dungow-->
+                <button class="accordion nested"><i class=""></i>Rodzaje Dungeonów</button>
+                    <div class="panel nested-panel">
+                        <p>???</p>
+                    <!--1kraina rozkoszy-->
+                    <button class="accordion nested"><i class=""></i>Kraina Rozkoszy</button>
+                        <div class="panel nested-panel">
+                            <h4>Wykwintna Truskawka</h4>
+                            <p>Wykwintna Truskawka służy do włączenia respienia się mobów na dungeonie, aby ją zdobyć należy ją kupić u NPC Odrzutufka w Karczmie poprzez wybieranie odpowiednich opcji dialogowych.</p>
+                            <p>Koszt Wykwintnej Truskawki to Poziom Gracza * 100$.</p>
+                            <h4>Lokalizacja i rozpoczęcie</h4>
+                            <p>Dungeon znajduje się na Lobby DT, aby tam się dostać należy udać się do NPC Rakshasi w Karczmie. NPC Odrzutufka (ta sama nazwa NPC, ale inna lokalizacja i przeznaczenie) po kliknięciu i wybraniu odpowiedniej opcji dialogowej przeniesie nas na sam Dungeon, aby tam wejść nie trzeba być w party, ponieważ jest to dungeon SOLO.</p>
+                            <h4>Przebieg</h4>
+                            <p>Aby moby zaczęły się respić należy użyć wcześniej kupionej Wykwintnej Truskawki. Wszystkie moby dają x reputacji.</p>
+                            <p>Pierwszym mobem są Króliki, po zabiciu kilku pojawi się kamień Metin, po kliknięciu w niego lewym przyciskiem myszy zostaniemy przeniesieni na drugą część dungeona, gdzie zabija się Rozkosznych Obywateli i Owce, po zabiciu x mobów pojawia się Rozkoszna Zebra, czyli Boss, który daje sporo reputacji po zabiciu. </p>
+                            <p>Dungeon Trwa MAX 5 minut.</p>
+                        </div>
+                    <!--1dg1-->
+                    <button class="accordion nested"><i class=""></i>Labirynt</button>
+                        <div class="panel nested-panel">
+                            <p>???</p>
+                        </div>
+                    <!--1dg2-->
+                    <button class="accordion nested"><i class=""></i>Pustynny</button>
+                        <div class="panel nested-panel">
+                            <p>???</p>
+                        </div>
+                    <!--1dg3-->
+                    <button class="accordion nested"><i class=""></i>Lodowy</button>
+                        <div class="panel nested-panel">
+                            <p>???</p>
+                        </div>
+                    <!--1dt-->
+                    <button class="accordion nested"><i class=""></i>Demon Tower</button>
+                        <div class="panel nested-panel">
+                            <p>???</p>
+                        </div>
+                    <!--1eski-->
+                    <button class="accordion nested"><i class=""></i>Podziemna Eskapada</button>
+                        <div class="panel nested-panel">
+                            <p>???</p>
+                        </div>
+                </div>
             </div>
+            <!--1ow-->
+            <button class="accordion"><i class=""></i>OpenWorld</button>
+            <div class="panel">
+                <p>???</p>
+                <!--1ow5-->
+                <button class="accordion nested"><i class=""></i>OW5</button>
+                    <div class="panel nested-panel">
+                        <p>???</p>  
+                    </div>
+                <!--1profesje-->
+                <button class="accordion nested"><i class=""></i>Profesje</button>
+                    <div class="panel nested-panel">
 
-            <button class="accordion nested" id="system_trofeow"><i class="fas fa-trophy"></i> System Trofeów</button>
-            <div class="panel nested-panel">
-                <h4>Informacje o trofeach</h4>
-                <p>Trofea to rzadkie przedmioty z dungeonów, które pozyskuje się z bossa. Po wydropieniu na czacie pojawia się komunikat z informacją kto i co dropnął.</p>
-                <p>Im większa trudność dunga tym większa szansa na drop (Zwykły -> Elitarny -> Koszmarny).</p>
-
-                <h4>Lista Trofeów i ich źródła</h4>
-                <ul>
-                    <li>Róg Minotaura - Minotaur</li>
-                    <li>Wyrwane Ślepie Pradawnego - Pradawny</li>
-                    <li>Berło Króla Północy - Król Północy</li>
-                    <li>Klepsydra z Piaskiem Życia - Umarły Rozpruwacz</li>
-                    <li>Niebieska Kosa 3000 - Niebieska Śmierć</li>
-                    <li>Fałszywy Flogiston - Piekielny Książe/Piekielny Lord</li>
-                </ul>
-
-                <h4>Użycie</h4>
-                <p>U NPC Janek można oddać przedmiot, aby pozyskać permanentny bonus.</p>
+                        <!--1zielarstwo-->
+                        <button class="accordion nested"><i class=""></i>Zielarstwo</button>
+                            <div class="panel nested-panel">
+                                <p>Zielarstwo to profesja, którą leveluje sie na OpenWorldzie, polega na zbieraniu kwiatków przy użyciu sierpa:</p>
+                                <ul>
+                                    <li>Ow1 - Kwiat Tomai - Sierp Lv.1+</li>
+                                    <li>Ow2 - Kwiat Rozani - Sierp Lv.1+</li>
+                                    <li>Ow3 - Kwiat Północy - Sierp Lv.1+</li>
+                                    <li>Ow4_1 - Kwiat Bielika Pospolitego - Sierp Lv.4+</li>
+                                    <li>Ow4_2 - Grzyb Niebios - Sierp Lv.4+</li>
+                                    <li>Ow4_4 - Kwiat Fioleti - Sierp Lv.6+</li>
+                                    <li>Ow5_1 - Bagienne Ziele - Sierl Lv.7+</li>
+                                </ul>
+                                <h4>Pozyskiwanie</h4>
+                                <p>Zielarstwo leveluje się zbierając kwiatki na OpenWorldzie 1, 2, 3, 4_1, 4_2, 4_4, 5_1. Im lepsze ow tym więcej expa za zebranie kwiata. Sierp, który można ulepszać zdobywa się od Efliej Alchemiczki po osiągnięciu 50 level klasy lub kupując go od Wyzyskiwacza na /spawn.</p>
+                                <p>Kwiaty znajdują się w określonych miejscach na wyżej wymienionych mapach, mają losowy czas respawnu.</p>
+                                <p>Za większą szansę na zebranie kwiatka/pozyskania jego większej ilości odpowiadają takie statystyki jak</p>
+                                <ul>
+                                    <li>Zwiększona szansa za zebranie rośliny</li>
+                                    <li>Fortuna zielarza</li>
+                                </ul>
+                                <h4>Sierpy</h4>
+                                <p>Poz.1 od 0 poziomu zielarstwa (pozyskiwany od NPC Elfia Alchemiczka za darmo po osiągnięciu 50 lvla klasy lub od Wyzyskiwacza za $).</p>
+                                <p>Sierp można ulepszać u NPC Elfia Zielarka, która znajduje sie na Ow1.</p>
+                                <h4>Zbroje i wyposażenie zielarskie</h4>
+                                <p>Do kupienia i ulepszenia w NPC Elfia Zielarka z wyjątkiem naszyjniku i amuletu. Naszyjnik zdobywa się z Side Questa u NPC Cor-Win na zwykłym spawnie lub u NPC Wyzyskiwacz również na zwykłym spawnie. Amulet zdobywa się kończąc drugą misję u NPC Elfia Alchemiczka lub u NPC Wyzyskiwacz na zwykłym spawnie</p>
+                                <h4>Zastosowanie</h4>
+                                <ul>
+                                    <li>Wytwarzanie potek w alchemii</li>
+                                    <li>Do niektórych wyposażeń na OpenWorldzie</li>
+                                    <li>Do side questa u NPC Elfia Alchemiczka</li>
+                                </ul>
+                                <h4>Ilość kwiatów na OW</h4>
+                                <ul>
+                                    <li>Ow1 - 20</li>
+                                    <li>Ow2 - 20</li>
+                                    <li>Ow3 - 20</li>
+                                    <li>Ow4_1 - 18</li>
+                                    <li>Ow4_2 - 18</li>
+                                    <li>Ow4_4 - 16</li>
+                                    <li>Ow5 - ???</li>
+                                </ul>
+                                
+                            </div>
+                        <!--1lowca-->
+                        <button class="accordion nested"><i class=""></i>Łowca</button>
+                            <div class="panel nested-panel">
+                                <h4>Pozyskiwanie</h4>
+                                <p>Łowcę zdobywa się zabijając Bossy, Minibossy, WorldBossy oraz Metiny na OpenWorldzie.</p>
+                                <p>1 poziom Łowcy to 1% statystyki Dodatkowy Drop - te procenty mnożą się przez resztę.</p>
+                                <p>Maksymalny poziom łowcy wynosi 100.</p>
+                            </div>
+                        <!--1eksploracja-->
+                        <button class="accordion nested"><i class=""></i>Eksploracja</button>
+                            <div class="panel nested-panel">
+                                <h4>Pozyskiwanie</h4>
+                                <p>Eksploracje zdobywa się z Questów, zarówno tych fabularnych jak i side Questów, czy daily Questów.</p>
+                                <p>Questy fabularne to zadania, które wykonuje się w celu przechodzenia fabuły danej mapy/regionu</p>
+                                <p>Side questy to zadania pobocznie, które nie są wymagane do ukończenia fabuły</p>
+                                <p>Przydatną komendą jest /dziennik gdzie można zobaczyć swoje aktualne misje zarówno fabularne jak i poboczne na danej mapie</p>
+                            </div>
+                        <!--1wedkarstwo-->    
+                        <button class="accordion nested"><i class=""></i>Wędkarstwo</button>
+                            <div class="panel nested-panel">
+                                <h4>Pozyskiwanie</h4>
+                                <p>Pierwszą wędkę odbiera się u NPC Waldek na /spawn</p>
+                                <p>Drop z poszczególnych łowisk można znaleść u lokalnego rybaka na każdym łowisku</p>
+                                <p>Miejsca, w których można łowić to</p>
+                                <ul>
+                                    <li>Łowisko na Ow1, które znajduje się za Boską Ręką</li>
+                                    <li>Łowisko na Ow2, które znajduje się bliski teleportu Dusznica</li>
+                                    <li>Łowisko na Ow3, które znajduje się w Lodowej Grocie</li>
+                                    <li>Łowisko na Ow4_2, które znajduje się na drugiej części Grzybowej Krainy</li>
+                                    <li>łowisko na Ow4_5</li>
+                                    <li>łowisko na dungeonie koszmarny lodowy</li>
+                                </ul>
+                                <h4>Jak łowić</h4>
+                                <p>W celu łowienia należy zarzucić wędkę do wody posiadając jednocześnie odpowiednią na miejsce, w którym się łowi przynętę. Po tym jak ryba złapie za spławik należy nacisnąć literkę, która wyskoczyła na ekranie. Jeśli wszystko przebiegło pomyślnie powinno dostać się expa i drop.</p>
+                                <p>WĘDKA MUSI BYĆ NA PIERWSZYM SLOCIE</p>
+                                <h4>Żyłka</h4>
+                                <p>Podczas wyławiania ryby lub jeśli minie czas na jej wyłowienie żyłka wędki może pęknąć lub zostać naderwana - w tym drugim przypadku wystarczy zarzucić ponownie wędkę, a w pierwszym trzeba nałożyć nową żyłkę klikając żyłką na wędkę w ekwipunku. Żyłkę można kupić u NPC Handlarz Drobiazgami, który znajduje się na ow1 lub u NPC na łowisku Ow3.</p>
+                                <h4>Przynęta</h4>
+                                <p>Każda przynęta posiada swoją pulę dropów. Są do kupienia u Rybaków na łowiskach.</p>
+                                <h4>Gorzyce</h4>
+                                <p>Gorzyce to łowisko eventowe, które otwiera się tylko podczas eventu na drop szkatułek rybackich. Na łowisko można się dostać przez NPC'ta Rybaka na /spawn. Można tam wyłowić Kamień Wędkarski przydany np</p>
+                                <ul>
+                                    <li>Podczas Sklepu Eventowego, gdzie za przedmioty z łowienia można kupić inne przedmioty</li>
+                                    <li>Do scraftowania artefaktu siły (na Gorzycach)</li>
+                                </ul>
+                                <h4>Potwory morskie</h4>
+                                <p>Potwory morskie mogą zostać wyłowione, po zabiciu dropią różne przedmioty w zależności od potwora. Możliwe do wyłowienia od Ow3.</p>
+                                <h4>Zanęta</h4>
+                                <p>Zanęta po rzuceniu do wody tworzy w danym obrębie bąbelki, podczas łowienia w nich zwiększa się szybkość łowienia. (jeśli nie widzisz bąbelków to wina ustawień nie serwera)</p>
+                                <h4>Koszt wstępu na łowisko</h4>
+                                <ul>
+                                    <li>Na jakim ow znajduje się łowisko - ile się płaci za jaki czas na łowisku - nazwa NPC, u którego kupuje się przepustkę</li>
+                                    <li>Ow3 - 40k/6h - Mors</li>
+                                    <li>Ow4_2 - 150k/6h - Grzybowy Strażnik</li>
+                                    <li>Ow4_5 - 500k/6h - Strażnik Łowiska</li>
+                                    <li>Kupując Kartę Vip 3d/1d w /itemshop dostaje się przepustkę na wszystkie łowiska na czas trwania Karty Vip</li>
+                                    <li>Kupując Kartę rybacką 7d dostaje się przepustkę na wszystkie łowiska na czas trwania Karty Rybackiej oraz 60% szans na to, że ryba nie zje przynęty
+                                    </li>
+                                </ul>
+                                <h4>Wyposażenie</h4>
+                                <p>Wyposażenie i akcesoria wędkarskie (bransoleta, amulet, wędka) zdobywa się (z wyłączeniem wędki) i ulepsza na łowiskach</p>
+                            </div>
+                    </div>
+                <!--1npc-->
+                <button class="accordion nested"><i class=""></i>NPC</button>
+                    <div class="panel nested-panel">
+                        <!--1biolog-->
+                        <button class="accordion nested"><i class=""></i>Biolog</button>
+                            <div class="panel nested-panel">
+                                <h4>Sposób działania</h4>
+                                <p>Biolog wymaga od nas oddania mu danej ilości przedmiotów takich jak:</p>
+                                <ul>
+                                    <li>Ząb dzika - wymagany 0 poziom klasy - Ow1 - 10 sztuk z 0.5h cooldownu</li>
+                                    <li>Skorupa Skarabeusza - wymagany 15 poziom klasy - Ow2 - 15 sztuk z 1h cooldownu</li>
+                                    <li>Wilcza Łapa - wymagany 35 poziom klasy - Ow3 - 20 sztuk z 2h cooldownu</li>
+                                    <li>Antyczna Cięciwa - wymagany 75 poziom klasy - Ow4_1 - 25 sztuk z 3h cooldownu</li>
+                                    <li>Grzybowy Kapelusz - wymagany 90 poziom klasy - Ow4_2 - 30 sztuk z 4h cooldownu</li>
+                                    <li>Siarkowe Serce - wymagany 105 poziom klasy - Ow4_3 - 35 sztuk z 5h cooldownu</li>
+                                    <li>Zerwane Okowy - wymagany 120 poziom klasy - Ow4_4 - 41 sztuk z 6h cooldownu</li>
+                                    <li>Piekielny Klejnot - wymagany 150 poziom klasy - Ow4_5 - 46 sztuk z 6h cooldownu</li>
+                                    <li>Żądło Ważki - wymagany ??? poziom klasy - Ow5_1 - ??? sztuk z ??? cooldownu</li>
+                                </ul>
+                                <p>Z każdym kolejnym itemkiem do biologa zwiększa się trudność jego zdobycia, jak i też ilość wymaganych itemków do oddania oraz czas pomiędzy oddaniem przedmiotu - ten można pominąć Eliksirem Poszukiwacza, który można kupić w /itemshop.</p>
+                                <p>Biolog za oddanie wszystkich itemków danego typu daje stałe bonusy do naszej postaci.</p>
+                            </div>
+                        <!--1kolekcjoner-->
+                        <button class="accordion nested"><i class=""></i>Kolekcjoner</button>
+                            <div class="panel nested-panel">
+                                <h4>Kolekcjoner to</h4>
+                                <p>Side Quest, w którym trzeba zabić x mobów na danej mapie, aby uzyskać nagrodę.</p>
+                                <p>Od Ow1 do Ow4_3 trzeba zabić następującą ilość mobów</p>
+                                <ul>
+                                    <li>2222 Zwykłych mobów</li>
+                                    <li>222/444 Bossów/Minibossów (22 na Ow1)</li>
+                                    <li>444 Metinów</li>
+                                </ul>
+                                <p>Od Ow4_4 wymagana ilość mobów do zabicia zwiększa się.</p>
+                                <h4>Nagroda</h4>
+                                <ul>
+                                    <li>Tysiąc/kilka tysięcy expa postaci/eksploracji</li>
+                                    <li>Kule czasu i inne itemy w zależności od mapy</li>
+                                    <li>Unikalny item, zazwyczaj taki który znajduje się w /itemshop</li>
+                                </ul>
+                            </div>
+                    </div>
+                    <!--1worldbossy-->
+                    <button class="accordion nested"><i class=""></i>WorldBossy</button>
+                        <div class="panel nested-panel">
+                            <h4>Czas repsawnu</h4>
+                            <p>Na serverze są 4 Worldbossy, każdy Worldboss ma swój określony czas repsawnu, który wyświetla się nad jego respem.</p>
+                            <p>Worldbossom można zadać max 1% ich HP na jednego hita</p>
+                            <h4>Wpieniony Handlarz</h4>
+                            <p>Ma 45k HP. Pojawia się na Ow1 w Chorej Wiosce. Jego dokładny respawn można zobaczyć na Dynmapie. Jego drop to:</p>
+                            <ul>
+                                <li>itemki Ow1</li>
+                                <li>Owocki Życia 10/25</li>
+                                <li>Przepustka na Dungeon Labirynt</li>
+                                <li>Talizman Handlarza PvE/PvP - te mają bardzo niską szansę na drop, dają HP, %HP oraz Odporność na graczy/potwory</li>
+                            </ul>
+                            <h4>Mumia</h4>
+                            <p>Ma 155k HP. Pojawia się na Ow2 w podziemiach Ankrahmun. Jej drop to:</p>
+                            <ul>
+                                <li>Itemki Ow2</li>
+                                <li>Owocki Życia 10/25/50</li>
+                                <li>Przepustka na Dungeon Pustynny</li>
+                                <li>Resztki Mumii - można nimi ulepszyć Talizman Handlarza w Balsam Mumii, który daje lepsze statystyki niż Talizman Handlarza</li>
+                            </ul>
+                            <h4>Lodzio</h4>
+                            <p>Ma 880k HP. Pojawia się na Ow3 w dziurze przy Obozie Alpinistów. Jego drop to:</p>
+                            <ul>
+                                <li>Itemki Ow3</li>
+                                <li>Owocki Życia 10/25/50</li>
+                                <li>Kula Czasu</li>
+                                <li>Przepustka na Dungeon Lodowy</li>
+                                <li>Demoniczna Przepustka</li>
+                                <li>Nos Lodzia - Można nim ulepszyć Balsam Mumii. Daje wtedy lepsze statystyki niż poprzednia wersja</li>
+                            </ul>
+                            <h4>Grzybowa Królowa</h4>
+                            <p>Ma 2.250m HP. Pojawia się na Ow4_3 w podziemiach mapy. Jej drop to:</p>
+                            <ul>
+                                <li>Itemki Ow4_1/Ow4_2</li>
+                                <li>Kryształ Podziemi - potrzebny do craftingu Artefaktu Ognia Lv.1</li>
+                                <li>Nawiedzony Pierścień Szansy Opętanych Dusz</li>
+                                <li>Owoc Życia 25/50/100</li>
+                                <li>Kula Czasu</li>
+                                <li>Przepustka na Podziemną Eskapadę</li>
+                                <li>Demoniczna Przepustka</li>
+                            </ul>
+                            <h4>Lord Pyrokar</h4>
+                            <p>Ma 6.95m HP. Pojawia się na Ow4_3 w podziemiach mapy. Jego drop to:</p>
+                            <ul>
+                                <li>Itemki Ow4_3</li>
+                                <li>Kryształ Podziemi - potrzebny do craftingu Artefaktu Ognia Lv.1</li>
+                                <li>Spopielony Amulet</li>
+                                <li>Owoc Życia 25/50/100</li>
+                                <li>Kula Czasu</li>
+                                <li>Przepustka na Podziemną Eskapadę</li>
+                                <li>Demoniczna Przepustka</li>
+                                <li>Potka Many 100</li>
+                                <li>Eliksir Słońca (M)</li>
+                            </ul>
+                            <h4>Władca Piekieł</h4>
+                            <p>Ma ??? HP. Pojawia się na Ow4_3 w podziemiach mapy. Jego drop to:</p>
+                            <ul>
+                                <li>???</li>
+                                <li>???</li>
+                                <li>???</li>
+                                <li>???</li>
+                            </ul>
+                            
+                        </div>
+                    <!--1bestiariusz-->
+                    <button class="accordion nested"><i class=""></i>Bestiariusz</button>
+                        <div class="panel nested-panel">
+                            <p>Dzieli się na 3 kategorie</p>
+                            <ul>
+                                <li>OpenWorld</li>
+                                <li>Dungeon</li>
+                                <li>Full bestiary</li>
+                            </ul>
+                            <h4>OpenWorld</h4>
+                            <p>Bestiariusz leveluje się zabijając moby, po tym jak zabije się odpowiednią ilość mobów otrzymuje się 1 Punkt do danego moba, 1 do FullBestiary oraz 1 Punkt mapy. Po zdobyciu następującej ilości Punktów na danym mobie otrzymuje się bonusy takie jak</p>
+                            <ul>
+                                <li>5 punktów - 0,5% MAX HP</li>
+                                <li>10 punktów - 0,5% ATK DMG</li>
+                                <li>15 punktów - 1,5% MAX HP</li>
+                                <li>20 punktów - 1,5% ATK DMG</li>
+                            </ul>
+                            <p>Za punkty map za moby na danej mapie otrzymuje się % Do obrażeń na tej właśnie mapie.</p>
+                            <p>Wszystkie zsumowane punkty map dają dodatkowe MAX Stellium. Moby na dungeonach mają szansę na zaliczenie się do Bestiary jako moby z Ow, każdy mob na dungeonie ma przypisanego konkretnego moba z Ow.</p>
+                            <h4>Dungeon</h4>
+                            <p>Bestiariusz leveluje się ukańczając dungeony, po tym jak zrobi się odpowiednią ilość dungeonów otrzymuje się 1 Punkt dungów oraz 1 punkt do FullBestiary. Punkty dungów na danym dungeonie dają bonus do DMG na tym właśnie dungu. Wszystkie zsumowane punkty dungów dają ogólny dmg na dungeonach.</p>
+                            <h4>FullBestiary</h4>
+                            <p>Wszystkie zliczone punkty FullBestiary dają takie statystyki jak:</p>
+                            <ul>
+                                <li>% Silny przeciwko potworom</li>
+                                <li>+% Odporności na Ogień/Trucizne/Obumarcie</li>
+                                <li>Od 1500 punktów +% Obrażenia bronii</li>
+                            </ul>
+                            <h4>Warunek dodania się moba/dungeona do bestiariusza</h4>
+                            <p>Aby mob dodał się do statystyk w bestiariuszu trzeba zadać mu minimum 10% jego HP (np. jeśli mob ma 1k HP trzeba zadać mu minimum 100 HP).</p>
+                            <p>Aby dungeon dodał się do statystyk w bestiariuszu trzeba zadać końcowemu bossowi minimum 1% HP.</p>
+                        </div>
+                    <!--1dynmapa-->
+                    <button class="accordion nested"><i class=""></i>Dynmapa</button>
+                        <div class="panel nested-panel">
+                            <h4>Najważniejsze funkcje dynmapy</h4>
+                            <p>Mapy - możliwość wybrania mapy, która nas interesuje</p>
+                            <p>Znaczniki - możliwość wybrania kategorii pod, którą znajdują się dokładne kordy NPC/lokacji/innych przydatnych miejsc.</p>
+                            <h4>Przykład</h4>
+                            <p>Nie wiesz gdzie jest NPC Blair, dlatego chcesz sprawdzić gdzie się znajduję, w tym celu należy najpierw w zakładce "Mapy" wybrać Niebieską Zarazę (ponieważ na tej mapie znajduje się Blair), a następnie w zakładce "Znaczniki" wybrać "Misje Główne" i poszukać Blair.</p>
+                            <p>https://jbwm.pl/mapa-skymmo</p>
+                        </div>
+                    <!--1artefakty-->
+                    <button class="accordion nested"><i class=""></i>Artefakty</button>
+                        <div class="panel nested-panel">
+                            <h4>Rodzaje Artefaktów</h4>
+                            <ul>
+                                <li>Artefakt Siły</li>
+                                <li>Artefakt Defensywy</li>
+                                <li>Artefakt Żywiołu</li>
+                            </ul>
+                            <!--1artefakt sily-->
+                            <button class="accordion nested"><i class=""></i>Artefakt Siły</button>
+                                <div class="panel nested-panel">
+                                    <p>Do kupienia na Eventowym łowisku "Gorzyce", daje takie statystyki jak</p>
+                                    <ul>
+                                        <li>Zwiększone obrażenia przeciwko morskim stworzeniom</li>
+                                        <li>Obrażenia</li>
+                                    </ul>
+                                </div>
+                            <!--1artefakt defensywy-->
+                            <button class="accordion nested"><i class=""></i>Artefakt Defensywy</button>
+                                <div class="panel nested-panel">
+                                    <p>Pierwszy zdobywa się jak drop z Wpienionego Handlarza, są 2 warianty</p>
+                                    <ul>
+                                        <li>PvE - jedną z statystyk jest odporność na potwory</li>
+                                        <li>PvP - jedną z statystyk jest odporność na graczy</li>
+                                    </ul>
+                                    <p>Daje on takie statystyki jak</p>
+                                    <ul>
+                                        <li>Zdrowie +x</li>
+                                        <li>Odporność na graczy/potwory</li>
+                                        <li>Zdrowie %x</li>
+                                    </ul>
+                                    <h4>Ulepszanie</h4>
+                                    <p>Artefakty te ulepsza się u NPC Maciek na spawnie w następujący sposób</p>
+                                    <ul>
+                                        <li>Talizman Handlarza + Resztki Mumii = Balsam do mumifikacji</li>
+                                        <li>Balsam do mumifikacji (+5 każde ulepszenie to 1 kryształ podziemii) + Nos Lodzia = Lodowa Sfera</li>
+                                        <li>Lodowa Sfera PvP (+15 każde ulepszenie to 1 kryształ podziemii) + Lodowa Sfera PvE (+15 każde ulepszenie to 1 kryształ podziemii) + Zwój Dualności = Kryształ Dualności - najmocniejszy artefakt dający zarówno odporności PvP jak i PvE</li>
+                                    </ul>
+                                </div>
+                            <!--1artefakt zywiolu-->
+                            <button class="accordion nested"><i class=""></i>Artefakt Żywiołu</button>
+                                <div class="panel nested-panel">
+                                    <h4>Artafakt Ognia</h4>
+                                    <p>Pierwszy Artefakt Żywiołu kupuje się u NPC Żywiołak Ognia za różne itemy oraz Kryształ Podziemii, można go ulepszać aż do 4 poziomu - Legendarny drop WorldBossów na Ow4. Daje odporność na ogień.</p>
+                                    <h4>Artefakt Jadu</h4>
+                                    <p>Ten Artefakt Żywiołu kupuje się u NPC Żywiołak Jadu za różne itemy raz Kryształ Podziemii, można go ulepszać aż do 4 poziomu - Legendarny drop WorldBossów na Ow4. Daje odporność na truciznę.</p>
+                                    <h4>Artefakt Cienia</h4>
+                                    <p>Ten Artefakt Żywiołu kupuje się u NPC Żywiołak Jadu LUB u NPC Żywiołak Ognia za Artefakt Ognia i Jadu Lv.4 (+15) oraz Kryształy Podziemii - Legendarny drop WorldBossów na Ow4. Daje odporność na truciznę i ogień.</p>
+                                </div>
+                        </div>
+                    <!--1sakiewki-->
+                    <button class="accordion nested"><i class=""></i>Sakiewki</button>
+                        <div class="panel nested-panel">
+                            
+                        </div>
+                    <!--1stellium-->
+                    <button class="accordion nested"><i class=""></i>Stellium</button>
+                        <div class="panel nested-panel">
+                            
+                        </div>
             </div>
-        </div>
+        <!--1wyspa-->
+        <h2 class="category-header">Wyspa</h2>
+            <!--1profesje-->
+            <button class="accordion"><i class=""></i>Profesje</button>
+                <div class="panel">
+                    <!--1gornictwo-->
+                    <button class="accordion nested"><i class=""></i>Górnictwo</button>
+                        <div class="panel nested-panel">
+                            
+                        </div>
+                    <!--1rolnictwo-->
+                    <button class="accordion nested"><i class=""></i>Rolnictwo</button>
+                        <div class="panel nested-panel">
+                            
+                        </div>
+                    <!--1drwalnictwo-->
+                    <button class="accordion nested"><i class=""></i>Drwalnictwo</button>
+                        <div class="panel nested-panel">
+                            
+                        </div>
+                    <!--1alchemia-->
+                    <button class="accordion nested"><i class=""></i>Alchemia</button>
+                        <div class="panel nested-panel">
+                            
+                        </div>
+                </div>
+            <!--1zaczarowanie przedmiotu-->
+            <button class="accordion"><i class=""></i>Stół Zaklęć</button>
+                <div class="panel">
 
-        <button class="accordion"><i class="fas fa-magic"></i> Zaczarowany Stół</button>
-        <div class="panel">
-            <h4>Sposób działania</h4>
-            <p>Zaczarowany stół służy do rollowania różnych statystyk na przedmiotach (jeśli przy craftingu danego itemu podana jest wartość od-do jakiejś statystyki oznacza to, że można ją rollować).</p>
+                </div>
+            <!--1/sklep-->
+            <button class="accordion"><i class=""></i>/sklep</button>
+                <div class="panel">
 
-            <h4>Instrukcja użycia</h4>
-            <ul>
-                <li>W Slot po lewo należy włożyć przedmiot z statystykami do rollowania</li>
-                <li>W slot po prawo należy włożyć Zaczarowanie Przedmiotu ("Zmianki")</li>
-                <li>Aby zrollować statystyki należy kliknąć przycisk na środku</li>
-                <li>Pojedynczy roll statystyk zużywa 1 zmiankę</li>
-                <li>Jeśli do stołu włożymy przedmiot bez statystyk do rollowania i spróbujemy go zrollować zabierze nam Zaczarowanie Przedmiotu</li>
-            </ul>
+                </div>
+        <h2 class="category-header">Ekwipunek</h2>
+            <!--1wyposazenie - przedzialy statystyk-->
+            <button class="accordion"><i class=""></i>Wyposażenie - Przedziały statystyk</button>
+                <div class="panel">
 
-            <h4>Crafting Zaczarowanego Stołu</h4>
-            <p>Zaczarowany Stół craftuje się u NPC Stwórca w Karczmie na /spawn w kategorii "Różne"</p>
-            <ul>
-                <li>x64 Skóra Dzika</li>
-                <li>x2 Diament st.2</li>
-                <li>x64 Trzcina st.2</li>
-                <li>x4 Utwardzony Obsydian</li>
-            </ul>
+                </div>
+            <!--1plecak-->
+            <button class="accordion"><i class=""></i>Plecak</button>
+                <div class="panel">
 
-            <h4>Stackowanie Zmianek</h4>
-            <p>Klikając jednym Zaczarowaniem Przedmiotu na drugie stackują się one. Ilość pozostałych Zmianek wyświetlana jest w opisie przedmiotu.</p>
-        </div>
+                </div>
+            <!--1szafa-->
+            <button class="accordion"><i class=""></i>Szafa</button>
+                <div class="panel">
 
-        <button class="accordion"><i class="fas fa-box"></i> System Sakiewek i Plecaka</button>
-        <div class="panel">
-            <button class="accordion nested" id="sakiewki"><i class="fas fa-shopping-bag"></i> Sakiewki</button>
-            <div class="panel nested-panel">
-                <h4>Lokalizacje NPC od sakiewek</h4>
-                <ul>
-                    <li>Sakiewki na drewno - NPC Handlarz Woodie - Ow1</li>
-                    <li>Sakiewki na itemki Ow1 - NPC Kryształowy mag - Ow1</li>
-                    <li>Sakiewki na plony - NPC Królewski Rolnik - Ow2</li>
-                    <li>Sakiewki na itemki Ow2 - NPC Barman - Ow2</li>
-                    <li>Sakiewki na surowce - NPC Mistrz Rabusiów - Ow3</li>
-                    <li>Sakiewki na itemki Ow3 - NPC Napaartoq - Ow3</li>
-                    <li>Sakiewki na itemki Ow4 - NPC Proszigo - Ow4</li>
-                    <li>Sakiewki na Potki HP - NPC Lekarz - Spawn</li>
-                    <li>Sakiewki na cząstki przepustek - NPC Dungeon Master - Spawn</li>
-                </ul>
+                </div>
+            
+        <h2 class="category-header">Inne</h2>
+            <!--1komunikaty-->
+            <button class="accordion nested"><i class=""></i>Komunikaty</button>
+                <div class="panel nested-panel">
 
-                <h4>System craftingu sakiewek</h4>
-                <p>Sakiewki na itemki z Ow:</p>
-                <ul>
-                    <li>Crafting: Dusza danego Ow (do kupienia u NPC Bibliotekarz) + Item, na który później będzie sakiewka</li>
-                    <li>Ulepszanie: Item, na który później będzie sakiewka</li>
-                </ul>
+                </div>
+            <!--1reputacja-->
+            <button class="accordion nested"><i class=""></i>Reputacja</button>
+                <div class="panel nested-panel">
 
-                <p>Pozostałe sakiewki:</p>
-                <ul>
-                    <li>Crafting: 1 Wytrzymały Materiał + Item, na który później będzie sakiewka</li>
-                    <li>Ulepszanie: 1 Elastyczny Materiał + Item, na który później będzie sakiewka</li>
-                </ul>
+                </div>
+            <!--1itemshop-->
+            <button class="accordion nested"><i class=""></i>/itemshop</button>
+                <div class="panel nested-panel">
 
-                <h4>System sortowania</h4>
-                <p>Panel Sortowania sakiewek znajduje się na dole GUI sakiewek. Aby powrócić do domyślnego wyglądu GUI należy kliknąć strzałkę w lewym dolnym rogu.</p>
+                </div>
+            <!--1eventy-->
+            <button class="accordion nested"><i class=""></i>Eventy</button>
+                <div class="panel nested-panel">
 
-                <h4>Powiększanie miejsca</h4>
-                <ul>
-                    <li>Słabe ulepszacze rozmiaru sakiewki można użyć max 10 razy</li>
-                    <li>2 słabe ulepszacze -> 1 Ulepszacz na 1 stronę</li>
-                    <li>2 ulepszacze na 1 stronę -> 1 ulepszacz na 2 stronę</li>
-                    <li>Ulepszacze można zakupić u NPC Embry na /spawn</li>
-                </ul>
-            </div>
+                </div>
+            <!--1rodzaje czatow-->
+            <button class="accordion nested"><i class=""></i>Rodzaje czatów</button>
+                <div class="panel nested-panel">
 
-            <button class="accordion nested" id="system_plecaka"><i class="fas fa-backpack"></i> System Plecaka</button>
-            <div class="panel nested-panel">
-                <h4>Podstawowe informacje</h4>
-                <p>Plecak to jedna z czterech zakładek w EQ. Podstawowo odblokowanych jest 9 slotów, resztę trzeba odblokować żeby być w stanie ich używać.</p>
-
-                <h4>Źródła slotów do plecaka</h4>
-                <ul>
-                    <li>Itemshop</li>
-                    <li>Niektóre kity (/kit)</li>
-                    <li>Szkatułka dungeona Pustynnego</li>
-                    <li>Szkatułka Rybacka</li>
-                </ul>
-            </div>
-        </div>
+                </div>
     </main>
 
     <script>
@@ -1690,7 +1575,7 @@
             {
                 id: 'fortuna',
                 title: 'Fortuna',
-                content: 'Górnictwo drwalnictwo rolnictwo zielarstwo sety bonusy',
+                content: 'Górnictwo drwalnictwo rolnictwo zielarstwo bonusy',
                 tags: ['fortuna', 'profesje', 'bonusy', 'sety']
             },
             {
