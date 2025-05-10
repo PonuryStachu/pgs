@@ -672,17 +672,20 @@
 
     <main class="main-content">
         <h2 class="category-header">Spawn</h2>
-        <h4>Rodzaje spawnów</h4>
-        <ul>
-            <li><h4>Zwykły spawn</h4><p> - gracz jest teleportowany od samego początku rozgrywki</p></li>
-            <li><h4>Spawn OW5</h4><p> - gracz jest teleportowany od momentu odblokowania OW5, może wrócić na zwykłego spawna poprzez specjalny teleport</p></li>
-        </ul>
-        <p>Ważne NPC z zwykłego spawna są na spawnie OW5, ale dodatkowo np. jest tam NPC ??? od sakiewek oraz NPC ??? od wymiany szarf na pył szarf 1/2</p>
+        <!--1informacje o spawnie-->
+        <button class="accordion"><i class=""></i>Informacje o spawnie</button>
+            <div class="panel">
+                <h4>Rodzaje spawnów</h4>
+                    <ul>
+                        <li><h4>Zwykły spawn</h4><p> - gracz jest teleportowany od samego początku rozgrywki</p></li>
+                        <li><h4>Spawn OW5</h4><p> - gracz jest teleportowany od momentu odblokowania OW5, może wrócić na zwykłego spawna poprzez specjalny teleport</p></li>
+                    </ul>
+                <p>Ważne NPC ze zwykłego spawna są na spawnie OW5, ale dodatkowo np. jest tam NPC Krwawy Przemytnik od sakiewek oraz NPC Scrofa od wymiany szarf na pył szarf 1/2</p>
         <!--1gildie-->
         <button class="accordion"><i class=""></i>Gildie</button>
             <div class="panel">
                 <h4>Zakładanie gildii</h4>
-                <p>Aby założyć gildię należy pogadać z NPC GuildMaster. Każda gildia posiada swój własny teren gildii - statek na tyłach spawnu. Startowa liczba członków gildii to 5 (max 15). Wymagane jest 10 kamieni gildii w EQ.</p>
+                <p>Aby założyć gildię należy pogadać z NPC GuildMaster. Każda gildia posiada swój własny teren gildii - statek na tyłach spawnu`. Startowa liczba członków gildii to 5 (max 15). Wymagane jest 10 kamieni gildii w EQ.</p>
                 
                 <h4>Wyposażenie statku gildyjnego</h4>
                 <p>Na statku gildyjnym znajdują się:</p>
@@ -696,8 +699,8 @@
                     <li>NPC Kuzi - NPC od szarf - dostępne od 300 punktów gildii</li>
                 </ul>
 
-                <h4>System SkillTree</h4>
-                <p>W SkillTree znajdują się 3 osobne drzewka gildyjne:</p>
+                <h4>System SkillTree gildyjnego</h4>
+                <p>W SkillTree gildyjnym znajdują się 3 osobne drzewka gildyjne:</p>
                 <ul>
                     <li>Serce Mnożników - Bonus drop, Stellium, Bonus exp klasy</li>
                     <li>Serce Gildii - Poziom trudności Questów, Liczba członków, Bonusowe punkty</li>
@@ -708,7 +711,7 @@
                     <div class="panel nested-panel">
                         <h4>Pozyskiwanie i sposób działania</h4>
                         <ul>
-                            <li>Szarfy posiadają % Wartości.</li>
+                            <li>Szarfy posiadają % Wartości, które wpływają na statystyki z kamienia mocy</li>
                             <li>Szarfy można wytworzyć u NPC Stwórca za Delikatne Sukna, które pozyskuje się z dowolnego dungeona. Im większa trudność dungeona (zwykły -> elitarny -> koszmarny) tym większy drop Sukien.</li>
                             <li>Szarfy można łączyć u NPC Chenshan (znajduje się on na Statku Gildyjnym na spawnie i wymaga 100 punktów misji gildii do odblokowania), aby uzyskać większy % wartości. Łączy się górną szarfę z dolną. Szarfa ma % szans na ulepszenie swojej % wartości o 1%, szansę na ulepszenie % wartości o 2% oraz szansę na spadnięcie % wartości o 1%, która wynosi 10%, jeśli nic z tego się nie wydarzy wtedy górna szarfa zostaje taka jaka była, a dolna przepada.</li>
                             <li>Maksymalny poziom % wartości na szarfie wynosi 20%.</li>
@@ -719,14 +722,14 @@
                         <ul>
                             <li>Kamienie mocy można scraftować u NPC Jubiler na Mapie Górniczej za Dusze Map, które są do scraftowania u NPC Bibliotekarz w Karczmie na /spawn.</li>
                             <li>Możliwy/e atrybut/y można zobaczyć klikając prawym przyciskiem w GUI Jubilera na dany Kamień Mocy. Aby uzyskać atrybuty na Kamieniu należy użyć na nim Zaczarowania Przedmiotu w Stole Zaklęć.</li>
-                            <li>Kamień Mocy łączy się z szarfą u NPC Kuzi (znajduje się on na Statku Gildyjnym na spawnie i wymaga 300 punktów misji gildii do odblokowania). Atrybut na kamieniu jest mnożony przez % wartości i taki bonus daje po założeniu w specjalnym slotu znajdującym się w plecaku (/plecak 1). Dla przykładu jeśli posiada się na Kamieniu Mocy obrażenia +80, a na szarfie % wartości wynosi 10% końcowo szarfa będzie dawała obrażenia +8.</li>
+                            <li>Kamień Mocy łączy się z szarfą u NPC Kuzi (znajduje się on na Statku Gildyjnym na spawnie i wymaga 300 punktów misji gildii do odblokowania). Atrybut na kamieniu jest mnożony przez % wartości i taki bonus daje po założeniu w specjalnym slocie znajdującym się w plecaku (/plecak 1). Dla przykładu jeśli posiada się na Kamieniu Mocy obrażenia +80, a na szarfie % wartości wynosi 10% końcowo szarfa będzie dawała obrażenia +8.</li>
                         </ul>
                         <h4>Skiny Szarf</h4>
                         <ul>
-                            <li>Skiny szarf są do kupienia pod komendą /itemshop -> Itemshop.</li>
+                            <li>Skiny szarf są do kupienia pod komendą /itemshop w kategorii Itemshop. Na pierwszej stronie można kupić skrzynie szarf a na stronie 5 konkretne skiny.</li>
                             <li>Posiadając skina w łapce należy kliknąć a wówczas doda się on do GUI pod komendą /skinyszarf, gdzie można wybrać skina spośród tych, które już się odblokowało.</li>
                             <li>Szarfę można ukryć pod komendą /ukryjszarfe.</li>
-                            <li>U NPC ??? na spawnie OW5 można wymienić skina do szarfy na pył szarfy, które później można spowrotem wymienić na szkatułkę z szafarmi.</li>
+                            <li>U NPC Scrofa na spawnie OW5 można wymienić skina do szarfy na pył szarfy, które później można spowrotem wymienić na szkatułkę z szafarmi.</li>
                         </ul>
                     </div>
             </div>
@@ -734,12 +737,12 @@
         <button class="accordion"><i class=""></i>Tablica Zadań</button>
             <div class="panel">
                 <h4>Lokalizacja</h4>
-                <p>Znajduję się ona zarówno na Spawnie, jak i na początku Ow1.</p>
+                <p>Znajduję się ona zarówno na Spawnie, jak i na początku Ow1. Dla rang MVIP+ i TYTAN+ jest możliwość otworzenia tablicy zadań w GUI: EQ -> książka -> książka</p>
                 <h4>Kategorie Questów</h4>
                 <ul>
                     <li>Misje Dzienne - resetują się codziennie o 00:00.</li>
                     <li>Misje Tygodniowe - resetują się o 00:00 z niedzieli na poniedziałek</li>
-                    <li>Misje Miesięczne - resetują się pierwszego dnia każdego miesiąca o 02:00</li>
+                    <li>Misje Miesięczne - resetują się pierwszego dnia każdego miesiąca o 00:00</li>
                 </ul>
                 <h4>Działanie tablicy zadań</h4>
                 <p>W tablicy można wyróżnić 2 zmienne:</p>
@@ -752,13 +755,13 @@
                     <li>Misja Tygodniowa liczy się jako 2 wykonane misje.</li>
                     <li>Misja Miesięczna liczy się jako 5 wykonanych misjii.</li>
                 </ul>
-                <p>Jeśli pisze np. aby wykonać 5 dungenów lodowych po zadaniu 1% ostatniemu bossowi zaliczają się wszystkie poziomy trudności (zwykły, elitarny, koszmarny) natomiast jeśli pisze np. aby wykonać 5 dungeonów koszmarnych lodowych należy ZADAĆ 5% ostatniemu bossowi x razy</p>
+                <p>Jeśli jest napisane np. aby wykonać 5 dungenów lodowych po zadaniu 1% ostatniemu bossowi zaliczają się wszystkie poziomy trudności (zwykły, elitarny, koszmarny) natomiast jeśli jest napisane np. aby wykonać 5 dungeonów koszmarnych lodowych należy ZADAĆ 5% ostatniemu bossowi x razy</p>
             </div>
         <!--1pety-->
         <button class="accordion"><i class=""></i>Pety</button>
             <div class="panel">
                 <h4>Level Peta</h4>
-                <p>Zwierzak bez ewolucji może maxymalnie osiągnąć 20 level, po pierwszej ewolucji 50, a po drugiej - 100.</p>
+                <p>Zwierzak bez ewolucji może maxymalnie osiągnąć 20 level, po pierwszej ewolucji 50 level, a po drugiej 100 level.</p>
                 <h4>Sposoby levelowania peta</h4>
                 <ul>
                     <li>Zielarstwo - zbieranie kwiatków</li>
@@ -864,7 +867,7 @@
         <!--1stworca-->
         <button class="accordion"><i class=""></i>Stwórca</button>
             <div class="panel">
-                <h4>Stwórca daje możliwość scraftowania wielu przedmiotów takich jak:</h4>
+                <h4>Przedmioty u NPC Stwórca kosztują nie tylko itemy, ale również czas. NPC Stwórca daje możliwość scraftowania wielu przedmiotów takich jak:</h4>
                 <ul>
                     <li>Fabryki</li>
                     <li>Przedmioty rolnicze, górnicze i do alchemii</li>
@@ -874,9 +877,10 @@
                     <li>Zaczarowany stół</li>
                 </ul>
                 <h4>Skrócenia czasu oczekiwania</h4>
-                <p>W Itemshopie można kupić Skrócenie czasu craftingu, które po użyciu zmniejsza nam czas czekania na dany item robiony i Stwórcy.</p>
+                <p>W Itemshopie można kupić Skrócenie czasu craftingu, które po użyciu zmniejsza nam czas czekania na dany item robiony u NPC Stwórca.</p>
                 <h4>Sloty</h4>
-                <p>W celu odblokowania większej ilości slotów na itemki u Stwórcy należy kupić rangę.</p>
+                <p>W celu odblokowania większej ilości slotów na itemki u Stwórcy należy kupić rangę, im lepsza ranga tym więcej dostępnych slotów.</p>
+                <p></p>
             </div>
         <!--1kule czasu-->
         <button class="accordion"><i class=""></i>Kula Czasu</button>
@@ -884,7 +888,7 @@
                 <h4>Przykładowe Źródła:</h4>
                 <ul>
                     <li>Dzienna nagroda u NPC Barman na /spawn</li>
-                    <li>Side Quest u NPC Szpieg Cor-Win</li>
+                    <li>Misje fabularne i poboczne</li>
                     <li>Strefa AFK</li>
                 </ul>
                 <h4>Przykłady użycia:</h4>
@@ -893,7 +897,7 @@
                 </ul>
             </div>
         <!--1ow/dung-->
-        <h2 class="category-header">OpenWorld i Dungeony</h2>
+        <h2 class="category-header">Dungeony i OpenWorld</h2>
             <p>???</p>
             <!--1dung-->
             <button class="accordion"><i class=""></i>Dungeony</button>
@@ -911,7 +915,7 @@
                             <li>Przepustek na Cząstki Przepustek</li>
                         </ul>
                         <p>Dodatkowo można u niego zakupić klucze do Kuferka Dungeon PREMIUM za 100k $ i Klucz do kuferka Dungeon I/II/III // Klucz do Szkat. Pozdziemnej Eskapady</p>
-                        <p>Można u niego scraftować Sakiewki na cząstki przepustek/delikatne sukna</p>
+                        <p>Można u niego scraftować sakiewki na cząstki przepustek/delikatne sukna</p>
                         <h4>Cząstki i przepustki można zdobyć</h4>
                         <ul>
                             <li>z niektórych bossów, minibossów oraz metinów (drop można zobaczyć pod komendą /bestiary)</li>
@@ -941,7 +945,7 @@
                 <!--1rodzaje dungow-->
                 <button class="accordion nested"><i class=""></i>Rodzaje Dungeonów</button>
                     <div class="panel nested-panel">
-                        <p>???</p>
+                        <!--<p>???</p>-->
                     <!--1kraina rozkoszy-->
                     <button class="accordion nested"><i class=""></i>Kraina Rozkoszy</button>
                         <div class="panel nested-panel">
@@ -956,27 +960,27 @@
                             <p>Dungeon Trwa MAX 5 minut.</p>
                         </div>
                     <!--1dg1-->
-                    <button class="accordion nested"><i class=""></i>Labirynt</button>
+                    <!--<button class="accordion nested"><i class=""></i>Labirynt</button>
                         <div class="panel nested-panel">
                             <p>???</p>
-                        </div>
+                        </div>-->
                     <!--1dg2-->
-                    <button class="accordion nested"><i class=""></i>Pustynny</button>
+                    <!--<button class="accordion nested"><i class=""></i>Pustynny</button>
                         <div class="panel nested-panel">
                             <p>???</p>
-                        </div>
+                        </div>-->
                     <!--1dg3-->
-                    <button class="accordion nested"><i class=""></i>Lodowy</button>
+                    <!--<button class="accordion nested"><i class=""></i>Lodowy</button>
                         <div class="panel nested-panel">
                             <p>???</p>
-                        </div>
+                        </div>-->
                     <!--1dt-->
-                    <button class="accordion nested"><i class=""></i>Demon Tower</button>
+                    <!--<button class="accordion nested"><i class=""></i>Demon Tower</button>
                         <div class="panel nested-panel">
                             <p>???</p>
-                        </div>
+                        </div>-->
                     <!--1eski-->
-                    <button class="accordion nested"><i class=""></i>Podziemna Eskapada</button>
+                    <!--<button class="accordion nested"><i class=""></i>Podziemna Eskapada</button>
                         <div class="panel nested-panel">
                             <p>???</p>
                         </div>
@@ -985,12 +989,12 @@
             <!--1ow-->
             <button class="accordion"><i class=""></i>OpenWorld</button>
             <div class="panel">
-                <p>???</p>
+                <!--<p>???</p>-->
                 <!--1ow5-->
-                <button class="accordion nested"><i class=""></i>OW5</button>
+                <!--<button class="accordion nested"><i class=""></i>OW5</button>
                     <div class="panel nested-panel">
                         <p>???</p>  
-                    </div>
+                    </div>-->
                 <!--1profesje-->
                 <button class="accordion nested"><i class=""></i>Profesje</button>
                     <div class="panel nested-panel">
@@ -1117,9 +1121,9 @@
                                     <li>Antyczna Cięciwa - wymagany 75 poziom klasy - Ow4_1 - 25 sztuk z 3h cooldownu</li>
                                     <li>Grzybowy Kapelusz - wymagany 90 poziom klasy - Ow4_2 - 30 sztuk z 4h cooldownu</li>
                                     <li>Siarkowe Serce - wymagany 105 poziom klasy - Ow4_3 - 35 sztuk z 5h cooldownu</li>
-                                    <li>Zerwane Okowy - wymagany 120 poziom klasy - Ow4_4 - 41 sztuk z 6h cooldownu</li>
-                                    <li>Piekielny Klejnot - wymagany 150 poziom klasy - Ow4_5 - 46 sztuk z 6h cooldownu</li>
-                                    <li>Żądło Ważki - wymagany ??? poziom klasy - Ow5_1 - ??? sztuk z ??? cooldownu</li>
+                                    <li>Zerwane Okowy - wymagany 120 poziom klasy - Ow4_4 - 40 sztuk z 6h cooldownu</li>
+                                    <li>Piekielny Klejnot - wymagany 150 poziom klasy - Ow4_5 - 45 sztuk z 6h cooldownu</li>
+                                    <li>Żądło Ważki - wymagany ??? poziom klasy - Ow5_1 - 50 sztuk z 8h cooldownu</li>
                                 </ul>
                                 <p>Z każdym kolejnym itemkiem do biologa zwiększa się trudność jego zdobycia, jak i też ilość wymaganych itemków do oddania oraz czas pomiędzy oddaniem przedmiotu - ten można pominąć Eliksirem Poszukiwacza, który można kupić w /itemshop.</p>
                                 <p>Biolog za oddanie wszystkich itemków danego typu daje stałe bonusy do naszej postaci.</p>
@@ -1150,6 +1154,9 @@
                             <h4>Czas repsawnu</h4>
                             <p>Na serverze są 4 Worldbossy, każdy Worldboss ma swój określony czas repsawnu, który wyświetla się nad jego respem.</p>
                             <p>Worldbossom można zadać max 1% ich HP na jednego hita</p>
+                            <p>Exp i podstawowe przedmioty zdobywa się od 1% max hp zadanego WorldBossowi</p>
+                            <p>Od 10% można dostać Artefakt lub jego ulepszenia - resztki mumii i nos lodzia</p>
+                            <p>Rzadki drop z WorldBossów Ow4 dostępny jest dopiero od 10% zadanego DMG i top 3 w tabeli</p>
                             <h4>Wpieniony Handlarz</h4>
                             <p>Ma 45k HP. Pojawia się na Ow1 w Chorej Wiosce. Jego dokładny respawn można zobaczyć na Dynmapie. Jego drop to:</p>
                             <ul>
@@ -1180,7 +1187,7 @@
                             <p>Ma 2.250m HP. Pojawia się na Ow4_3 w podziemiach mapy. Jej drop to:</p>
                             <ul>
                                 <li>Itemki Ow4_1/Ow4_2</li>
-                                <li>Kryształ Podziemi - potrzebny do craftingu Artefaktu Ognia Lv.1</li>
+                                <li>Kryształ Podziemi</li>
                                 <li>Nawiedzony Pierścień Szansy Opętanych Dusz</li>
                                 <li>Owoc Życia 25/50/100</li>
                                 <li>Kula Czasu</li>
@@ -1191,22 +1198,27 @@
                             <p>Ma 6.95m HP. Pojawia się na Ow4_3 w podziemiach mapy. Jego drop to:</p>
                             <ul>
                                 <li>Itemki Ow4_3</li>
-                                <li>Kryształ Podziemi - potrzebny do craftingu Artefaktu Ognia Lv.1</li>
+                                <li>Kryształ Podziemi</li>
                                 <li>Spopielony Amulet</li>
                                 <li>Owoc Życia 25/50/100</li>
                                 <li>Kula Czasu</li>
                                 <li>Przepustka na Podziemną Eskapadę</li>
                                 <li>Demoniczna Przepustka</li>
-                                <li>Potka Many 100</li>
+                                <li>Mikstura many 100</li>
                                 <li>Eliksir Słońca (M)</li>
                             </ul>
                             <h4>Władca Piekieł</h4>
                             <p>Ma ??? HP. Pojawia się na Ow4_3 w podziemiach mapy. Jego drop to:</p>
                             <ul>
-                                <li>???</li>
-                                <li>???</li>
-                                <li>???</li>
-                                <li>???</li>
+                                <li>Itemki Ow4_4 i Ow4_5</li>
+                                <li>Kryształ Podziemi</li>
+                                <li>Spopielony Amulet, Nawiedzony Pierścień Szansy Opętanych Dusz i Zwój Dualności</li>
+                                <li>Owoc Życia 25/50/100</li>
+                                <li>Kula Czasu</li>
+                                <li>Przepustka na Podziemną Eskapadę</li>
+                                <li>Demoniczna Przepustka</li>
+                                <li>Mikstura many 100</li>
+                                <li>Eliksir Słońca (M)</li>
                             </ul>
                             
                         </div>
@@ -1222,10 +1234,10 @@
                             <h4>OpenWorld</h4>
                             <p>Bestiariusz leveluje się zabijając moby, po tym jak zabije się odpowiednią ilość mobów otrzymuje się 1 Punkt do danego moba, 1 do FullBestiary oraz 1 Punkt mapy. Po zdobyciu następującej ilości Punktów na danym mobie otrzymuje się bonusy takie jak</p>
                             <ul>
-                                <li>5 punktów - 0,5% MAX HP</li>
-                                <li>10 punktów - 0,5% ATK DMG</li>
-                                <li>15 punktów - 1,5% MAX HP</li>
-                                <li>20 punktów - 1,5% ATK DMG</li>
+                                <li>5 punktów - 500 mobów - 0,5% MAX HP</li>
+                                <li>10 punktów - 15k mobów - 0,5% ATK DMG</li>
+                                <li>15 punktów - 200k mobów - 1,5% MAX HP</li>
+                                <li>20 punktów (MAX) - 500k mobów - 1,5% ATK DMG</li>
                             </ul>
                             <p>Za punkty map za moby na danej mapie otrzymuje się % Do obrażeń na tej właśnie mapie.</p>
                             <p>Wszystkie zsumowane punkty map dają dodatkowe MAX Stellium. Moby na dungeonach mają szansę na zaliczenie się do Bestiary jako moby z Ow, każdy mob na dungeonie ma przypisanego konkretnego moba z Ow.</p>
@@ -1249,7 +1261,7 @@
                             <p>Mapy - możliwość wybrania mapy, która nas interesuje</p>
                             <p>Znaczniki - możliwość wybrania kategorii pod, którą znajdują się dokładne kordy NPC/lokacji/innych przydatnych miejsc.</p>
                             <h4>Przykład</h4>
-                            <p>Nie wiesz gdzie jest NPC Blair, dlatego chcesz sprawdzić gdzie się znajduję, w tym celu należy najpierw w zakładce "Mapy" wybrać Niebieską Zarazę (ponieważ na tej mapie znajduje się Blair), a następnie w zakładce "Znaczniki" wybrać "Misje Główne" i poszukać Blair.</p>
+                            <p>Nie wiesz gdzie jest NPC Blair, dlatego chcesz sprawdzić gdzie się znajduję, w tym celu należy najpierw w zakładce "Mapy" wybrać Niebieską Zarazę (ponieważ na tej mapie znajduje się Blair), a następnie w zakładce "Znaczniki" wybrać "Misje Główne" i poszukać Blair. Kordy pokażą się przy nazwie NPC lub po najechaniu na ikonę NPC na mapie</p>
                             <p>https://jbwm.pl/mapa-skymmo</p>
                         </div>
                     <!--1artefakty-->
@@ -1368,6 +1380,11 @@
                 </div>
             
         <h2 class="category-header">Inne</h2>
+            <!--1restart serwera-->
+            <button class="accordion nested"><i class=""></i>Dzienny restart serwera</button>
+                <div class="panel nested-panel">
+
+                </div>
             <!--1komunikaty-->
             <button class="accordion nested"><i class=""></i>Komunikaty</button>
                 <div class="panel nested-panel">
